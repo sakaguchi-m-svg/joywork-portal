@@ -123,6 +123,124 @@
   @keyframes lightUp  { 0%,100% { fill: transparent } 40% { fill: currentColor } }
 
   @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
+  /* ================= TELA DE LOGIN / ログイン画面 ================= */
+  #login { position: fixed; inset: 0; z-index: 95; overflow-y: auto; background: #F7F9FC; color: #334155; }
+  #login .lg-tela { position: relative; min-height: 100%; display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr); }
+  #login .lg-marca { position: relative; overflow: hidden; background: #0F1E33; color: #fff; padding: 48px 56px; display: flex; flex-direction: column; }
+  #login .lg-marca::before { content: ""; position: absolute; right: -160px; top: -160px; width: 480px; height: 480px; border-radius: 50%;
+           background: radial-gradient(circle, rgba(95,161,60,.28), transparent 65%); }
+  #login .lg-marca::after { content: ""; position: absolute; left: -120px; bottom: -200px; width: 520px; height: 520px; border-radius: 50%;
+           background: radial-gradient(circle, rgba(42,74,158,.55), transparent 65%); }
+  #login .lg-marca > * { position: relative; z-index: 1; }
+  #login .lg-logo { display: flex; align-items: center; gap: 14px; }
+  #login .lg-logo img { width: 56px; height: 56px; border-radius: 14px; background: #fff; padding: 4px; }
+  #login .lg-logo b { font-size: 22px; font-weight: 800; letter-spacing: -.02em; display: block; }
+  #login .lg-logo span { font-size: 13px; color: #A9B6CC; }
+  #login .lg-cena { margin-top: auto; width: 100%; max-width: 520px; }
+  #login .lg-cena svg { display: block; width: 100%; height: auto; }
+  #login .lg-marca h1 { margin: 28px 0 0; font-size: 40px; line-height: 1.12; font-weight: 800; letter-spacing: -.03em; max-width: 13ch; }
+  #login .lg-marca h1 em { font-style: normal; color: #9BD37A; }
+  #login .lg-jp { margin-top: 10px; font-size: 16px; color: #A9B6CC; }
+  #login .lg-lista { list-style: none; padding: 0; margin: 32px 0 0; display: grid; gap: 14px; max-width: 420px; }
+  #login .lg-lista li { display: flex; gap: 12px; align-items: flex-start; font-size: 15px; color: #D6DEEA; line-height: 1.5; }
+  #login .lg-lista svg { flex-shrink: 0; margin-top: 2px; color: #9BD37A; }
+  #login .lg-faixa { margin-top: 40px; display: flex; height: 4px; border-radius: 4px; overflow: hidden; max-width: 220px; }
+  #login .lg-faixa i { flex: 1; background: #2A4A9E; } #login .lg-faixa i + i { flex: 0 0 60px; background: #5FA13C; }
+  #login .lg-rodape { margin-top: 18px; font-size: 12px; color: #7F8DA5; }
+
+  #login .lg-lado { position: relative; display: flex; flex-direction: column; padding: 28px 40px; }
+  #login .lg-topo { display: flex; justify-content: flex-end; }
+  #login .lg-idioma { position: relative; }
+  #login .lg-idioma > button { display: flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 12px; border: 1px solid #E3E8F0;
+           border-radius: 10px; background: #fff; font-weight: 700; font-size: 14px; color: #0F1E33; }
+  #login .lg-idioma ul { position: absolute; right: 0; top: 46px; z-index: 5; margin: 0; padding: 6px 0; list-style: none; width: 200px;
+           background: #fff; border: 1px solid #E3E8F0; border-radius: 12px; box-shadow: 0 12px 32px rgba(15,30,51,.12); }
+  #login .lg-idioma li button { width: 100%; min-height: 42px; padding: 0 14px; text-align: left; font-size: 14px; color: #334155; }
+  #login .lg-idioma li button:hover { background: #F1F5F9; }
+  #login .lg-idioma li button[aria-selected="true"] { color: #2A4A9E; font-weight: 700; }
+
+  #login .lg-caixa { margin: auto; width: 100%; max-width: 440px; padding: 24px 0; }
+  #login .lg-caixa h2 { margin: 0; font-size: 28px; font-weight: 800; color: #0F1E33; letter-spacing: -.02em; }
+  #login .lg-sub { margin: 6px 0 0; font-size: 15px; color: #64748B; line-height: 1.55; }
+  #login .lg-abas { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; padding: 4px; background: #EDF1F7; border-radius: 12px; }
+  #login .lg-abas button { min-height: 44px; border-radius: 9px; font-size: 14px; font-weight: 700; color: #64748B; }
+  #login .lg-abas button[aria-selected="true"] { background: #fff; color: #2A4A9E; box-shadow: 0 1px 3px rgba(15,30,51,.12); }
+  #login .lg-painel { margin-top: 22px; }
+  #login .lg-quem { display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border-radius: 12px; background: #EEF2FB; color: #1D355C; font-size: 14px; line-height: 1.55; }
+  #login .lg-quem svg { flex-shrink: 0; margin-top: 2px; color: #2A4A9E; }
+  #login .lg-rot { display: block; margin: 18px 0 6px; font-size: 14px; font-weight: 700; color: #0F1E33; }
+  #login .lg-campo { position: relative; }
+  #login .lg-campo input { width: 100%; min-height: 52px; padding: 0 16px 0 46px; border: 1.5px solid #CBD5E1; border-radius: 12px; background: #fff;
+           font-size: 17px; color: #0F1E33; letter-spacing: .02em; }
+  #login .lg-campo input:focus { outline: none; border-color: #2A4A9E; box-shadow: 0 0 0 4px rgba(42,74,158,.14); }
+  #login .lg-campo > svg { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94A3B8; pointer-events: none; }
+  #login .lg-olho { position: absolute; right: 8px; top: 50%; transform: translateY(-50%); min-width: 40px; min-height: 40px; color: #94A3B8; border-radius: 8px; }
+  #login .lg-pin { letter-spacing: .5em !important; font-size: 22px !important; }
+  #login .lg-quemsou { min-height: 22px; margin-top: 8px; font-size: 14px; font-weight: 700; color: #3F7A25; }
+  #login .lg-quemsou.nao { color: #7A4E05; font-weight: 600; }
+  #login .lg-dica { margin-top: 8px; font-size: 13px; color: #64748B; line-height: 1.5; }
+  #login .lg-botao { margin-top: 22px; width: 100%; min-height: 54px; border-radius: 12px; background: #0F1E33; color: #fff; font-size: 16px; font-weight: 800;
+           display: flex; align-items: center; justify-content: center; gap: 10px; }
+  #login .lg-botao:hover { background: #1D355C; } #login .lg-botao:disabled { opacity: .6; }
+  #login .lg-botao.lg-google { background: #fff; color: #0F1E33; border: 1.5px solid #CBD5E1; text-decoration: none; }
+  #login .lg-botao.lg-google:hover { background: #F8FAFC; }
+  #login .lg-lembrar { margin-top: 16px; display: flex; align-items: center; gap: 10px; font-size: 14px; color: #334155; }
+  #login .lg-lembrar input { width: 20px; height: 20px; accent-color: #2A4A9E; }
+  #login .lg-erro { margin-top: 14px; padding: 12px 14px; border-radius: 10px; background: #FEF2F2; color: #B91C1C; font-size: 14px; font-weight: 600; }
+  #login .lg-demo { margin-top: 16px; padding: 10px 14px; border-radius: 10px; background: #FBF0DC; color: #7A4E05; font-size: 13px; line-height: 1.5; }
+  #login .lg-seguro { margin-top: 28px; padding-top: 18px; border-top: 1px solid #E3E8F0; display: flex; gap: 10px; font-size: 13px; color: #64748B; line-height: 1.55; }
+  #login .lg-seguro svg { flex-shrink: 0; margin-top: 1px; color: #5FA13C; }
+  #login .lg-ajuda { margin-top: 10px; font-size: 13px; color: #64748B; }
+
+  /* empilhadeira no depósito / 倉庫のフォークリフト */
+  #login .lg-empilhadeira { animation: lgDirige 12s infinite; }
+  #login .lg-carro { animation: lgLevanta 12s infinite; }
+  #login .lg-roda { transform-box: fill-box; transform-origin: center; animation: lgGira 12s infinite; }
+  #login .lg-cx-garfo { animation: lgNoGarfo 12s infinite; }
+  #login .lg-cx-rack { animation: lgNaPrateleira 12s infinite; }
+  #login .lg-giro { animation: lgPisca 1.1s ease-in-out infinite; }
+  #login .lg-farol { animation: lgFarol 12s infinite; }
+  @keyframes lgDirige {
+    0%   { transform: translateX(-170px); animation-timing-function: cubic-bezier(.3,0,.25,1); }
+    28%  { transform: translateX(239px); }
+    58%  { transform: translateX(239px); animation-timing-function: cubic-bezier(.45,0,.7,1); }
+    80%, 100% { transform: translateX(-170px); }
+  }
+  @keyframes lgLevanta {
+    0%, 30%  { transform: translateY(0); animation-timing-function: ease-in-out; }
+    40%, 46% { transform: translateY(-74px); animation-timing-function: ease-in-out; }
+    54%, 100% { transform: translateY(0); }
+  }
+  @keyframes lgGira {
+    0%   { transform: rotate(0deg); animation-timing-function: cubic-bezier(.3,0,.25,1); }
+    28%, 58% { transform: rotate(930deg); animation-timing-function: cubic-bezier(.45,0,.7,1); }
+    80%, 100% { transform: rotate(0deg); }
+  }
+  @keyframes lgNoGarfo { 0%, 43% { opacity: 1; } 44%, 94% { opacity: 0; } 97%, 100% { opacity: 1; } }
+  @keyframes lgNaPrateleira { 0%, 43% { opacity: 0; } 44%, 88% { opacity: 1; } 93%, 100% { opacity: 0; } }
+  @keyframes lgPisca { 0%, 100% { opacity: .25; } 50% { opacity: 1; } }
+  @keyframes lgFarol { 0%, 28% { opacity: 1; } 34%, 56% { opacity: .35; } 60%, 100% { opacity: 1; } }
+  @media (prefers-reduced-motion: reduce) {
+    #login .lg-empilhadeira { animation: none !important; transform: translateX(239px); }
+    #login .lg-carro { animation: none !important; transform: translateY(-74px); }
+    #login .lg-cx-rack { opacity: 0; }
+  }
+
+  @media (max-width: 880px) {
+    #login .lg-tela { grid-template-columns: 1fr; }
+    #login .lg-marca { padding: 28px 22px 26px; }
+    #login .lg-cena { margin-top: 14px; max-width: 280px; }
+    #login .lg-marca h1 { margin-top: 14px; font-size: 24px; max-width: none; }
+    #login .lg-jp { font-size: 13px; margin-top: 6px; }
+    #login .lg-lista, #login .lg-rodape { display: none; }
+    #login .lg-faixa { margin-top: 22px; }
+    #login .lg-lado { position: static; padding: 16px 18px 40px; }
+    #login .lg-topo { position: absolute; top: 22px; right: 18px; z-index: 3; }
+    #login .lg-idioma > button { background: rgba(255,255,255,.1); border-color: rgba(255,255,255,.2); color: #fff; }
+    #login .lg-caixa { padding-top: 8px; }
+    #login .lg-caixa h2 { font-size: 24px; }
+  }
+
 </style>
 </head>
 
@@ -203,6 +321,17 @@
         <li><button data-lang="id" class="lang-opt">Bahasa Indonesia</button></li>
       </ul>
     </div>
+    </div>
+  </div>
+
+  <!-- boas-vindas com o nome de quem entrou / ログインした人の名前 -->
+  <div id="bemVindo" class="hidden border-t border-line bg-leafsoft">
+    <div class="mx-auto flex max-w-7xl flex-wrap items-center gap-x-3 gap-y-1 px-4 py-2.5 sm:px-6">
+      <i data-lucide="hand" class="h-5 w-5 shrink-0 text-leafdark"></i>
+      <p id="bvTexto" class="min-w-0 text-[15px] text-leafdark"></p>
+      <p id="bvInfo" class="text-[13px] text-leafdark/80"></p>
+      <button type="button" id="bvSair" class="ml-auto inline-flex min-h-[36px] items-center gap-1.5 rounded-lg border border-leaf/40 bg-white px-3 text-[13px] font-semibold text-leafdark hover:bg-white/70">
+        <i data-lucide="log-out" class="h-4 w-4"></i><span id="bvSairTxt"></span></button>
     </div>
   </div>
 
@@ -329,6 +458,18 @@
 <script>
 const T = {
   pt: { _locale:'pt-BR',
+    idQuem:'Preenchido por',
+    lgTitulo:'Tudo do seu trabalho, <em>num lugar só.</em>', lgB1:'Avisos da empresa e do seu setor', lgB2:'Formulários com PDF, direto no celular',
+    lgB3:'Feedback, HHK, 5S, KYT e QYT', lgB4:'Em português, 日本語, English, español e Bahasa Indonesia',
+    lgEntrar:'Faça o seu login', lgEntrarSub:'Escolha como você usa o portal.', lgLembrar:'Lembrar neste aparelho',
+    lgDicaFunc:'Sem senha. Seu código preenche sozinho o nome e o setor nos formulários.',
+    lgDicaLider:'O PIN é definido pela administração. 3 erros seguidos bloqueiam o acesso por 15 minutos.',
+    lgAdmInfo:'A administração entra com a conta Google da empresa. Só e-mails @kk-joywork.co.jp podem editar o portal.',
+    lgBtGoogle:'Entrar com a conta Google da empresa', lgDicaAdm:'Depois de entrar, o portal reconhece você sozinho e mostra a barra de administração.',
+    lgSeguro:'Conexão protegida pelo Google. Seus dados não aparecem para outros funcionários.', lgAjuda:'Não sabe seu código? Fale com o seu líder.',
+    lgNaoLider:'Este código não é de líder.', lgBemvindo:'Bem-vindo(a), {n}!', lgSair:'Sair', lgSairQ:'Sair do portal neste aparelho?',
+    lgDemo:'Modo demonstração: para testar como líder, use o código de um líder (ex.: JW-0887) e qualquer PIN de 4 a 8 números.',
+    lgAdmDemo:'Na demonstração, este botão entra direto como administração.', lgMostrarPin:'Mostrar PIN',
     mdlZoomIn:'Ampliar a folha', mdlZoomOut:'Ver a folha inteira',
     fmOkTitle:'Formulário enviado com sucesso', fbOkTitle:'Feedback enviado com sucesso',
     mdlHint:'Toque nos espaços amarelos da folha para preencher. Nº do funcionário, nome e data entram sozinhos pelo seu código.',
@@ -500,6 +641,18 @@ const T = {
     navForms:'Formulários', navFeedback:'Feedback interno', navCompany:'Perfil da Empresa' },
 
   en: { _locale:'en-US',
+    idQuem:'Filled in by',
+    lgTitulo:'Everything about your work, <em>in one place.</em>', lgB1:'Company and sector notices', lgB2:'Forms with PDF, right on your phone',
+    lgB3:'Feedback, HHK, 5S, KYT and QYT', lgB4:'In Portuguese, 日本語, English, Spanish and Bahasa Indonesia',
+    lgEntrar:'Please sign in', lgEntrarSub:'Choose how you use the portal.', lgLembrar:'Remember on this device',
+    lgDicaFunc:'No password. Your code fills in your name and sector on forms automatically.',
+    lgDicaLider:'The PIN is set by the administration. 3 wrong attempts in a row block access for 15 minutes.',
+    lgAdmInfo:'The administration signs in with the company Google account. Only @kk-joywork.co.jp e-mails can edit the portal.',
+    lgBtGoogle:'Sign in with the company Google account', lgDicaAdm:'Once signed in, the portal recognizes you and shows the administration bar.',
+    lgSeguro:'Connection protected by Google. Your data is not shown to other employees.', lgAjuda:'Don’t know your code? Ask your leader.',
+    lgNaoLider:'This code is not a leader.', lgBemvindo:'Welcome, {n}!', lgSair:'Sign out', lgSairQ:'Sign out of the portal on this device?',
+    lgDemo:'Demo mode: to try as a leader, use a leader’s code (e.g. JW-0887) and any 4–8 digit PIN.',
+    lgAdmDemo:'In the demo, this button signs in directly as administration.', lgMostrarPin:'Show PIN',
     mdlZoomIn:'Enlarge the sheet', mdlZoomOut:'See the whole sheet',
     fmOkTitle:'Form sent successfully', fbOkTitle:'Feedback sent successfully',
     mdlHint:'Tap the yellow spaces on the sheet to fill it in. Employee no., name and date are filled in from your code.',
@@ -671,6 +824,18 @@ const T = {
     navForms:'Forms', navFeedback:'Internal feedback', navCompany:'Company profile' },
 
   ja: { _locale:'ja-JP',
+    idQuem:'記入者',
+    lgTitulo:'仕事に必要なことを、<em>ひとつの場所に。</em>', lgB1:'会社とエリアのお知らせ', lgB2:'スマホでフォーム記入・PDF送信',
+    lgB3:'フィードバック・HHK・5S・KYT・QYT', lgB4:'日本語・ポルトガル語・英語・スペイン語・インドネシア語に対応',
+    lgEntrar:'ログインしてください', lgEntrarSub:'ポータルの使い方を選んでください。', lgLembrar:'この端末に記憶する',
+    lgDicaFunc:'パスワードは不要です。社員コードで、フォームの氏名とエリアが自動で入ります。',
+    lgDicaLider:'PINは管理部門が設定します。3回続けて間違えると15分間ロックされます。',
+    lgAdmInfo:'管理部門は会社のGoogleアカウントでログインします。編集できるのは @kk-joywork.co.jp のメールのみです。',
+    lgBtGoogle:'会社のGoogleアカウントでログイン', lgDicaAdm:'ログイン後、ポータルが自動で認識し、管理バーを表示します。',
+    lgSeguro:'Googleで保護された接続です。あなたの情報は他の従業員には表示されません。', lgAjuda:'社員コードが分からない場合は、リーダーに確認してください。',
+    lgNaoLider:'このコードはリーダーではありません。', lgBemvindo:'{n} さん、ようこそ。', lgSair:'ログアウト', lgSairQ:'この端末でポータルからログアウトしますか？',
+    lgDemo:'デモモード：リーダーとして試すには、リーダーの社員コード（例：JW-0887）と4～8桁の任意のPINを入力してください。',
+    lgAdmDemo:'デモでは、このボタンで管理部門として直接入ります。', lgMostrarPin:'PINを表示',
     mdlZoomIn:'原紙を拡大', mdlZoomOut:'原紙全体を表示',
     fmOkTitle:'フォームを送信しました', fbOkTitle:'フィードバックを送信しました',
     mdlHint:'原紙の黄色い欄をタップして記入してください。社員番号・氏名・日付は社員コードから自動で入ります。',
@@ -842,6 +1007,18 @@ const T = {
     navForms:'申請フォーム', navFeedback:'社内フィードバック', navCompany:'会社概要' },
 
   es: { _locale:'es-ES',
+    idQuem:'Rellenado por',
+    lgTitulo:'Todo tu trabajo, <em>en un solo lugar.</em>', lgB1:'Avisos de la empresa y de tu sector', lgB2:'Formularios con PDF, desde el móvil',
+    lgB3:'Comentarios, HHK, 5S, KYT y QYT', lgB4:'En portugués, 日本語, inglés, español y Bahasa Indonesia',
+    lgEntrar:'Inicia sesión', lgEntrarSub:'Elige cómo usas el portal.', lgLembrar:'Recordar en este aparato',
+    lgDicaFunc:'Sin contraseña. Tu código completa solo el nombre y el sector en los formularios.',
+    lgDicaLider:'El PIN lo define la administración. 3 errores seguidos bloquean el acceso 15 minutos.',
+    lgAdmInfo:'La administración entra con la cuenta Google de la empresa. Solo los correos @kk-joywork.co.jp pueden editar el portal.',
+    lgBtGoogle:'Entrar con la cuenta Google de la empresa', lgDicaAdm:'Al entrar, el portal te reconoce y muestra la barra de administración.',
+    lgSeguro:'Conexión protegida por Google. Tus datos no se muestran a otros empleados.', lgAjuda:'¿No sabes tu código? Pregunta a tu líder.',
+    lgNaoLider:'Este código no es de líder.', lgBemvindo:'¡Bienvenido(a), {n}!', lgSair:'Salir', lgSairQ:'¿Salir del portal en este aparato?',
+    lgDemo:'Modo demostración: para probar como líder, usa el código de un líder (ej.: JW-0887) y cualquier PIN de 4 a 8 números.',
+    lgAdmDemo:'En la demostración, este botón entra directamente como administración.', lgMostrarPin:'Mostrar PIN',
     mdlZoomIn:'Ampliar la hoja', mdlZoomOut:'Ver la hoja completa',
     fmOkTitle:'Formulario enviado con éxito', fbOkTitle:'Comentario enviado con éxito',
     mdlHint:'Toca los espacios amarillos de la hoja para rellenarla. N.º de empleado, nombre y fecha se completan con tu código.',
@@ -1013,6 +1190,18 @@ const T = {
     navForms:'Formularios', navFeedback:'Feedback interno', navCompany:'Perfil de la empresa' },
 
   id: { _locale:'id-ID',
+    idQuem:'Diisi oleh',
+    lgTitulo:'Semua urusan kerja Anda, <em>di satu tempat.</em>', lgB1:'Pengumuman perusahaan dan sektor', lgB2:'Formulir dengan PDF, langsung dari ponsel',
+    lgB3:'Masukan, HHK, 5S, KYT, dan QYT', lgB4:'Dalam bahasa Portugis, 日本語, Inggris, Spanyol, dan Indonesia',
+    lgEntrar:'Silakan masuk', lgEntrarSub:'Pilih cara Anda memakai portal.', lgLembrar:'Ingat di perangkat ini',
+    lgDicaFunc:'Tanpa kata sandi. Kode Anda mengisi nama dan sektor di formulir secara otomatis.',
+    lgDicaLider:'PIN diatur oleh administrasi. Salah 3 kali berturut-turut memblokir akses selama 15 menit.',
+    lgAdmInfo:'Administrasi masuk dengan akun Google perusahaan. Hanya e-mail @kk-joywork.co.jp yang dapat mengedit portal.',
+    lgBtGoogle:'Masuk dengan akun Google perusahaan', lgDicaAdm:'Setelah masuk, portal mengenali Anda dan menampilkan bilah administrasi.',
+    lgSeguro:'Koneksi dilindungi oleh Google. Data Anda tidak ditampilkan ke karyawan lain.', lgAjuda:'Tidak tahu kode Anda? Tanyakan ke pemimpin Anda.',
+    lgNaoLider:'Kode ini bukan pemimpin.', lgBemvindo:'Selamat datang, {n}!', lgSair:'Keluar', lgSairQ:'Keluar dari portal di perangkat ini?',
+    lgDemo:'Mode demo: untuk mencoba sebagai pemimpin, gunakan kode pemimpin (mis. JW-0887) dan PIN 4–8 angka apa pun.',
+    lgAdmDemo:'Dalam demo, tombol ini langsung masuk sebagai administrasi.', lgMostrarPin:'Tampilkan PIN',
     mdlZoomIn:'Perbesar lembar', mdlZoomOut:'Lihat seluruh lembar',
     fmOkTitle:'Formulir berhasil dikirim', fbOkTitle:'Masukan berhasil dikirim',
     mdlHint:'Ketuk kolom kuning pada lembar untuk mengisi. No. karyawan, nama, dan tanggal terisi otomatis dari kode Anda.',
@@ -2445,7 +2634,7 @@ async function traduzirMl(lista, de, botao) {
    メールします。回答はPDF以外のどこにも保存しません。
    ================================================================== */
 let envio = null;   // preenchimento em andamento / 記入中のデータ
-const novoEnvio = f => ({ formId: f.id, code: '', anon: false, destino: '', values: {}, photos: {}, done: null, pdfUrl: '', fileName: '', sending: false });
+const novoEnvio = f => ({ formId: f.id, code: USUARIO || '', anon: false, destino: '', values: {}, photos: {}, done: null, pdfUrl: '', fileName: '', sending: false });
 
 const hoje0 = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
 const lerData = s => {
@@ -2531,6 +2720,24 @@ function escolhaDestino(f) {
     </div>`;
 }
 
+/* Quem entrou no portal já vem identificado: código e nome do cadastro,
+   sem precisar digitar. / ログイン中の人は、社員コードと氏名が自動で入ります。 */
+function cartaoIdentidade(idInput, idQuem, codigo) {
+  const p = empByCode(codigo);
+  return `<div>
+    <input type="hidden" id="${idInput}" value="${esc(codigo)}">
+    <p id="${idQuem}" class="hidden"></p>
+    <div class="flex items-center gap-3 rounded-xl border border-leaf/30 bg-leafsoft px-4 py-3">
+      <span class="grid h-10 w-10 shrink-0 place-items-center rounded-full bg-white text-leafdark"><i data-lucide="user-round-check" class="h-5 w-5"></i></span>
+      <div class="min-w-0">
+        <p class="text-[12px] font-semibold text-leafdark/80">${esc(t().idQuem)}</p>
+        <p class="truncate text-[16px] font-extrabold text-leafdark">${esc(p ? nomePessoa(p) : codigo)}</p>
+        <p class="text-[13px] text-leafdark/80">${esc([codigo, p ? sectorLabel(p.sector) : ''].filter(Boolean).join(' · '))}</p>
+      </div>
+    </div>
+  </div>`;
+}
+
 function fmFillView(f) {
   if (!envio || envio.formId !== f.id) envio = novoEnvio(f);
   if (f.modelo) autosDoModelo(f, empByCode(envio.code));
@@ -2578,11 +2785,11 @@ function fmFillView(f) {
           <i data-lucide="triangle-alert" class="mt-0.5 h-4 w-4 shrink-0"></i>${esc(txt(f.note))}</p>` : ''}
 
       <div class="mt-5 grid gap-5">
-        <div>
-          <label for="vCode" class="mb-1.5 block text-[14px] font-semibold text-ink">${t().fbCode}${e.anon ? '' : ' <span class="text-red-600">*</span>'}</label>
-          <input id="vCode" class="field sm:max-w-[260px]" autocomplete="off" value="${esc(e.anon ? '' : e.code)}"${e.anon ? ' disabled' : ''}>
+        ${USUARIO ? cartaoIdentidade('vCode', 'vWho', USUARIO) : `<div>
+          <label for="vCode" class="mb-1.5 block text-[14px] font-semibold text-ink">${t().fbCode} <span class="text-red-600">*</span></label>
+          <input id="vCode" class="field sm:max-w-[260px]" autocomplete="off" value="${esc(e.code)}">
           <p id="vWho" class="mt-1.5 text-[13px]"></p>
-        </div>
+        </div>`}
         ${f.modelo ? '' : f.fields.map(campoFill).join('')}
       </div>
       ${f.modelo ? areaModelo(f) : ''}
@@ -2653,7 +2860,8 @@ function bindFmFill(f) {
     const code = document.getElementById('vCode').value.trim();
     if (!code) { el.textContent = ''; el.className = 'mt-1.5 text-[13px]'; return; }
     const p = empByCode(code);
-    el.className = 'mt-1.5 text-[13px] ' + (p ? 'font-semibold text-leafdark' : 'text-amberdark');
+    // com o cartão de identidade, a linha fica escondida / 本人カード表示中は非表示
+    el.className = 'mt-1.5 text-[13px] ' + (p ? 'font-semibold text-leafdark' : 'text-amberdark') + (USUARIO ? ' hidden' : '');
     el.textContent = p ? nomePessoa(p) + ' · ' + sectorLabel(p.sector) : t().fbCodeNotFound;
     if (f.modelo) {                        // código e nome vão para a folha / 原紙に社員コードと氏名
       autosDoModelo(f, p);
@@ -3568,11 +3776,11 @@ function fbForm() {
             ${t().fbAreas.map((a, i) => `<option value="${i}"${d.area === i ? ' selected' : ''}>${esc(a)}</option>`).join('')}
           </select>
         </div>
-        <div>
+        ${USUARIO ? cartaoIdentidade('fCode', 'fWho', USUARIO) : `<div>
           <label for="fCode" class="mb-1.5 block text-[13px] font-semibold text-ink">${t().fbCode} <span class="text-red-600">*</span></label>
-          <input id="fCode" class="field" value="${esc(d.code)}">
+          <input id="fCode" class="field" value="${esc(d.code || '')}">
           <p id="fWho" class="mt-1.5 text-[13px]"></p>
-        </div>
+        </div>`}
       </div>
 
       <div class="mt-4">
@@ -3634,6 +3842,7 @@ function bindFbForm() {
   const quem = () => {
     const el = document.getElementById('fWho');
     const code = document.getElementById('fCode').value.trim();
+    if (USUARIO) return;                   // já identificado pelo login / ログイン済み
     if (!code) { el.textContent = ''; el.className = 'mt-1.5 text-[13px]'; return; }
     const e = empByCode(code);
     if (e) {
@@ -4976,6 +5185,7 @@ function applyLang() {
     if (typeof v === 'string') el.setAttribute('aria-label', v);
   });
   document.title = 'Joywork — ' + d.brandSub;   // título da aba / タブのタイトル
+  renderLogin();                          // se a tela de login estiver aberta / ログイン画面も更新
   document.getElementById('langCode').textContent = LANG_CODE[lang];
   document.querySelectorAll('[data-lang]').forEach(b =>
     b.setAttribute('aria-selected', String(b.dataset.lang === lang))
@@ -5058,6 +5268,329 @@ sectorToggle.addEventListener('click', () => {
 });
 
 /* ---------- troca de papel (temporária) ---------- */
+/* ==================================================================
+   TELA DE LOGIN / ログイン画面
+   Funcionário: só o código pessoal (sem senha), lembrado no aparelho.
+   Líder: código + PIN. Administração: conta Google da empresa, reconhecida
+   sozinha — quem já entrou com ela nem vê esta tela.
+   従業員：社員コードのみ（端末に記憶）。リーダー：社員コード＋PIN。
+   管理部門：会社のGoogleアカウント（ログイン済みならこの画面は出ません）。
+   ================================================================== */
+const CHAVE_CODIGO = 'joywork-codigo';
+let USUARIO = null;                     // código de quem está usando o aparelho / 利用者の社員コード
+let URL_PORTAL = '';                    // endereço do portal (volta do login Google) / ポータルのURL
+let lgAba = 'func';
+let lgIdiomaAberto = false;
+
+function codigoGuardado() {
+  try { return localStorage.getItem(CHAVE_CODIGO) || sessionStorage.getItem(CHAVE_CODIGO) || ''; } catch (e) { return ''; }
+}
+function guardaCodigo(codigo, lembrar) {
+  try {
+    localStorage.removeItem(CHAVE_CODIGO); sessionStorage.removeItem(CHAVE_CODIGO);
+    if (codigo) (lembrar ? localStorage : sessionStorage).setItem(CHAVE_CODIGO, codigo);
+  } catch (e) {}
+}
+
+const LG_CENA = `    <div class="lg-cena" aria-hidden="true">
+      <svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="lgLuz" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#FFF4D6" stop-opacity=".22"/>
+            <stop offset="1" stop-color="#FFF4D6" stop-opacity="0"/>
+          </linearGradient>
+          <linearGradient id="lgFarolG" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#FFF1C2" stop-opacity=".35"/>
+            <stop offset="1" stop-color="#FFF1C2" stop-opacity="0"/>
+          </linearGradient>
+          <radialGradient id="lgGiroG">
+            <stop offset="0" stop-color="#FFB14A" stop-opacity=".9"/>
+            <stop offset="1" stop-color="#FFB14A" stop-opacity="0"/>
+          </radialGradient>
+        </defs>
+        <g>
+          <polygon points="80,8 100,8 150,260 30,260" fill="url(#lgLuz)"/>
+          <polygon points="250,8 270,8 320,260 200,260" fill="url(#lgLuz)"/>
+          <polygon points="420,8 440,8 490,260 370,260" fill="url(#lgLuz)"/>
+          <rect x="76" y="2" width="28" height="7" rx="3" fill="#C9D6EA"/>
+          <rect x="246" y="2" width="28" height="7" rx="3" fill="#C9D6EA"/>
+          <rect x="416" y="2" width="28" height="7" rx="3" fill="#C9D6EA"/>
+        </g>
+        <rect x="0" y="260" width="520" height="40" fill="#132A4A"/>
+        <line x1="0" y1="260" x2="520" y2="260" stroke="#2E4A78" stroke-width="2"/>
+        <line x1="0" y1="276" x2="520" y2="276" stroke="#E0A43A" stroke-width="3" stroke-dasharray="18 12" opacity=".55"/>
+        <g>
+          <rect x="397" y="224" width="82" height="36" rx="2" fill="#C79A5B"/><line x1="438" y1="224" x2="438" y2="260" stroke="#A87C43" stroke-width="2"/>
+          <rect x="397" y="138" width="38" height="34" rx="2" fill="#3E5E96"/><rect x="440" y="146" width="39" height="26" rx="2" fill="#C79A5B"/>
+          <rect x="400" y="68" width="76" height="34" rx="2" fill="#C79A5B"/><line x1="438" y1="68" x2="438" y2="102" stroke="#A87C43" stroke-width="2"/>
+          <rect x="306" y="70" width="36" height="32" rx="2" fill="#3E5E96"/><rect x="348" y="76" width="38" height="26" rx="2" fill="#4F72AE"/>
+          <rect x="300" y="102" width="184" height="6" fill="#D98E2B"/>
+          <rect x="300" y="172" width="184" height="6" fill="#D98E2B"/>
+          <rect x="298" y="36" width="5" height="224" fill="#6D86B3"/>
+          <rect x="390" y="36" width="5" height="224" fill="#6D86B3"/>
+          <rect x="482" y="36" width="5" height="224" fill="#6D86B3"/>
+          <g stroke="#6D86B3" stroke-width="1.5" opacity=".55">
+            <line x1="300" y1="60" x2="392" y2="36"/><line x1="392" y1="60" x2="484" y2="36"/>
+          </g>
+          <g class="lg-cx-rack">
+            <rect x="321" y="166" width="48" height="6" fill="#8C6534"/>
+            <rect x="323" y="130" width="44" height="36" rx="2" fill="#E0B774"/>
+            <line x1="345" y1="130" x2="345" y2="166" stroke="#B88A4A" stroke-width="3"/>
+          </g>
+        </g>
+        <g transform="translate(0,260)">
+          <g class="lg-empilhadeira">
+            <polygon class="lg-farol" points="80,-40 200,-70 200,-4" fill="url(#lgFarolG)"/>
+            <g class="lg-carro">
+              <rect x="74" y="-102" width="5" height="96" rx="1" fill="#B8C4D6"/>
+              <rect x="76" y="-46" width="7" height="42" rx="1" fill="#8A9AB2"/>
+              <rect x="78" y="-8" width="58" height="4" rx="1" fill="#D5DDE9"/>
+              <g class="lg-cx-garfo">
+                <rect x="82" y="-14" width="48" height="6" fill="#8C6534"/>
+                <rect x="84" y="-50" width="44" height="36" rx="2" fill="#E0B774"/>
+                <line x1="106" y1="-50" x2="106" y2="-14" stroke="#B88A4A" stroke-width="3"/>
+              </g>
+            </g>
+            <rect x="67" y="-112" width="7" height="108" rx="1" fill="#9AA9BF"/>
+            <g stroke="#C9D6EA" stroke-width="3.5" stroke-linecap="round" fill="none">
+              <line x1="6" y1="-44" x2="10" y2="-104"/>
+              <line x1="60" y1="-44" x2="62" y2="-104"/>
+              <line x1="4" y1="-104" x2="66" y2="-104"/>
+            </g>
+            <g stroke="#C9D6EA" stroke-width="1.5" opacity=".7">
+              <line x1="20" y1="-104" x2="20" y2="-98"/><line x1="34" y1="-104" x2="34" y2="-98"/><line x1="48" y1="-104" x2="48" y2="-98"/>
+            </g>
+            <circle class="lg-giro" cx="34" cy="-112" r="11" fill="url(#lgGiroG)"/>
+            <rect x="30" y="-116" width="8" height="7" rx="2" fill="#FF9A2E"/>
+            <path d="M14 -46 v-14 a4 4 0 0 1 4 -4 h10 v18 z" fill="#0B1628"/>
+            <line x1="46" y1="-46" x2="52" y2="-66" stroke="#0B1628" stroke-width="3" stroke-linecap="round"/>
+            <line x1="46" y1="-68" x2="58" y2="-64" stroke="#0B1628" stroke-width="3" stroke-linecap="round"/>
+            <path d="M-8 -20 V-40 a8 8 0 0 1 8 -8 H62 a8 8 0 0 1 8 8 V-20 z" fill="#F2B233"/>
+            <path d="M-8 -20 V-40 a8 8 0 0 1 8 -8 H6 V-20 z" fill="#C98F1C"/>
+            <rect x="-8" y="-24" width="78" height="6" fill="#C98F1C"/>
+            <text x="30" y="-29" text-anchor="middle" font-family="Manrope, sans-serif" font-size="8" font-weight="800" fill="#7A4E05" letter-spacing=".5">JOYWORK</text>
+            <g class="lg-roda"><circle cx="16" cy="-12" r="12" fill="#0B1320"/><circle cx="16" cy="-12" r="5" fill="#9AA9BF"/><line x1="16" y1="-17" x2="16" y2="-7" stroke="#0B1320" stroke-width="2"/></g>
+            <g class="lg-roda"><circle cx="58" cy="-13" r="13" fill="#0B1320"/><circle cx="58" cy="-13" r="5.5" fill="#9AA9BF"/><line x1="58" y1="-18.5" x2="58" y2="-7.5" stroke="#0B1320" stroke-width="2"/></g>
+          </g>
+        </g>
+      </svg>
+    </div>
+`;
+
+const lgIco = {
+  cartao: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.2"/><path d="M6 16c.6-1.5 1.8-2.3 3-2.3s2.4.8 3 2.3M14.5 10h4M14.5 13.5h3"/></svg>',
+  cadeado: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4.5" y="10.5" width="15" height="10" rx="2"/><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"/></svg>',
+  olho: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg>',
+  seta: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>',
+  estrela: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.3 5.9.9-4.3 4.1 1 5.8L12 16.4 6.8 19.1l1-5.8L3.5 9.2l5.9-.9z"/></svg>',
+  escudo: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3l8 3v6c0 4.5-3.4 8.2-8 9-4.6-.8-8-4.5-8-9V6z"/><path d="M9 12l2 2 4-4"/></svg>',
+  google: '<svg width="20" height="20" viewBox="0 0 48 48"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9 3.5l6.7-6.7C35.6 2.4 30.2 0 24 0 14.6 0 6.6 5.4 2.7 13.3l7.8 6.1C12.4 13.6 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.5 24.5c0-1.6-.1-3.1-.4-4.5H24v9h12.7c-.6 3-2.3 5.5-4.8 7.2l7.5 5.8c4.4-4 7.1-10 7.1-17.5z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.8-3-.8-4.6s.3-3.2.8-4.6l-7.8-6.1C1 16.6 0 20.2 0 24s1 7.4 2.7 10.7l7.8-6.1z"/><path fill="#34A853" d="M24 48c6.5 0 11.9-2.1 15.9-5.8l-7.5-5.8c-2.1 1.4-4.9 2.3-8.4 2.3-6.3 0-11.6-4.1-13.5-9.7l-7.8 6.1C6.6 42.6 14.6 48 24 48z"/></svg>',
+  sino: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9a6 6 0 0 1 12 0c0 4.5 1.8 5.8 1.8 5.8H4.2S6 13.5 6 9z"/><path d="M10.2 18.5a2.2 2.2 0 0 0 3.6 0"/></svg>',
+  prancheta: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3.5h6v2.5H9z"/><path d="M16.5 5.8H18a1.5 1.5 0 0 1 1.5 1.5v12.2A1.5 1.5 0 0 1 18 21H6a1.5 1.5 0 0 1-1.5-1.5V7.3A1.5 1.5 0 0 1 6 5.8h1.5"/><path d="M8.5 13.5l2.5 2.5 4.5-4.8"/></svg>',
+  balao: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 12a7.5 7.5 0 0 1-11 6.6L4 20.5l1.4-4.3A7.5 7.5 0 1 1 20.5 12z"/></svg>',
+  globo: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg>',
+  idioma: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 4-3 8-7 9"/><path d="M13 21l4-9 4 9M14.5 18h5"/></svg>'
+};
+
+function htmlLogin() {
+  const logo = (document.querySelector('header img') || {}).src || '';
+  const aba = (id, rot) => `<button type="button" role="tab" data-lgaba="${id}" aria-selected="${lgAba === id}">${rot}</button>`;
+  const googleUrl = 'https://accounts.google.com/AccountChooser' + (URL_PORTAL ? '?continue=' + encodeURIComponent(URL_PORTAL) : '');
+  return `
+  <div class="lg-tela">
+    <section class="lg-marca">
+      <div class="lg-logo"><img src="${logo}" alt=""><div><b>Joywork</b><span>${esc(t().brandSub)}</span></div></div>
+      ${LG_CENA}
+      <h1>${t().lgTitulo}</h1>
+      <p class="lg-jp">従業員ポータル · Portal do Funcionário</p>
+      <ul class="lg-lista">
+        <li>${lgIco.sino}<span>${esc(t().lgB1)}</span></li>
+        <li>${lgIco.prancheta}<span>${esc(t().lgB2)}</span></li>
+        <li>${lgIco.balao}<span>${esc(t().lgB3)}</span></li>
+        <li>${lgIco.globo}<span>${esc(t().lgB4)}</span></li>
+      </ul>
+      <div class="lg-faixa"><i></i><i></i></div>
+      <p class="lg-rodape">© Joywork · 関東物流センター</p>
+    </section>
+
+    <section class="lg-lado">
+      <div class="lg-topo">
+        <div class="lg-idioma">
+          <button type="button" id="lgLangBtn" aria-haspopup="listbox" aria-expanded="${lgIdiomaAberto}">${lgIco.idioma}<span>${LANG_CODE[lang]}</span></button>
+          ${lgIdiomaAberto ? `<ul role="listbox">
+            ${['pt','ja','en','es','id'].map(l => `<li><button type="button" data-lglang="${l}" aria-selected="${l === lang}">${esc({ pt:'Português (BR)', ja:'日本語', en:'English', es:'Español', id:'Bahasa Indonesia' }[l])}</button></li>`).join('')}
+          </ul>` : ''}
+        </div>
+      </div>
+
+      <div class="lg-caixa">
+        <h2>${esc(t().lgEntrar)}</h2>
+        <p class="lg-sub">${esc(t().lgEntrarSub)}</p>
+        <div class="lg-abas" role="tablist">
+          ${aba('func', esc(t().roleStaff))}${aba('lider', esc(t().roleLeader))}${aba('adm', esc(t().roleAdmin))}
+        </div>
+
+        ${lgAba === 'func' ? `
+        <div class="lg-painel">
+          <label class="lg-rot" for="lgCodF">${esc(t().ldCode)}</label>
+          <div class="lg-campo">${lgIco.cartao}<input id="lgCodF" autocomplete="username" autocapitalize="characters" placeholder="JW-0000"></div>
+          <div class="lg-quemsou" id="lgQuemF"></div>
+          <label class="lg-lembrar"><input type="checkbox" id="lgLembrar" checked> <span>${esc(t().lgLembrar)}</span></label>
+          <div class="lg-erro" id="lgErro" hidden></div>
+          <button type="button" class="lg-botao" id="lgEntrarF"><span>${esc(t().ldEnter)}</span>${lgIco.seta}</button>
+          <p class="lg-dica">${esc(t().lgDicaFunc)}</p>
+        </div>` : ''}
+
+        ${lgAba === 'lider' ? `
+        <div class="lg-painel">
+          <label class="lg-rot" for="lgCodL">${esc(t().ldCode)}</label>
+          <div class="lg-campo">${lgIco.cartao}<input id="lgCodL" autocomplete="username" autocapitalize="characters" placeholder="JW-0000"></div>
+          <div class="lg-quemsou" id="lgQuemL"></div>
+          <label class="lg-rot" for="lgPin">PIN</label>
+          <div class="lg-campo">${lgIco.cadeado}<input id="lgPin" class="lg-pin" type="password" inputmode="numeric" maxlength="8" autocomplete="current-password" placeholder="••••">
+            <button type="button" class="lg-olho" id="lgOlho" aria-label="${esc(t().lgMostrarPin)}">${lgIco.olho}</button></div>
+          <p class="lg-dica">${esc(t().lgDicaLider)}</p>
+          <div class="lg-erro" id="lgErro" hidden></div>
+          <button type="button" class="lg-botao" id="lgEntrarL">${lgIco.estrela}<span>${esc(t().ldLogin)}</span></button>
+        </div>` : ''}
+
+        ${lgAba === 'adm' ? `
+        <div class="lg-painel">
+          <div class="lg-quem">${lgIco.escudo}<span>${esc(t().lgAdmInfo)}</span></div>
+          ${CONECTADO
+            ? `<a class="lg-botao lg-google" href="${esc(googleUrl)}" target="_top" rel="noopener">${lgIco.google}<span>${esc(t().lgBtGoogle)}</span></a>`
+            : `<button type="button" class="lg-botao lg-google" id="lgEntrarAdm">${lgIco.google}<span>${esc(t().lgBtGoogle)}</span></button>`}
+          <p class="lg-dica">${esc(CONECTADO ? t().lgDicaAdm : t().lgAdmDemo)}</p>
+        </div>` : ''}
+
+        ${!CONECTADO ? `<p class="lg-demo">${esc(t().lgDemo)}</p>` : ''}
+        <div class="lg-seguro">${lgIco.cadeado}<span>${esc(t().lgSeguro)}</span></div>
+        <p class="lg-ajuda">${esc(t().lgAjuda)}</p>
+      </div>
+    </section>
+  </div>`;
+}
+
+function renderLogin() {
+  const el = document.getElementById('login');
+  if (!el) return;
+  const guarda = {};                    // o que já foi digitado / 入力済みの内容
+  ['lgCodF', 'lgCodL', 'lgPin'].forEach(id => { const i = document.getElementById(id); if (i) guarda[id] = i.value; });
+  el.innerHTML = htmlLogin();
+  Object.keys(guarda).forEach(id => { const i = document.getElementById(id); if (i) i.value = guarda[id]; });
+  bindLogin();
+}
+
+function abrirLogin() {
+  if (document.getElementById('login')) return renderLogin();
+  const el = document.createElement('div');
+  el.id = 'login';
+  el.setAttribute('role', 'main');
+  document.body.appendChild(el);
+  document.body.style.overflow = 'hidden';
+  renderLogin();
+  const c = document.getElementById('lgCodF') || document.getElementById('lgCodL');
+  if (c) c.focus();
+}
+
+function fecharLogin() {
+  const el = document.getElementById('login');
+  if (el) el.remove();
+  document.body.style.overflow = '';
+}
+
+function bindLogin() {
+  const $ = id => document.getElementById(id);
+  const erro = msg => { const e = $('lgErro'); if (!e) return; e.textContent = msg || ''; e.hidden = !msg; };
+  const quem = (inp, out) => {
+    const i = $(inp), o = $(out);
+    if (!i || !o) return;
+    const v = i.value.trim(), p = v ? empByCode(v) : null;
+    o.className = 'lg-quemsou' + (v && !p ? ' nao' : '');
+    o.textContent = !v ? '' : p ? '✓ ' + nomePessoa(p) + ' · ' + sectorLabel(p.sector) : t().fbCodeNotFound;
+  };
+  quem('lgCodF', 'lgQuemF'); quem('lgCodL', 'lgQuemL');
+
+  document.querySelectorAll('[data-lgaba]').forEach(b => b.addEventListener('click', () => { lgAba = b.dataset.lgaba; renderLogin(); }));
+  $('lgLangBtn').addEventListener('click', e => { e.stopPropagation(); lgIdiomaAberto = !lgIdiomaAberto; renderLogin(); });
+  document.querySelectorAll('[data-lglang]').forEach(b => b.addEventListener('click', () => {
+    lang = b.dataset.lglang; lgIdiomaAberto = false; applyLang();   // applyLang redesenha o login / ログインも再描画
+  }));
+
+  // funcionário / 従業員
+  if ($('lgCodF')) {
+    $('lgCodF').addEventListener('input', () => { quem('lgCodF', 'lgQuemF'); erro(''); });
+    $('lgCodF').addEventListener('keydown', e => { if (e.key === 'Enter') $('lgEntrarF').click(); });
+    $('lgEntrarF').addEventListener('click', () => {
+      const v = $('lgCodF').value.trim();
+      if (!v) return erro(t().fmErrCode);
+      const p = empByCode(v);
+      if (!p) return erro(t().fbCodeNotFound);
+      USUARIO = p.code;
+      guardaCodigo(p.code, $('lgLembrar').checked);
+      role = 'staff'; LIDER = null;
+      fecharLogin();
+      trocouPapel();
+      toast(fmt(t().lgBemvindo, { n: nomePessoa(p) }), 3500);
+    });
+  }
+
+  // líder / リーダー
+  if ($('lgCodL')) {
+    $('lgCodL').addEventListener('input', () => { quem('lgCodL', 'lgQuemL'); erro(''); });
+    $('lgOlho').addEventListener('click', () => { const i = $('lgPin'); i.type = i.type === 'password' ? 'text' : 'password'; });
+    $('lgPin').addEventListener('keydown', e => { if (e.key === 'Enter') $('lgEntrarL').click(); });
+    $('lgEntrarL').addEventListener('click', async () => {
+      const code = $('lgCodL').value.trim(), pin = $('lgPin').value.trim();
+      if (!code || !pin) return erro(t().ldErrEmpty);
+      const b = $('lgEntrarL');
+      b.disabled = true;
+      try {
+        if (CONECTADO) {
+          const r = await servidor('entrarLider', code, pin);
+          guardaToken(r.token);
+          LIDER = { nome: r.nome, nomeJa: r.nomeJa || '', codigo: r.codigo };
+          role = 'leader';
+          DATA = await loadContent();      // com os e-mails, para editar sem perdê-los / メール付きで再読込
+        } else {
+          // demonstração: qualquer PIN de 4 a 8 números para quem é líder / デモ用
+          const p = empByCode(code);
+          if (!p) throw new Error(t().fbCodeNotFound);
+          if (!p.leader) throw new Error(t().lgNaoLider);
+          if (!/^\d{4,8}$/.test(pin)) throw new Error(t().e_pinFormato);
+          LIDER = { nome: p.name, nomeJa: p.nameJa || '', codigo: p.code };
+          role = 'leader';
+        }
+        USUARIO = LIDER.codigo;
+        fecharLogin();
+        trocouPapel();
+        toast(t().ldOk);
+      } catch (e) {
+        b.disabled = false;
+        $('lgPin').value = '';
+        erro(e.message);
+      }
+    });
+  }
+
+  // administração (só na demonstração; no ar é o link do Google) / 管理部門（デモのみ）
+  if ($('lgEntrarAdm')) $('lgEntrarAdm').addEventListener('click', () => {
+    role = 'admin'; LIDER = null; USUARIO = null;
+    fecharLogin();
+    trocouPapel();
+  });
+}
+document.addEventListener('click', () => { if (lgIdiomaAberto) { lgIdiomaAberto = false; renderLogin(); } });
+
+/** Sair: volta para a tela de login. / ログアウトしてログイン画面へ。 */
+function sairDoPortal() {
+  USUARIO = null;
+  guardaCodigo('');
+  role = 'staff'; LIDER = null;
+  trocouPapel();
+  abrirLogin();
+}
+
 /* ---------- papel: administração, líder, funcionário ----------
    No ar: administração vem do e-mail; líder entra aqui com código + PIN.
    Na demonstração: o botão alterna entre os três papéis.
@@ -5066,12 +5599,33 @@ sectorToggle.addEventListener('click', () => {
 let SESSAO_EMAIL = '';
 let BLOQUEIOS = [];                     // líderes bloqueados por PIN errado (só administração) / ロック通知
 
+/* Faixa "Bem-vindo(a), nome" — fica no alto de todas as páginas.
+   「ようこそ、〇〇さん」の帯。全ページの上部に表示します。 */
+function pintaBemVindo() {
+  const faixa = document.getElementById('bemVindo');
+  if (!faixa) return;
+  const eu = USUARIO ? empByCode(USUARIO) : null;
+  const admin = role === 'admin';
+  faixa.classList.toggle('hidden', !eu && !admin);
+  if (!eu && !admin) return;
+  const nome = eu ? nomePessoa(eu) : (SESSAO_EMAIL || t().roleAdmin);
+  document.getElementById('bvTexto').innerHTML = esc(fmt(t().lgBemvindo, { n: '@@N@@' })).replace('@@N@@',`<b class="font-extrabold">${esc(nome)}</b>`);
+  document.getElementById('bvInfo').textContent = eu
+    ? [eu.code, sectorLabel(eu.sector), role === 'leader' ? t().roleLeader : ''].filter(Boolean).join(' · ')
+    : (SESSAO_EMAIL ? t().roleAdmin : '');
+  document.getElementById('bvSairTxt').textContent = t().lgSair;
+  document.getElementById('bvSair').classList.toggle('hidden', CONECTADO && admin);
+}
+
 function pintaPapel() {
+  pintaBemVindo();
+  // funcionário identificado aparece pelo nome / 識別済みの従業員は氏名で表示
+  const eu = USUARIO ? empByCode(USUARIO) : null;
   const nome = role === 'admin' ? t().roleAdmin
     : role === 'leader' ? t().roleLeader
-    : (CONECTADO ? t().ldLogin : t().roleStaff);
+    : (eu ? nomePessoa(eu) : t().roleStaff);
   document.getElementById('roleName').textContent = nome;
-  document.getElementById('roleBtn').title = role === 'leader' && CONECTADO ? t().ldLogout : nome;
+  document.getElementById('roleBtn').title = (CONECTADO && role === 'admin') ? nome : t().lgSair;
 }
 
 function pintaFaixa() {
@@ -5090,71 +5644,15 @@ function pintaFaixa() {
   }
 }
 
-function fecharLoginLider() {
-  const el = document.getElementById('ldWrap');
-  if (el) el.remove();
-}
-
-function abrirLoginLider() {
-  fecharLoginLider();
-  const w = document.createElement('div');
-  w.id = 'ldWrap';
-  w.className = 'fixed inset-0 z-[85] flex items-end justify-center bg-ink/50 sm:items-center sm:p-6';
-  w.innerHTML = `
-    <div class="w-full max-w-sm rounded-t-2xl bg-white p-5 shadow-xl sm:rounded-2xl" role="dialog" aria-modal="true" aria-labelledby="ldTit">
-      <div class="flex items-center gap-2">
-        <i data-lucide="key-round" class="h-5 w-5 text-brand"></i>
-        <h2 id="ldTit" class="font-head text-lg font-bold text-ink">${t().ldLogin}</h2>
-        <button type="button" id="ldX" class="ml-auto min-h-[40px] rounded-lg px-2 text-slate-400 hover:bg-slate-100">
-          <i data-lucide="x" class="h-5 w-5"></i><span class="sr-only">${t().hClose}</span></button>
-      </div>
-      <p class="mt-2 text-[13px] leading-relaxed text-slate-500">${t().ldHint}</p>
-      <label for="ldCode" class="mb-1.5 mt-4 block text-[13px] font-semibold text-ink">${t().ldCode}</label>
-      <input id="ldCode" class="field" autocomplete="username" autocapitalize="characters">
-      <label for="ldPin" class="mb-1.5 mt-3 block text-[13px] font-semibold text-ink">${t().ldPin}</label>
-      <input id="ldPin" class="field" type="password" inputmode="numeric" maxlength="8" autocomplete="current-password">
-      <p id="ldErr" class="mt-3 hidden rounded-lg bg-red-50 px-3 py-2.5 text-[14px] font-medium text-red-700"></p>
-      <button type="button" id="ldGo" class="mt-4 inline-flex min-h-[48px] w-full items-center justify-center gap-2 rounded-lg bg-ink px-4 text-[15px] font-semibold text-white hover:bg-ink2 disabled:opacity-60">
-        <i data-lucide="log-in" class="h-4 w-4"></i>${t().ldEnter}</button>
-    </div>`;
-  document.body.appendChild(w);
-  lucide.createIcons();
-  document.getElementById('ldCode').focus();
-
-  const erro = msg => { const e = document.getElementById('ldErr'); e.textContent = msg; e.classList.remove('hidden'); };
-  const entrar = async () => {
-    const code = document.getElementById('ldCode').value.trim();
-    const pin = document.getElementById('ldPin').value.trim();
-    if (!code || !pin) return erro(t().ldErrEmpty);
-    const b = document.getElementById('ldGo');
-    b.disabled = true;
-    try {
-      const r = await servidor('entrarLider', code, pin);
-      guardaToken(r.token);
-      LIDER = { nome: r.nome, nomeJa: r.nomeJa || '', codigo: r.codigo };
-      role = 'leader';
-      DATA = await loadContent();        // agora com os e-mails, para editar sem perdê-los / メール付きで再読込
-      fecharLoginLider();
-      trocouPapel();
-      toast(t().ldOk);
-    } catch (e) {
-      b.disabled = false;
-      document.getElementById('ldPin').value = '';
-      erro(e.message);
-    }
-  };
-  document.getElementById('ldGo').addEventListener('click', entrar);
-  document.getElementById('ldPin').addEventListener('keydown', e => { if (e.key === 'Enter') entrar(); });
-  document.getElementById('ldX').addEventListener('click', fecharLoginLider);
-  w.addEventListener('click', e => { if (e.target === w) fecharLoginLider(); });
-}
-
 async function sairDoLider(msg) {
   const tk = TOKEN_LIDER;
   guardaToken('');
   LIDER = null;
   role = 'staff';
+  USUARIO = null;
+  guardaCodigo('');
   trocouPapel();
+  abrirLogin();                           // volta para a tela de login / ログイン画面へ
   toast(msg || t().ldOut);
   if (tk && CONECTADO) { try { await servidor('sairLider', tk); } catch (e) {} }
 }
@@ -5177,16 +5675,14 @@ function trocouPapel() {
   applyRole();
 }
 
+document.getElementById('bvSair').addEventListener('click', () => document.getElementById('roleBtn').click());
 document.getElementById('roleBtn').addEventListener('click', () => {
-  if (!CONECTADO) {                      // demonstração: alterna os três papéis
-    role = role === 'staff' ? 'leader' : role === 'leader' ? 'admin' : 'staff';
-    LIDER = role === 'leader' ? { nome: 'Paulo Tanaka', codigo: 'JW-0887' } : null;
-    trocouPapel();
-    return;
-  }
-  if (role === 'admin') return;          // administração vem do e-mail
-  if (role === 'leader') { if (confirm(t().ldLogoutQ)) sairDoLider(); return; }
-  abrirLoginLider();
+  // botão do nome: sair (volta para a tela de login) / 名前ボタン：ログアウト
+  if (CONECTADO && role === 'admin') return;          // administração vem do e-mail
+  if (!confirm(role === 'leader' ? t().ldLogoutQ : t().lgSairQ)) return;
+  if (role === 'leader' && CONECTADO) { sairDoLider(); return; }
+  guardaToken('');
+  sairDoPortal();
 });
 
 /* ==================================================================
@@ -5355,6 +5851,7 @@ document.getElementById('fileInput').addEventListener('change', e => {
     try {
       const s = await servidor('sessao', TOKEN_LIDER);
       SESSAO_EMAIL = s.email || '';
+      URL_PORTAL = s.url || '';
       if (s.admin) {
         role = 'admin';
         BLOQUEIOS = s.bloqueios || [];
@@ -5383,10 +5880,17 @@ document.getElementById('fileInput').addEventListener('change', e => {
     sectorToggle.setAttribute('aria-expanded', 'true');
     document.getElementById('sectorChevron').style.transform = 'rotate(180deg)';
   }
+  // quem é: líder conectado, ou o código lembrado neste aparelho / 利用者の識別
+  if (role === 'leader' && LIDER) USUARIO = LIDER.codigo;
+  else if (role === 'staff') {
+    const lembrado = empByCode(codigoGuardado());
+    if (lembrado) USUARIO = lembrado.code; else guardaCodigo('');
+  }
   applyLang();
   applyRole();
   lucide.createIcons();
   if (expirou) toast(t().ldExpired, 5000);
+  if (role === 'staff' && !USUARIO) abrirLogin();   // ainda não se identificou / 未ログイン
   } catch (err) {
     if (window.__mostraErro) window.__mostraErro('inicio: ' + (err && err.message ? err.message : err));
     throw err;
