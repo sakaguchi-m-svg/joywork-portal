@@ -1,6 +1,6 @@
 {
-  "name": "Joywork — Portal do Funcionário",
-  "short_name": "Joywork",
+  "name": "ジョイワーク - 従業員ポータル",
+  "short_name": "ジョイワーク",
   "description": "Portal do Funcionário Joywork / Joywork 従業員ポータル",
   "start_url": "./",
   "scope": "./",
