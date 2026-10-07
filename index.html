@@ -2535,7 +2535,7 @@ const CONECTADO = typeof google !== 'undefined' && !!(google.script && google.sc
    mensagem no idioma de quem está usando; erro sem código passa como veio.
    サーバーのエラーはコード付きで届きます。コードから利用者の言語で表示します。 */
 function erroTraduzido(bruto) {
-  const m = /^\[(\w+)(?::([^\]]*))?\]\s*/.exec(String(bruto || ''));
+  const m = /^\[(\w+)(?::([^\]]*))?\]\s{0,}/.exec(String(bruto || ''));   // \s{0,} e não asterisco antes da barra: o Apps Script confundiria com fim de comentário / コメント終端と誤認されないように
   if (!m) return new Error(String(bruto || ''));
   const modelo = t()['e_' + m[1]];
   const err = new Error(typeof modelo === 'string' ? fmt(modelo, { n: m[2] || '' }) : String(bruto).slice(m[0].length));
@@ -3204,7 +3204,7 @@ function renderComposer() {
             <label for="cPhoto" class="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-lg border border-dashed border-line px-3 text-[13px] font-semibold text-brand hover:bg-brandsoft">
               <i data-lucide="camera" class="h-4 w-4"></i>${t().nPhotoAdd}
             </label>
-            <input type="file" id="cPhoto" accept="image/*" class="hidden">`}
+            <input type="file" id="cPhoto" accept="image/&#42;" class="hidden">`}
 
           ${draft.doc ? `
             <span class="flex items-center gap-2">
@@ -4553,7 +4553,7 @@ function telaPatrulha(f) {
                 <input data-paleg="${k}|${fi}" maxlength="80" class="field mt-1 !min-h-[36px] text-[13px]" placeholder="${esc(t().patLegenda)}" value="${esc(ft.leg || '')}">
               </div>`).join('')}
             ${fotos.length < 3 ? `<label class="inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-lg border border-dashed px-3 text-[13px] font-semibold ${ev === 'ng' ? 'border-red-300 text-red-700' : ev === 'ok' ? 'border-leaf text-leafdark' : 'border-line text-slate-500'}">
-                <i data-lucide="camera" class="h-4 w-4"></i>${t().patFoto} (${fotos.length}/3)<input type="file" accept="image/*" data-pafoto="${k}" class="hidden"></label>` : ''}
+                <i data-lucide="camera" class="h-4 w-4"></i>${t().patFoto} (${fotos.length}/3)<input type="file" accept="image/&#42;" data-pafoto="${k}" class="hidden"></label>` : ''}
           </div>
         </div>`;
       }).join('')}</div>
@@ -4631,7 +4631,7 @@ function fotosLiHtml(P, k) {
         <input data-lileg="${k}|${fi}" maxlength="80" class="field mt-1 !min-h-[36px] text-[13px]" placeholder="${esc(t().patLegenda)}" value="${esc(ft.leg || '')}">
       </div>`).join('')}
     ${fotos.length < 3 ? `<label class="inline-flex min-h-[44px] cursor-pointer items-center gap-1.5 rounded-lg border border-dashed border-line px-3 text-[13px] font-semibold text-slate-500">
-        <i data-lucide="camera" class="h-4 w-4"></i>${t().patFoto} (${fotos.length}/3)<input type="file" accept="image/*" data-lifoto="${k}" class="hidden"></label>` : ''}
+        <i data-lucide="camera" class="h-4 w-4"></i>${t().patFoto} (${fotos.length}/3)<input type="file" accept="image/&#42;" data-lifoto="${k}" class="hidden"></label>` : ''}
   </div>`;
 }
 const textoLift = c => fmt(t().liftProgresso, { p: c.pct, a: c.feitos, b: c.total });
@@ -5992,7 +5992,7 @@ function campoFill(c) {
           </div>` : `
           <label for="ph_${c.id}" class="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-lg border border-dashed border-line px-3 text-[13px] font-semibold text-brand hover:bg-brandsoft">
             <i data-lucide="camera" class="h-4 w-4"></i>${t().fbPhotoAdd}</label>
-          <input type="file" id="ph_${c.id}" data-photo="${c.id}" accept="image/*" class="hidden">`}
+          <input type="file" id="ph_${c.id}" data-photo="${c.id}" accept="image/&#42;" class="hidden">`}
       </div>`;
     }
     default:
@@ -6176,7 +6176,7 @@ function telaFolha(f) {
       <label for="ph_${id}" class="folha-foto vazia">
         <i data-lucide="camera" class="h-8 w-8"></i><span>${esc(txt(FOLHA_FOTO[k]))}</span>
         <small>${t().klToqueFoto}</small></label>
-      <input type="file" id="ph_${id}" data-photo="${id}" accept="image/*" class="hidden">`;
+      <input type="file" id="ph_${id}" data-photo="${id}" accept="image/&#42;" class="hidden">`;
   };
   const coment = k => `
     <label class="sr-only" for="v_${k}_txt">${esc(txt(FOLHA_TIT[k]))}</label>
@@ -6553,7 +6553,7 @@ async function moldeDaAba(zip, aba) {
    esquerda ou acima; caixas "□" viram marcação. A administração revisa depois.
    自動判定：罫線のある空欄で、左または上にラベルがあるもの。「□」はチェック欄。 */
 const XL_IGNORAR = /所属長|責任者|確認者|承認|受付|処理|事務局|職場処置|管理Ｎｏ|管理No|Supervisor|Verificador|Inspector|Respons[aá]vel do|Provid[eê]ncias|arrangements/i;
-const limpaRot = s => String(s || '').replace(/\s*\n\s*/g, ' / ').replace(/\s+/g, ' ').trim().slice(0, 90);
+const limpaRot = s => String(s || '').replace(/\s{0,}\n\s{0,}/g, ' / ').replace(/\s+/g, ' ').trim().slice(0, 90);
 function tipoDoRotulo(rot, b, altLinha) {
   const r = rot.toLowerCase().replace(/([^\x00-\x7f])\s+(?=[^\x00-\x7f])/g, '$1');   // "点 検 者" → "点検者"
   if (/写真|イラスト|foto|photo|desenho|画像/.test(r)) return { tipo: 'foto' };
@@ -9599,7 +9599,7 @@ function fbForm() {
           <label for="fPhoto" class="inline-flex min-h-[44px] cursor-pointer items-center gap-2 rounded-lg border border-dashed border-line px-3 text-[13px] font-semibold text-brand hover:bg-brandsoft">
             <i data-lucide="camera" class="h-4 w-4"></i>${t().fbPhotoAdd}
           </label>
-          <input type="file" id="fPhoto" accept="image/*" class="hidden">`}
+          <input type="file" id="fPhoto" accept="image/&#42;" class="hidden">`}
       </div>
 
       <p id="fErr" class="mt-3 hidden items-center gap-2 rounded-lg bg-red-50 px-3 py-2.5 text-[14px] font-medium text-red-700">
