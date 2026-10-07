@@ -248,11 +248,13 @@
   .tar-chip { display: inline-flex; align-items: center; gap: 5px; border-radius: 999px; padding: 3px 10px; font-size: 13px; font-weight: 700; white-space: nowrap; }
   .tar-chip.ok { background: #EFF7E9; color: #3F7A25; }
   .tar-chip.pen { background: #FBF0DC; color: #7A4E05; }
+  .tar-chip.prog { background: #E7EEFB; color: #1E3F8F; }
   .tar-chip.atr { background: #FEE2E2; color: #B91C1C; }
   .tar-op { display: inline-flex; align-items: center; gap: 6px; min-height: 38px; padding: 0 12px; border: 1px solid #E3E8F0; border-radius: 999px; font-size: 13px; font-weight: 600; color: #334155; }
   .tar-op input { width: 16px; height: 16px; accent-color: #2A4A9E; }
   html.noite .tar-chip.ok { background: #16301F; color: #A7E08A; }
   html.noite .tar-chip.pen { background: #3A2A10; color: #F5C46B; }
+  html.noite .tar-chip.prog { background: #1A2A50; color: #A9C1FF; }
   html.noite .tar-chip.atr { background: #3A1616; color: #FCA5A5; }
   html.noite .tar-op { border-color: #33466B; color: #CBD5E1; }
   /* Relatórios: cores dos gráficos nos dois temas / レポートのグラフの色（2つのテーマ） */
@@ -766,16 +768,16 @@ const T = {
     xlT_texto:'Texto', xlT_longo:'Texto longo', xlT_numero:'Número', xlT_data:'Data', xlT_foto:'Foto', xlT_sign:'Assinatura', xlT_check:'Marcar ☑', xlT_oxo:'○ / ×',
     xlA_nenhum:'Preenchido pela pessoa', xlA_nome:'Automático: nome', xlA_codigo:'Automático: nº funcionário', xlA_setor:'Automático: setor', xlA_hoje:'Data de hoje (pode mudar)',
     navTarefas:'Tarefas', tarSemanal:'Toda semana · até {d}', tarQuinzenal:'A cada 2 semanas · até {d}', tarDias:'A cada {n} dias', tarMensal:'Todo mês · até o dia {d}',
-    tarOk:'Entregue', tarAtrasada:'Atrasada', tarPendente:'Pendente',
-    tarDetOk:'Entregue em {d} · próxima até {p}', tarDetAtr:'Não entregue até {d} · próxima até {p}', tarDetHoje:'Vence hoje ({d})', tarDetPen:'Vence em {d} · faltam {n} dia(s)',
+    tarOk:'Concluído', tarPendente:'Pendente',
+    tarDetOk:'Concluído em {d} · próximo prazo {p}', tarDetAtr:'Pendente desde {d} · próximo prazo {p}', tarDetHoje:'Vence hoje ({d})', tarDetPen:'Vence em {d} · faltam {n} dia(s)',
     tarVazio:'Nenhuma tarefa com prazo configurado.', tarHintAdm:'Situação de cada setor neste período. Qualquer líder do setor ou a administração pode entregar.',
     tarHintLider:'Tarefas do seu setor neste período. Entregue antes do prazo.', tarConfigurar:'Configurar prazo', tarDeNovo:'Entregar de novo', tarFazer:'Entregar agora',
-    tarSemSetor:'Nenhum setor seu nesta tarefa.', tarNAtr:'{n} atrasada(s)', tarNPen:'{n} pendente(s)', tarNOk:'{n} entregue(s)',
+    tarSemSetor:'Nenhum setor seu nesta tarefa.', tarNPen:'{n} pendente(s)', tarNOk:'{n} entregue(s)',
     tarSetorEntrega:'Setor desta entrega', tarErrSetor:'Escolha o setor desta entrega.',
-    tarCfgTit:'Tarefa de líder (prazo)', tarCfgSoLider:'Só líderes e administração preenchem esta ficha', tarCfgPrazo:'Cada setor precisa entregar com frequência (tem prazo)',
+    tarCfgTit:'Tarefa de líder', tarCfgSoLider:'Só líderes e administração preenchem esta ficha',
     tarCfgFreq:'Frequência', tarF_semanal:'Semanal', tarF_quinzenal:'A cada 2 semanas', tarF_mensal:'Mensal', tarF_dias:'A cada X dias',
     tarCfgDiaSemana:'Entregar até (dia da semana)', tarCfgDiaMes:'Entregar até o dia', tarCfgDias:'A cada quantos dias', tarCfgInicio:'Começa a contar em',
-    tarCfgSetores:'Setores que precisam entregar', tarCfgDica:'O atraso só conta a partir da data de início. No mês com menos dias, o prazo cai no último dia.',
+    tarCfgSetores:'Setores que precisam entregar', tarCfgDica:'Os prazos contam a partir da data de início. No mês com menos dias, o prazo cai no último dia. O que não for feito no prazo continua "Pendente" até ser feito.',
     tarErrSetores:'Escolha pelo menos um setor para a tarefa.',
     e_soLiderTarefa:'Esta ficha é uma tarefa de líder ou da administração.',
     coEndL:'Endereços', coEndTipo:'Matriz ou sede', coEndTxt:'Endereço', coEndAdd:'Adicionar endereço', coEndMapa:'Ver no mapa',
@@ -796,10 +798,11 @@ const T = {
     tpQuemVe:'Quem vê este tópico', tpQuemVeHint:'Toque nos setores que devem ver este tópico. Os funcionários veem só os tópicos e documentos do próprio setor; líderes e administração veem todos.', tpSalvo:'Setores do tópico salvos.', docSetor:'Setor do documento', docTodosDoTopico:'Todos os setores do tópico',
     navYukyu:'Meus yuukyuu', navYukyuEd:'Registro de yuukyuu', ykHintFunc:'Os pedidos de yuukyuu que você enviou pelo portal. Só você vê esta lista.', ykHintEd:'Pedidos de yuukyuu enviados pelo portal. Marque a situação: Negado (a empresa recusou) e Cancelado (o funcionário desistiu) não entram no total. Só líderes e administração veem todos.', ykAno:'Ano', ykBusca:'Buscar nome ou código', ykTotalAno:'Pedidos em {a}', ykAprovados:'Aprovados', ykDias:'dias', ykPorPessoa:'Total por pessoa em {a}', ykAprovN:'{n} aprovados', ykManha:'Manhã (午前休)', ykDiaInteiro:'Dia inteiro (終日)', ykHosp:'Internação ou consulta', ykEnviado:'Enviado em {d} · {n} dia(s) de antecedência', ykSit_pendente:'Pendente', ykSit_aprovado:'Aprovado', ykSit_negado:'Negado', ykSit_cancelado:'Cancelado', ykVazio:'Nenhum pedido de yuukyuu neste ano.', ykSalvo:'Situação salva.',
     ptNome:'Conferência de horário', navPonto:'Conferência de horário', ptSit_pendente:'Aguardando resposta', ptSit_ok:'Conferido', ptSit_erro:'Tem erro', ptPainelTit:'Sua conferência de horário de {m} chegou', ptPainelTxt:'Abra, confira os seus horários e responda se está correto.', ptConferirAgora:'Conferir agora', ptPainelErros:'{n} pessoa(s) apontaram erro na conferência de horário', ptPainelErrosTxt:'Veja o comentário de cada uma, corrija e mande a conferência de horário de novo.', ptVerLista:'Ver lista', ptEntre:'Entre com o seu código e senha para ver a sua conferência de horário.', ptMeus:'Minha conferência de horário', ptHintFunc:'Todo mês a sua conferência de horário (horários de entrada e saída) chega aqui. Abra, confira dia por dia e responda. Só você, os líderes e a administração veem a sua.', ptVazioMeu:'Nenhuma conferência de horário para responder ainda.', ptRecebido:'Recebido em {d}', ptSeuComentario:'Seu comentário:', ptRespondido:'Respondido em {d}', ptPergunta:'Os horários estão corretos?', ptAbraPrimeiro:'Abra a conferência de horário e confira os horários antes de responder.', ptVerMeu:'Ver minha conferência de horário', ptMudar:'Mudar a resposta', ptCorreto:'Está correto', ptTemErro:'Tem um erro', ptQualErro:'O que está errado?', ptQualErroEx:'Ex.: dia 14, a saída foi às 18:30, não 19:30.', ptMandarErro:'Enviar', ptEnviarTit:'Enviar a conferência de horário do mês', ptEnviarHint:'Escolha o PDF do 出勤簿 (uma página por funcionário; pode ser mais de um arquivo). O portal lê o código de cada página e você confere a quem cada uma vai antes de enviar.', ptEscolher:'Escolher PDF', ptListaTit:'Situação por funcionário', ptMes:'Mês', ptTotal:'Enviados', ptVazioMes:'Nenhuma conferência de horário enviada neste mês.', ptSemFolha:'{n} funcionário(s) do cadastro sem conferência de horário neste mês', ptEnviadoPor:'Enviado em {d} por {p}', ptRespondidoCurto:'respondido em {d}', ptVer:'Ver', ptRemover:'Remover esta conferência de horário', ptRemoverQ:'Remover a conferência de horário de {m} de {n}? A pessoa deixa de ver este arquivo.', ptRemovido:'Conferência de horário removida.', ptObrigado:'Obrigado! Resposta enviada: está correto.', ptErroMandado:'Enviado. A administração vai verificar e corrigir.', ptSoPdf:'Escolha um arquivo PDF.', ptLendo:'Lendo o PDF…', ptErroLer:'Não foi possível ler este PDF. Confira o arquivo e tente de novo.', ptChipPular:'Esta página não vai ser enviada', ptChipSemTexto:'A página não tem texto (parece digitalizada): escolha a pessoa', ptChipNaoCadastrado:'O código {c} não está no cadastro: escolha a pessoa', ptChipSemCodigo:'Não achei o código de funcionário nesta página: escolha a pessoa', ptChipTrocado:'Pessoa escolhida à mão (a folha diz {c})', ptChipManual:'Pessoa escolhida à mão', ptChipNomeDif:'O nome na folha é diferente do cadastro: confira com atenção', ptChipConfiraNome:'Código encontrado: confira o nome', ptChipOk:'Código e nome batem com o cadastro', ptChipJuntas:'Mais de uma página para esta pessoa: vão juntas no mesmo PDF', ptChipSubstitui:'Esta pessoa já tem conferência de horário de {m}: a antiga será substituída', ptAmpliar:'Ampliar', ptPagina:'Página {n} · {a}', ptNaFolha:'Escrito na folha:', ptAnexarPara:'Enviar para', ptEscolhaPessoa:'— Escolha a pessoa —', ptNaoAnexar:'Não enviar esta página', ptConferiPessoa:'Conferi: esta página é de {n}', ptRevTit:'Conferir a quem vai cada página', ptRevN:'{a} de {b} conferidas', ptEnviarN:'Enviar para {n} pessoa(s)', ptRevDica:'O portal leu o código de funcionário de cada página e escolheu a pessoa do cadastro. Veja a página (toque para ampliar), confira o nome e marque "Conferi". Se estiver errado, escolha a pessoa certa ou "Não enviar esta página".', ptMesDica:'Lido da folha. Corrija se estiver errado.', ptCancelarQ:'Cancelar? Nada será enviado.', ptFaltaPessoa:'{n} página(s) sem pessoa: escolha a pessoa ou "Não enviar esta página".', ptNada:'Nenhuma página para enviar.', ptFaltaConferir:'Falta conferir {n} página(s).', ptSubstituirQ:'{n} pessoa(s) já têm conferência de horário de {m}. Substituir pela nova? A resposta anterior delas será apagada.', ptSeparando:'Separando as páginas…', ptEnviando:'Enviando… ({a} de {b})', ptErroEnviar:'Não foi possível enviar. Tente de novo.', ptEnviados:'Conferência de horário enviada para {n} pessoa(s).', ptVoce:'você', e_pontoMes:'Escolha o mês da conferência de horário.', e_pontoNaoAchei:'Esta conferência de horário não existe mais. Recarregue a página.', e_pontoSoDono:'Só a própria pessoa pode responder a sua conferência de horário.', e_pontoComentario:'Escreva o que está errado nos horários.',
+    tarSemPrazoLinha:'Preencha quando precisar. Não conta como pendente.', progTit:'Em progresso', progCurto:'Em progresso', progSalvo:'salvo às {h}', progDica:'O que você preencheu fica guardado neste aparelho, mesmo fechando o portal ou abrindo outra ficha. Uma ficha nova só começa depois de enviar o PDF.', progDescartar:'Descartar', progDescartarQ:'Descartar o que foi preenchido e começar de novo?', progOutras:'Outras fichas em progresso', progSemNome:'(sem nome)', tarNProg:'{n} em progresso', tarContinuar:'Continuar', tarCfgComPrazo:'Com prazo', tarCfgComPrazoDica:'Cada setor entrega com frequência (toda semana, todo mês…).', tarCfgSemPrazo:'Ficha sem prazo', tarCfgSemPrazoDica:'Preenche quando precisar. Fica em Tarefas → Fichas sem prazo e não conta como pendente.',
     relPeriodo:'Período', relP_4s:'4 semanas', relP_3m:'3 meses', relP_6m:'6 meses', relP_12m:'12 meses', relPorSemana:'por semana', relSemana:'Semana', relSemanaDe:'Semana de {d}', relVerTabela:'Ver em tabela', relGrafAria:'Gráfico do 遵守率 semana a semana', relSemDados:'Sem dados neste período.', relDeltaIgual:'igual ao período anterior', relVsAnterior:'vs período anterior', relNPat:'{n} patrulha(s)', relNPessoas:'{n} avaliação(ões) · {p} pessoa(s)', relMedia:'média 遵守率 {p}%', relDicaRank:'遵守率 {p}% em {n} patrulha(s)', relDicaEntrega:'{a} entregue(s) de {b} no período', relEntregas:'Entregas', relSemPrazos:'Nenhum prazo neste período', relDeEsperadas:'{a} de {b} esperadas', relEntregasSub:'entregues / esperadas no período', relEntregasDica:'Verde: tudo entregue · amarelo: 70% ou mais · vermelho: menos de 70%.', relRankSetor:'Ranking por setor', relRankInspetor:'Ranking por 巡回者', relTopNg:'Os 10 itens com mais ×', relHhkRecebidos:'HHK recebidos', relSemAltos:'nenhum Ⅳ ou Ⅲ', relHhkNivel:'HHK por nível de risco', relAcoesAbertas:'Contramedidas em aberto', relAcoesSub:'Ⅳ e Ⅲ sem 完了日', relAcoesDica:'Ⅳ e Ⅲ ainda sem 完了日', relNAtrasadas:'{n} com o prazo vencido', relSemAbertas:'Nenhuma contramedida em aberto.', relLiftSub:'treinamentos finalizados no período', relPessoas:'Pessoas avaliadas — menor 遵守率 primeiro', relPessoasSub:'個人巡回 e ピッキング見極め', relNAval:'{n} avaliação(ões)', relVerPessoa:'Página',
-    tarOkTit:'Ficha enviada', tarOkTxt:'Protocolo {n}. Ela aparece em Tarefas → {a} → Enviados.', tarPrivado:'As fichas enviadas ficam em Tarefas → Enviados. Só os líderes e a administração veem.', tarEscolhaArea:'Escolha a área. Em cada uma estão as fichas para fazer, o que já foi enviado e os relatórios.', tarTodasAreas:'Trocar de área', tarAbaFazer:'A fazer', tarAbaEnviados:'Enviados', tarAbaRel:'Relatórios', tarComPrazo:'Com prazo', tarResolver:'Para resolver', tarNSemRisco:'{n} HHK sem risco', tarTudoEmDia:'Tudo em dia', tarHhkSemRisco:'{n} HHK sem estimativa de risco', tarHhkSemRiscoDica:'Leia o relato e marque a gravidade e a probabilidade.', tarAvaliar:'Avaliar', tarMatrizDica:'Toque numa célula para preencher por aquele setor.', tarFicha:'Ficha', tarHoje:'Vence hoje', tarFaltamD:'Faltam {n} d', tarEnvVazio:'Nada enviado nesta área ainda.', tarCfgArea:'Área em Tarefas',
+    tarOkTit:'Ficha enviada', tarOkTxt:'Protocolo {n}. Ela aparece em Tarefas → {a} → Enviados.', tarPrivado:'As fichas enviadas ficam em Tarefas → Enviados. Só os líderes e a administração veem.', tarEscolhaArea:'Escolha a área. Em cada uma estão as fichas para fazer, o que já foi enviado e os relatórios.', tarTodasAreas:'Trocar de área', tarAbaFazer:'A fazer', tarAbaEnviados:'Enviados', tarAbaRel:'Relatórios', tarComPrazo:'Com prazo', tarResolver:'Para resolver', tarNSemRisco:'{n} HHK sem risco', tarTudoEmDia:'Tudo concluído', tarHhkSemRisco:'{n} HHK sem estimativa de risco', tarHhkSemRiscoDica:'Leia o relato e marque a gravidade e a probabilidade.', tarAvaliar:'Avaliar', tarMatrizDica:'Toque numa célula para preencher por aquele setor.', tarFicha:'Ficha', tarHoje:'Vence hoje', tarFaltamD:'Faltam {n} d', tarEnvVazio:'Nada enviado nesta área ainda.', tarCfgArea:'Área em Tarefas',
     rkTit:'Estimativa de risco', rkHint:'Feita pelo responsável do setor depois de ler o relato: marque a gravidade e a probabilidade. A soma dá o nível de risco, como na folha.', rkFazer:'Fazer a estimativa de risco', rkSoLider:'A estimativa é feita pelo líder do {s} ou pela administração.', rkGrav:'Gravidade esperada do ferimento', rkProb:'Probabilidade esperada do ferimento', rkEscolha:'Escolha a gravidade e a probabilidade.', rkCausa:'Causa', rkContra:'Contramedida', rkPrazo:'Prazo', rkFim:'Concluído em (opcional)', rkResp:'Responsável do setor', rkKy:'ＫＹシートに落とし込み活用する — usar este caso na folha KY.', rkPor:'feita por {p} em {d}', rkEditar:'Corrigir a estimativa', rkSalvar:'Salvar a estimativa', rkSalvo:'Estimativa de risco salva. O PDF da folha já sai com ela.', rkFalta:'Falta a estimativa de risco', e_riscoPontos:'Escolha a gravidade e a probabilidade.', e_riscoAcao:'No risco Ⅳ ou Ⅲ, escreva a causa e a contramedida.', e_riscoPrazo:'No risco Ⅳ ou Ⅲ, escolha o prazo.', e_riscoResp:'Escreva o nome do responsável do setor.', e_riscoSoHhk:'A estimativa de risco é só para a folha HHK.', e_riscoSetor:'O líder faz a estimativa só dos HHK do próprio setor.',
-    patOutraPessoa:'Outra pessoa (ainda sem cadastro)', patNomePessoa:'Nome da pessoa', patEducador:'Avaliador', patPergunta:'Pergunta oral', patNovaAval:'Nova: {f}', patSemPrazoTit:'Fichas sem prazo', patSemPrazoHint:'Preencha quando houver alguém para avaliar. Não entram nos prazos das tarefas.', patPreencher:'Preencher', patSemPrazoCfg:'Esta ficha não tem prazo: o líder preenche quando houver alguém para avaliar. Ela aparece em Tarefas, em "Fichas sem prazo", e na página da pessoa.', e_patPessoa:'Escolha ou escreva a pessoa avaliada.', liftErrNada:'Marque pelo menos um item do treinamento.', liftIncompletoQ:'O treinamento está {p}% concluído. Finalizar e gerar o PDF assim mesmo?', liftProgresso:'Concluído {p}% · {a} de {b}', liftAndamento:'Em andamento neste aparelho', liftDesde:'desde {d}', liftContinuar:'Continuar', liftNovo:'Começar um novo registro', liftComecar:'Começar', liftNAndamento:'{n} em andamento neste aparelho', liftTentativa:'{n}ª tentativa', liftMin:'min', liftSeg:'seg', liftTesteDica:'Empilhar 5 pallets em menos de 10 minutos. Anote o tempo e o resultado de cada tentativa.', liftTrocar:'Trocar pessoa', liftObs:'Observações', liftDescartar:'Descartar', liftDescartarQ:'Descartar o registro de {n}? Tudo o que foi marcado neste aparelho será apagado.', liftFinalizar:'Finalizar e gerar PDF', liftRascunhoDica:'Fica salvo neste aparelho de um dia para o outro. Use sempre o mesmo aparelho e finalize no último dia.',
+    patOutraPessoa:'Outra pessoa (ainda sem cadastro)', patNomePessoa:'Nome da pessoa', patEducador:'Avaliador', patPergunta:'Pergunta oral', patNovaAval:'Nova: {f}', patContinuarAval:'Continuar: {f}', patSemPrazoTit:'Fichas sem prazo', patSemPrazoHint:'Preencha quando houver alguém para avaliar. Não entram nos prazos das tarefas.', patPreencher:'Preencher', e_patPessoa:'Escolha ou escreva a pessoa avaliada.', liftErrNada:'Marque pelo menos um item do treinamento.', liftIncompletoQ:'O treinamento está {p}% concluído. Finalizar e gerar o PDF assim mesmo?', liftProgresso:'Concluído {p}% · {a} de {b}', liftAndamento:'Em andamento neste aparelho', liftDesde:'desde {d}', liftContinuar:'Continuar', liftNovo:'Começar um novo registro', liftComecar:'Começar', liftNAndamento:'{n} em andamento neste aparelho', liftTentativa:'{n}ª tentativa', liftMin:'min', liftSeg:'seg', liftTesteDica:'Empilhar 5 pallets em menos de 10 minutos. Anote o tempo e o resultado de cada tentativa.', liftTrocar:'Trocar pessoa', liftObs:'Observações', liftDescartar:'Descartar', liftDescartarQ:'Descartar o registro de {n}? Tudo o que foi marcado neste aparelho será apagado.', liftFinalizar:'Finalizar e gerar PDF', liftRascunhoDica:'Fica salvo neste aparelho de um dia para o outro. Use sempre o mesmo aparelho e finalize no último dia.',
     patSetor:'Setor (zona)', patPessoa:'Pessoa avaliada', patData:'Data', patInicio:'Início', patFim:'Fim', patHoraIni:'Hora de início', patHoraFim:'Hora de término', patInspetor:'quem faz a patrulha', patLider:'encarregado', patObs:'Observação (指摘事項・違反者等)', patLegenda:'Legenda (opcional)', patFoto:'Foto', patSemItens:'Esta lista ainda não tem itens. Peça para a administração cadastrar.', patLimpar:'Limpar', patEnviar:'Gerar PDF e enviar', patRascunhoDica:'O que você marca fica guardado neste aparelho até enviar, mesmo se fechar o portal.', patRascunhoSemFotos:'As fotos são muitas para guardar no aparelho: o rascunho ficou sem as fotos (○/× e observações estão salvos).', patResumo:'遵守率 {t}% · ○ {ok} · × {ng} · faltam {p}', patOkTit:'Patrulha enviada', patOkTxt:'Protocolo {n}. O PDF foi para a pasta do Drive e a tarefa conta como entregue.', patCompartilhar:'Compartilhar (WhatsApp, LINE…)', patLimparQ:'Apagar tudo o que foi marcado nesta patrulha?', patErrPessoa:'Escolha a pessoa avaliada.', patErrDatas:'Confira as datas da patrulha.', patErrInspetor:'Escreva quem fez a patrulha (巡回者).', patErrNada:'Avalie pelo menos um item com ○ ou ×.', patPendQ:'{n} item(ns) sem avaliação. Enviar mesmo assim?', patGerando:'Gerando o PDF e enviando…', patErroEnviar:'Não foi possível enviar. Tente de novo.', patSemAval:'Nenhuma avaliação individual desta pessoa ainda.', patVerPdf:'Ver PDF', patEditarItens:'Editar os itens da checklist', patEdTit:'Itens da checklist', patEdDica:'Cada item precisa estar em japonês e em português (o PDF mostra os dois). O botão Traduzir preenche o idioma que estiver vazio.', patListaPadrao:'Lista padrão (todos os setores)', patListaPropria:'lista própria', patUsaPadrao:'usa a lista padrão', patSetorUsaPadrao:'Este setor usa a lista padrão.', patCriarPropria:'Criar lista própria (cópia da padrão)', patCategoria:'Categoria', patAddItem:'Adicionar item', patAddCat:'Adicionar categoria', patTraduzir:'Traduzir os campos vazios', patRestaurar:'Restaurar a lista original', patVoltarPadrao:'Voltar a usar a lista padrão', patEdSairQ:'Sair sem salvar?', patVoltarPadraoQ:'Apagar a lista própria deste setor e usar a lista padrão?', patRestaurarQ:'Trocar esta lista pela original do app de patrulha?', patApagarCatQ:'Apagar esta categoria e todos os itens dela?', patTradDemo:'A tradução só funciona no portal publicado.', patErrVazio:'Preencha o japonês e o português de cada item e categoria.', patEdSalvo:'Itens salvos.', tarCfgQtd:'Pessoas avaliadas por período', pesAbaAval:'Avaliações', e_patSetor:'Escolha um setor válido.',
     tarTodosSetores:'Todos os setores com funcionários', cfgAdmTit:'Ferramentas da administração', cfgAdmHint:'Histórico de tudo o que foi publicado ou mudado, e cópia de segurança do conteúdo do portal.', cfgHistHint:'Tudo o que foi publicado ou mudado no portal, com data e quem fez.', cfgHistSub:'Quem mudou o quê e quando', cfgExportSub:'Guardar uma cópia de segurança', cfgImportSub:'Restaurar uma cópia (troca tudo)', ldExpira:'Líder · acesso por 6 horas',
     grupoComunicacao:'Comunicação', grupoPedidos:'Pedidos e tarefas', grupoPessoas:'Pessoas', grupoEmpresaConta:'Empresa e conta', navEmployees:'Funcionários', navMinhaPagina:'Minha página', empAbaLista:'Lista', empAbaPonto:'Conferência de horário', empAbaYukyu:'Yuukyuu', pesAbaPonto:'Conferência de horário', pesAbaYukyu:'Yuukyuu', empVerPagina:'Ver página', pesVazioPonto:'Nenhuma conferência de horário enviada para esta pessoa.', pesVazioYk:'Nenhum pedido de yuukyuu desta pessoa.',
@@ -1031,16 +1034,16 @@ const T = {
     xlT_texto:'Text', xlT_longo:'Long text', xlT_numero:'Number', xlT_data:'Date', xlT_foto:'Photo', xlT_sign:'Signature', xlT_check:'Tick ☑', xlT_oxo:'○ / ×',
     xlA_nenhum:'Filled in by the person', xlA_nome:'Automatic: name', xlA_codigo:'Automatic: employee no.', xlA_setor:'Automatic: sector', xlA_hoje:'Today\'s date (editable)',
     navTarefas:'Tasks', tarSemanal:'Every week · by {d}', tarQuinzenal:'Every 2 weeks · by {d}', tarDias:'Every {n} days', tarMensal:'Every month · by day {d}',
-    tarOk:'Delivered', tarAtrasada:'Late', tarPendente:'Pending',
-    tarDetOk:'Delivered on {d} · next by {p}', tarDetAtr:'Not delivered by {d} · next by {p}', tarDetHoje:'Due today ({d})', tarDetPen:'Due {d} · {n} day(s) left',
+    tarOk:'Completed', tarPendente:'Pending',
+    tarDetOk:'Completed on {d} · next deadline {p}', tarDetAtr:'Pending since {d} · next deadline {p}', tarDetHoje:'Due today ({d})', tarDetPen:'Due {d} · {n} day(s) left',
     tarVazio:'No tasks with a deadline yet.', tarHintAdm:'Status of each sector in this period. Any leader of the sector or the administration can deliver.',
     tarHintLider:'Your sector\'s tasks in this period. Deliver before the deadline.', tarConfigurar:'Set deadline', tarDeNovo:'Deliver again', tarFazer:'Deliver now',
-    tarSemSetor:'None of your sectors are in this task.', tarNAtr:'{n} late', tarNPen:'{n} pending', tarNOk:'{n} delivered',
+    tarSemSetor:'None of your sectors are in this task.', tarNPen:'{n} pending', tarNOk:'{n} delivered',
     tarSetorEntrega:'Sector of this delivery', tarErrSetor:'Choose the sector of this delivery.',
-    tarCfgTit:'Leader task (deadline)', tarCfgSoLider:'Only leaders and the administration fill in this sheet', tarCfgPrazo:'Each sector must deliver regularly (has a deadline)',
+    tarCfgTit:'Leader task', tarCfgSoLider:'Only leaders and the administration fill in this sheet',
     tarCfgFreq:'Frequency', tarF_semanal:'Weekly', tarF_quinzenal:'Every 2 weeks', tarF_mensal:'Monthly', tarF_dias:'Every X days',
     tarCfgDiaSemana:'Deliver by (weekday)', tarCfgDiaMes:'Deliver by day', tarCfgDias:'Every how many days', tarCfgInicio:'Start counting on',
-    tarCfgSetores:'Sectors that must deliver', tarCfgDica:'Lateness only counts from the start date. In shorter months, the deadline falls on the last day.',
+    tarCfgSetores:'Sectors that must deliver', tarCfgDica:'Deadlines count from the start date. In shorter months, the deadline falls on the last day. Anything not done by the deadline stays "Pending" until it is done.',
     tarErrSetores:'Choose at least one sector for the task.',
     e_soLiderTarefa:'This sheet is a task for leaders or the administration.',
     coEndL:'Addresses', coEndTipo:'Head office or site', coEndTxt:'Address', coEndAdd:'Add address', coEndMapa:'View on map',
@@ -1061,10 +1064,11 @@ const T = {
     tpQuemVe:'Who sees this topic', tpQuemVeHint:'Tap the sectors that should see this topic. Employees only see the topics and documents of their own sector; leaders and the administration see all.', tpSalvo:'Topic sectors saved.', docSetor:'Document sector', docTodosDoTopico:'All sectors of the topic',
     navYukyu:'My yuukyuu', navYukyuEd:'Yuukyuu register', ykHintFunc:'The yuukyuu requests you sent through the portal. Only you see this list.', ykHintEd:'Yuukyuu requests sent through the portal. Set the status: Denied (the company refused) and Cancelled (the employee gave up) do not count in the total. Only leaders and the administration see everyone.', ykAno:'Year', ykBusca:'Search name or code', ykTotalAno:'Requested in {a}', ykAprovados:'Approved', ykDias:'days', ykPorPessoa:'Total per person in {a}', ykAprovN:'{n} approved', ykManha:'Morning (午前休)', ykDiaInteiro:'Full day (終日)', ykHosp:'Hospital or medical visit', ykEnviado:'Sent on {d} · {n} day(s) in advance', ykSit_pendente:'Pending', ykSit_aprovado:'Approved', ykSit_negado:'Denied', ykSit_cancelado:'Cancelled', ykVazio:'No yuukyuu requests this year.', ykSalvo:'Status saved.',
     ptNome:'Timesheet check', navPonto:'Timesheet check', ptSit_pendente:'Waiting for answer', ptSit_ok:'Checked', ptSit_erro:'Has an error', ptPainelTit:'Your timesheet check for {m} has arrived', ptPainelTxt:'Open it, check your times and answer whether it is correct.', ptConferirAgora:'Check now', ptPainelErros:'{n} person(s) reported an error in the timesheet check', ptPainelErrosTxt:'Read each comment, fix it and send the timesheet check again.', ptVerLista:'See list', ptEntre:'Sign in with your code and password to see your timesheet check.', ptMeus:'My timesheet check', ptHintFunc:'Every month your timesheet check (clock-in and clock-out times) arrives here. Open it, check it day by day and answer. Only you, the leaders and the administration see yours.', ptVazioMeu:'No timesheet check to answer yet.', ptRecebido:'Received on {d}', ptSeuComentario:'Your comment:', ptRespondido:'Answered on {d}', ptPergunta:'Are the times correct?', ptAbraPrimeiro:'Open the timesheet check and look at the times before answering.', ptVerMeu:'See my timesheet check', ptMudar:'Change the answer', ptCorreto:'It is correct', ptTemErro:'There is an error', ptQualErro:'What is wrong?', ptQualErroEx:'E.g.: on the 14th I left at 18:30, not 19:30.', ptMandarErro:'Send', ptEnviarTit:'Send the month timesheet check', ptEnviarHint:'Choose the 出勤簿 PDF (one page per employee; more than one file is fine). The portal reads the code on each page and you check who each page goes to before sending.', ptEscolher:'Choose PDF', ptListaTit:'Status per employee', ptMes:'Month', ptTotal:'Sent', ptVazioMes:'No timesheet check sent this month.', ptSemFolha:'{n} registered employee(s) without a timesheet check this month', ptEnviadoPor:'Sent on {d} by {p}', ptRespondidoCurto:'answered on {d}', ptVer:'See', ptRemover:'Remove this timesheet check', ptRemoverQ:'Remove the {m} timesheet check of {n}? The person will no longer see this file.', ptRemovido:'Timesheet check removed.', ptObrigado:'Thank you! Answer sent: it is correct.', ptErroMandado:'Sent. The administration will check and fix it.', ptSoPdf:'Choose a PDF file.', ptLendo:'Reading the PDF…', ptErroLer:'Could not read this PDF. Check the file and try again.', ptChipPular:'This page will not be sent', ptChipSemTexto:'The page has no text (looks scanned): choose the person', ptChipNaoCadastrado:'Code {c} is not registered: choose the person', ptChipSemCodigo:'No employee code found on this page: choose the person', ptChipTrocado:'Person chosen by hand (the sheet says {c})', ptChipManual:'Person chosen by hand', ptChipNomeDif:'The name on the sheet differs from the register: check carefully', ptChipConfiraNome:'Code found: check the name', ptChipOk:'Code and name match the register', ptChipJuntas:'More than one page for this person: they go together in one PDF', ptChipSubstitui:'This person already has a {m} timesheet check: the old one will be replaced', ptAmpliar:'Zoom', ptPagina:'Page {n} · {a}', ptNaFolha:'Written on the sheet:', ptAnexarPara:'Send to', ptEscolhaPessoa:'— Choose the person —', ptNaoAnexar:'Do not send this page', ptConferiPessoa:'Checked: this page belongs to {n}', ptRevTit:'Check who each page goes to', ptRevN:'{a} of {b} checked', ptEnviarN:'Send to {n} person(s)', ptRevDica:'The portal read the employee code on each page and chose the person from the register. Look at the page (tap to zoom), check the name and tick "Checked". If it is wrong, choose the right person or "Do not send this page".', ptMesDica:'Read from the sheet. Fix it if wrong.', ptCancelarQ:'Cancel? Nothing will be sent.', ptFaltaPessoa:'{n} page(s) without a person: choose the person or "Do not send this page".', ptNada:'No page to send.', ptFaltaConferir:'{n} page(s) still to check.', ptSubstituirQ:'{n} person(s) already have a {m} timesheet check. Replace with the new one? Their previous answer will be erased.', ptSeparando:'Splitting the pages…', ptEnviando:'Sending… ({a} of {b})', ptErroEnviar:'Could not send. Try again.', ptEnviados:'Timesheet check sent to {n} person(s).', ptVoce:'you', e_pontoMes:'Choose the month of the timesheet check.', e_pontoNaoAchei:'This timesheet check no longer exists. Reload the page.', e_pontoSoDono:'Only the person can answer their own timesheet check.', e_pontoComentario:'Write what is wrong with the times.',
+    tarSemPrazoLinha:'Fill it in when needed. It does not count as pending.', progTit:'In progress', progCurto:'In progress', progSalvo:'saved at {h}', progDica:'What you filled in is kept on this device, even if you close the portal or open another sheet. A new sheet only starts after you send the PDF.', progDescartar:'Discard', progDescartarQ:'Discard what was filled in and start over?', progOutras:'Other sheets in progress', progSemNome:'(no name)', tarNProg:'{n} in progress', tarContinuar:'Continue', tarCfgComPrazo:'With deadline', tarCfgComPrazoDica:'Each sector delivers regularly (every week, every month…).', tarCfgSemPrazo:'Sheet without deadline', tarCfgSemPrazoDica:'Fill it in when needed. It stays in Tasks → Sheets without deadline and does not count as pending.',
     relPeriodo:'Period', relP_4s:'4 weeks', relP_3m:'3 months', relP_6m:'6 months', relP_12m:'12 months', relPorSemana:'per week', relSemana:'Week', relSemanaDe:'Week of {d}', relVerTabela:'View as table', relGrafAria:'遵守率 chart week by week', relSemDados:'No data in this period.', relDeltaIgual:'same as previous period', relVsAnterior:'vs previous period', relNPat:'{n} patrol(s)', relNPessoas:'{n} evaluation(s) · {p} person(s)', relMedia:'average 遵守率 {p}%', relDicaRank:'遵守率 {p}% in {n} patrol(s)', relDicaEntrega:'{a} delivered of {b} in the period', relEntregas:'Deliveries', relSemPrazos:'No deadlines in this period', relDeEsperadas:'{a} of {b} expected', relEntregasSub:'delivered / expected in the period', relEntregasDica:'Green: all delivered · yellow: 70% or more · red: less than 70%.', relRankSetor:'Ranking by sector', relRankInspetor:'Ranking by 巡回者', relTopNg:'Top 10 items with ×', relHhkRecebidos:'HHK received', relSemAltos:'no Ⅳ or Ⅲ', relHhkNivel:'HHK by risk level', relAcoesAbertas:'Open countermeasures', relAcoesSub:'Ⅳ and Ⅲ without 完了日', relAcoesDica:'Ⅳ and Ⅲ still without 完了日', relNAtrasadas:'{n} past the deadline', relSemAbertas:'No open countermeasures.', relLiftSub:'trainings finished in the period', relPessoas:'People evaluated — lowest 遵守率 first', relPessoasSub:'個人巡回 and ピッキング見極め', relNAval:'{n} evaluation(s)', relVerPessoa:'Page',
-    tarOkTit:'Sheet sent', tarOkTxt:'Protocol {n}. It appears in Tasks → {a} → Sent.', tarPrivado:'Sent sheets are kept in Tasks → Sent. Only leaders and the administration can see them.', tarEscolhaArea:'Choose the area. Each one has the sheets to do, what was already sent and the reports.', tarTodasAreas:'Change area', tarAbaFazer:'To do', tarAbaEnviados:'Sent', tarAbaRel:'Reports', tarComPrazo:'With deadline', tarResolver:'To resolve', tarNSemRisco:'{n} HHK without risk', tarTudoEmDia:'All up to date', tarHhkSemRisco:'{n} HHK without risk estimate', tarHhkSemRiscoDica:'Read the report and choose the severity and the probability.', tarAvaliar:'Assess', tarMatrizDica:'Tap a cell to fill in for that sector.', tarFicha:'Sheet', tarHoje:'Due today', tarFaltamD:'{n} d left', tarEnvVazio:'Nothing sent in this area yet.', tarCfgArea:'Area in Tasks',
+    tarOkTit:'Sheet sent', tarOkTxt:'Protocol {n}. It appears in Tasks → {a} → Sent.', tarPrivado:'Sent sheets are kept in Tasks → Sent. Only leaders and the administration can see them.', tarEscolhaArea:'Choose the area. Each one has the sheets to do, what was already sent and the reports.', tarTodasAreas:'Change area', tarAbaFazer:'To do', tarAbaEnviados:'Sent', tarAbaRel:'Reports', tarComPrazo:'With deadline', tarResolver:'To resolve', tarNSemRisco:'{n} HHK without risk', tarTudoEmDia:'All completed', tarHhkSemRisco:'{n} HHK without risk estimate', tarHhkSemRiscoDica:'Read the report and choose the severity and the probability.', tarAvaliar:'Assess', tarMatrizDica:'Tap a cell to fill in for that sector.', tarFicha:'Sheet', tarHoje:'Due today', tarFaltamD:'{n} d left', tarEnvVazio:'Nothing sent in this area yet.', tarCfgArea:'Area in Tasks',
     rkTit:'Risk estimate', rkHint:'Done by the person in charge of the sector after reading the report: choose the severity and the probability. The sum gives the risk level, as on the sheet.', rkFazer:'Make the risk estimate', rkSoLider:'The estimate is made by the leader of {s} or by the administration.', rkGrav:'Expected severity of the injury', rkProb:'Expected probability of the injury', rkEscolha:'Choose the severity and the probability.', rkCausa:'Cause', rkContra:'Countermeasure', rkPrazo:'Deadline', rkFim:'Completed on (optional)', rkResp:'Person in charge of the sector', rkKy:'ＫＹシートに落とし込み活用する — use this case in the KY sheet.', rkPor:'made by {p} on {d}', rkEditar:'Correct the estimate', rkSalvar:'Save the estimate', rkSalvo:'Risk estimate saved. The sheet PDF now includes it.', rkFalta:'Risk estimate missing', e_riscoPontos:'Choose the severity and the probability.', e_riscoAcao:'For risk Ⅳ or Ⅲ, write the cause and the countermeasure.', e_riscoPrazo:'For risk Ⅳ or Ⅲ, choose the deadline.', e_riscoResp:'Write the name of the person in charge of the sector.', e_riscoSoHhk:'The risk estimate is only for the HHK sheet.', e_riscoSetor:'A leader can only estimate the HHK of their own sector.',
-    patOutraPessoa:'Another person (not registered yet)', patNomePessoa:'Person name', patEducador:'Evaluator', patPergunta:'Oral question', patNovaAval:'New: {f}', patSemPrazoTit:'Sheets without deadline', patSemPrazoHint:'Fill them in when there is someone to evaluate. They do not count in the task deadlines.', patPreencher:'Fill in', patSemPrazoCfg:'This sheet has no deadline: the leader fills it in when there is someone to evaluate. It appears in Tasks, under "Sheets without deadline", and on the person page.', e_patPessoa:'Choose or write the evaluated person.', liftErrNada:'Tick at least one training item.', liftIncompletoQ:'The training is {p}% complete. Finish and create the PDF anyway?', liftProgresso:'Complete {p}% · {a} of {b}', liftAndamento:'In progress on this device', liftDesde:'since {d}', liftContinuar:'Continue', liftNovo:'Start a new record', liftComecar:'Start', liftNAndamento:'{n} in progress on this device', liftTentativa:'Attempt {n}', liftMin:'min', liftSeg:'sec', liftTesteDica:'Stack 5 pallets in less than 10 minutes. Write down the time and the result of each attempt.', liftTrocar:'Change person', liftObs:'Notes', liftDescartar:'Discard', liftDescartarQ:'Discard the record of {n}? Everything ticked on this device will be erased.', liftFinalizar:'Finish and create PDF', liftRascunhoDica:'It stays saved on this device from one day to the next. Always use the same device and finish it on the last day.',
+    patOutraPessoa:'Another person (not registered yet)', patNomePessoa:'Person name', patEducador:'Evaluator', patPergunta:'Oral question', patNovaAval:'New: {f}', patContinuarAval:'Continue: {f}', patSemPrazoTit:'Sheets without deadline', patSemPrazoHint:'Fill them in when there is someone to evaluate. They do not count in the task deadlines.', patPreencher:'Fill in', e_patPessoa:'Choose or write the evaluated person.', liftErrNada:'Tick at least one training item.', liftIncompletoQ:'The training is {p}% complete. Finish and create the PDF anyway?', liftProgresso:'Complete {p}% · {a} of {b}', liftAndamento:'In progress on this device', liftDesde:'since {d}', liftContinuar:'Continue', liftNovo:'Start a new record', liftComecar:'Start', liftNAndamento:'{n} in progress on this device', liftTentativa:'Attempt {n}', liftMin:'min', liftSeg:'sec', liftTesteDica:'Stack 5 pallets in less than 10 minutes. Write down the time and the result of each attempt.', liftTrocar:'Change person', liftObs:'Notes', liftDescartar:'Discard', liftDescartarQ:'Discard the record of {n}? Everything ticked on this device will be erased.', liftFinalizar:'Finish and create PDF', liftRascunhoDica:'It stays saved on this device from one day to the next. Always use the same device and finish it on the last day.',
     patSetor:'Sector (zone)', patPessoa:'Person evaluated', patData:'Date', patInicio:'Start', patFim:'End', patHoraIni:'Start time', patHoraFim:'End time', patInspetor:'who does the patrol', patLider:'supervisor', patObs:'Note (指摘事項・違反者等)', patLegenda:'Caption (optional)', patFoto:'Photo', patSemItens:'This list has no items yet. Ask the administration to add them.', patLimpar:'Clear', patEnviar:'Create PDF and send', patRascunhoDica:'What you mark is kept on this device until you send it, even if you close the portal.', patRascunhoSemFotos:'Too many photos to keep on the device: the draft was saved without the photos (○/× and notes are saved).', patResumo:'遵守率 {t}% · ○ {ok} · × {ng} · {p} left', patOkTit:'Patrol sent', patOkTxt:'Protocol {n}. The PDF went to the Drive folder and the task counts as delivered.', patCompartilhar:'Share (WhatsApp, LINE…)', patLimparQ:'Erase everything marked in this patrol?', patErrPessoa:'Choose the person evaluated.', patErrDatas:'Check the patrol dates.', patErrInspetor:'Write who did the patrol (巡回者).', patErrNada:'Rate at least one item with ○ or ×.', patPendQ:'{n} item(s) not rated. Send anyway?', patGerando:'Creating the PDF and sending…', patErroEnviar:'Could not send. Try again.', patSemAval:'No individual evaluations of this person yet.', patVerPdf:'See PDF', patEditarItens:'Edit the checklist items', patEdTit:'Checklist items', patEdDica:'Each item must be in Japanese and Portuguese (the PDF shows both). The Translate button fills the empty language.', patListaPadrao:'Default list (all sectors)', patListaPropria:'own list', patUsaPadrao:'uses the default list', patSetorUsaPadrao:'This sector uses the default list.', patCriarPropria:'Create own list (copy of the default)', patCategoria:'Category', patAddItem:'Add item', patAddCat:'Add category', patTraduzir:'Translate empty fields', patRestaurar:'Restore the original list', patVoltarPadrao:'Use the default list again', patEdSairQ:'Leave without saving?', patVoltarPadraoQ:'Delete this sector’s own list and use the default list?', patRestaurarQ:'Replace this list with the original from the patrol app?', patApagarCatQ:'Delete this category and all its items?', patTradDemo:'Translation only works in the published portal.', patErrVazio:'Fill in Japanese and Portuguese for every item and category.', patEdSalvo:'Items saved.', tarCfgQtd:'People evaluated per period', pesAbaAval:'Evaluations', e_patSetor:'Choose a valid sector.',
     tarTodosSetores:'All sectors with employees', cfgAdmTit:'Administration tools', cfgAdmHint:'History of everything published or changed, and a backup copy of the portal content.', cfgHistHint:'Everything published or changed in the portal, with date and who did it.', cfgHistSub:'Who changed what and when', cfgExportSub:'Save a backup copy', cfgImportSub:'Restore a copy (replaces everything)', ldExpira:'Leader · access for 6 hours',
     grupoComunicacao:'Communication', grupoPedidos:'Requests and tasks', grupoPessoas:'People', grupoEmpresaConta:'Company and account', navEmployees:'Employees', navMinhaPagina:'My page', empAbaLista:'List', empAbaPonto:'Timesheet check', empAbaYukyu:'Yuukyuu', pesAbaPonto:'Timesheet check', pesAbaYukyu:'Yuukyuu', empVerPagina:'Open page', pesVazioPonto:'No timesheet check sent to this person.', pesVazioYk:'No yuukyuu requests from this person.',
@@ -1296,16 +1300,16 @@ const T = {
     xlT_texto:'文字', xlT_longo:'長い文章', xlT_numero:'数字', xlT_data:'日付', xlT_foto:'写真', xlT_sign:'署名', xlT_check:'チェック ☑', xlT_oxo:'○ / ×',
     xlA_nenhum:'本人が記入', xlA_nome:'自動：氏名', xlA_codigo:'自動：社員番号', xlA_setor:'自動：所属', xlA_hoje:'今日の日付（変更可）',
     navTarefas:'タスク', tarSemanal:'毎週・{d}まで', tarQuinzenal:'2週間ごと・{d}まで', tarDias:'{n}日ごと', tarMensal:'毎月・{d}日まで',
-    tarOk:'提出済み', tarAtrasada:'遅れ', tarPendente:'未提出',
-    tarDetOk:'{d}に提出・次回は{p}まで', tarDetAtr:'{d}までに未提出・次回は{p}まで', tarDetHoje:'本日（{d}）が期限', tarDetPen:'期限 {d}・あと{n}日',
+    tarOk:'完了', tarPendente:'未提出',
+    tarDetOk:'{d}に完了・次回の期限は{p}', tarDetAtr:'{d}から未提出・次回の期限は{p}', tarDetHoje:'本日（{d}）が期限', tarDetPen:'期限 {d}・あと{n}日',
     tarVazio:'期限が設定されたタスクはありません。', tarHintAdm:'今期の各エリアの状況です。エリアのリーダーまたは管理部門が提出できます。',
     tarHintLider:'今期の自分のエリアのタスクです。期限までに提出してください。', tarConfigurar:'期限を設定', tarDeNovo:'再提出', tarFazer:'今すぐ提出',
-    tarSemSetor:'このタスクに担当エリアはありません。', tarNAtr:'遅れ {n}件', tarNPen:'未提出 {n}件', tarNOk:'提出済み {n}件',
+    tarSemSetor:'このタスクに担当エリアはありません。', tarNPen:'未提出 {n}件', tarNOk:'提出済み {n}件',
     tarSetorEntrega:'提出するエリア', tarErrSetor:'提出するエリアを選んでください。',
-    tarCfgTit:'リーダーのタスク（期限）', tarCfgSoLider:'このシートはリーダーと管理部門のみが記入', tarCfgPrazo:'各エリアが定期的に提出する（期限あり）',
+    tarCfgTit:'リーダーのタスク', tarCfgSoLider:'このシートはリーダーと管理部門のみが記入',
     tarCfgFreq:'頻度', tarF_semanal:'毎週', tarF_quinzenal:'2週間ごと', tarF_mensal:'毎月', tarF_dias:'X日ごと',
     tarCfgDiaSemana:'提出期限（曜日）', tarCfgDiaMes:'提出期限（日）', tarCfgDias:'何日ごと', tarCfgInicio:'開始日',
-    tarCfgSetores:'提出が必要なエリア', tarCfgDica:'遅れは開始日以降のみ数えます。日数の少ない月は月末が期限になります。',
+    tarCfgSetores:'提出が必要なエリア', tarCfgDica:'期限は開始日から数えます。日数の少ない月は月末が期限になります。期限までに未提出のものは、提出されるまで「未提出」のままです。',
     tarErrSetores:'タスクのエリアを1つ以上選んでください。',
     e_soLiderTarefa:'このシートはリーダー・管理部門のタスクです。',
     coEndL:'所在地', coEndTipo:'本社・事業所', coEndTxt:'住所', coEndAdd:'住所を追加', coEndMapa:'地図で見る',
@@ -1326,10 +1330,11 @@ const T = {
     tpQuemVe:'このトピックを表示するエリア', tpQuemVeHint:'このトピックを表示するエリアをタップしてください。従業員は自分のエリアのトピックと資料だけが表示され、リーダーと管理部門はすべて表示されます。', tpSalvo:'トピックのエリアを保存しました。', docSetor:'資料のエリア', docTodosDoTopico:'トピックの全エリア',
     navYukyu:'有給休暇の記録', navYukyuEd:'有給休暇記録（全員）', ykHintFunc:'ポータルから送信した有給休暇の申請です。この一覧は本人にのみ表示されます。', ykHintEd:'ポータルから送信された有給休暇の申請です。状況を記録してください。却下（会社が不承認）と取消（本人が取り下げ）は合計に含めません。全員分はリーダーと管理部門のみ表示されます。', ykAno:'年', ykBusca:'氏名またはコードで検索', ykTotalAno:'{a}年の申請', ykAprovados:'承認済み', ykDias:'日', ykPorPessoa:'{a}年の個人別合計', ykAprovN:'承認 {n}日', ykManha:'午前休', ykDiaInteiro:'終日', ykHosp:'入院・通院', ykEnviado:'{d} 送信 · {n}日前に申請', ykSit_pendente:'保留', ykSit_aprovado:'承認', ykSit_negado:'却下', ykSit_cancelado:'取消', ykVazio:'この年の有給休暇の申請はありません。', ykSalvo:'状況を保存しました。',
     ptNome:'出勤簿', navPonto:'出勤簿の確認', ptSit_pendente:'確認待ち', ptSit_ok:'確認済み', ptSit_erro:'誤りあり', ptPainelTit:'{m}の出勤簿が届きました', ptPainelTxt:'開いて出退勤時刻を確認し、正しいかどうか回答してください。', ptConferirAgora:'今すぐ確認', ptPainelErros:'{n}名が出勤簿の誤りを指摘しています', ptPainelErrosTxt:'各コメントを確認・修正し、出勤簿を再送してください。', ptVerLista:'一覧を見る', ptEntre:'出勤簿を見るには、社員コードとパスワードでログインしてください。', ptMeus:'自分の出勤簿', ptHintFunc:'毎月、あなたの出勤簿（出退勤時刻）がここに届きます。開いて1日ずつ確認し、回答してください。本人・リーダー・管理部門のみ閲覧できます。', ptVazioMeu:'確認する出勤簿はまだありません。', ptRecebido:'{d} 受信', ptSeuComentario:'あなたのコメント：', ptRespondido:'{d} 回答', ptPergunta:'時刻は正しいですか？', ptAbraPrimeiro:'回答する前に出勤簿を開いて時刻を確認してください。', ptVerMeu:'出勤簿を見る', ptMudar:'回答を変更', ptCorreto:'正しい', ptTemErro:'誤りがある', ptQualErro:'どこが間違っていますか？', ptQualErroEx:'例：14日の退勤は19:30ではなく18:30です。', ptMandarErro:'送信', ptEnviarTit:'今月の出勤簿を送る', ptEnviarHint:'出勤簿のPDFを選んでください（1人1ページ、複数ファイル可）。ポータルが各ページの社員コードを読み取り、送信前に宛先を確認できます。', ptEscolher:'PDFを選ぶ', ptListaTit:'従業員別の状況', ptMes:'対象月', ptTotal:'送信済み', ptVazioMes:'この月に送信した出勤簿はありません。', ptSemFolha:'この月の出勤簿がない登録従業員：{n}名', ptEnviadoPor:'{d} 送信（{p}）', ptRespondidoCurto:'{d} 回答', ptVer:'見る', ptRemover:'この出勤簿を削除', ptRemoverQ:'{n}さんの{m}の出勤簿を削除しますか？本人は閲覧できなくなります。', ptRemovido:'出勤簿を削除しました。', ptObrigado:'ありがとうございます。「正しい」と回答しました。', ptErroMandado:'送信しました。管理部門が確認・修正します。', ptSoPdf:'PDFファイルを選んでください。', ptLendo:'PDFを読み込み中…', ptErroLer:'このPDFを読み込めませんでした。ファイルを確認して、もう一度お試しください。', ptChipPular:'このページは送信しません', ptChipSemTexto:'文字のないページです（スキャン画像）：宛先を選んでください', ptChipNaoCadastrado:'コード {c} は登録されていません：宛先を選んでください', ptChipSemCodigo:'このページで社員コードが見つかりません：宛先を選んでください', ptChipTrocado:'手動で選択（用紙上は {c}）', ptChipManual:'手動で選択', ptChipNomeDif:'用紙の氏名が登録と異なります：よく確認してください', ptChipConfiraNome:'コードを検出：氏名を確認してください', ptChipOk:'コードと氏名が登録と一致', ptChipJuntas:'この人のページが複数あります：1つのPDFにまとめます', ptChipSubstitui:'{m}の出勤簿が既にあります：新しいものに差し替えます', ptAmpliar:'拡大', ptPagina:'{n}ページ · {a}', ptNaFolha:'用紙の記載：', ptAnexarPara:'宛先', ptEscolhaPessoa:'— 宛先を選択 —', ptNaoAnexar:'このページは送信しない', ptConferiPessoa:'確認済み：このページは {n} さんのものです', ptRevTit:'各ページの宛先を確認', ptRevN:'{b}件中 {a}件 確認済み', ptEnviarN:'{n}名に送信', ptRevDica:'ポータルが各ページの社員コードを読み取り、登録上の従業員を選びました。ページを見て（タップで拡大）氏名を確認し、「確認済み」にチェックしてください。誤っている場合は正しい宛先、または「このページは送信しない」を選んでください。', ptMesDica:'用紙から読み取りました。違う場合は修正してください。', ptCancelarQ:'キャンセルしますか？何も送信されません。', ptFaltaPessoa:'宛先のないページが{n}件あります：宛先または「このページは送信しない」を選んでください。', ptNada:'送信するページがありません。', ptFaltaConferir:'未確認のページが{n}件あります。', ptSubstituirQ:'{n}名は{m}の出勤簿が既にあります。新しいものに差し替えますか？前回の回答は消去されます。', ptSeparando:'ページを分割中…', ptEnviando:'送信中…（{b}件中 {a}件）', ptErroEnviar:'送信できませんでした。もう一度お試しください。', ptEnviados:'{n}名に出勤簿を送信しました。', ptVoce:'あなた', e_pontoMes:'出勤簿の対象月を選んでください。', e_pontoNaoAchei:'この出勤簿は見つかりません。ページを再読み込みしてください。', e_pontoSoDono:'出勤簿の確認は本人のみ可能です。', e_pontoComentario:'出勤簿の誤りの内容を入力してください。',
+    tarSemPrazoLinha:'必要なときに記入してください。未提出には数えません。', progTit:'記入中', progCurto:'記入中', progSalvo:'{h} に保存', progDica:'記入した内容はこの端末に保存されます。ポータルを閉じても、別のシートを開いても消えません。PDFを送信すると新しいシートになります。', progDescartar:'破棄', progDescartarQ:'記入した内容を破棄して、最初からやり直しますか？', progOutras:'記入中の他のシート', progSemNome:'（名前なし）', tarNProg:'記入中 {n}件', tarContinuar:'続ける', tarCfgComPrazo:'期限あり', tarCfgComPrazoDica:'各エリアが定期的に提出します（毎週・毎月など）。', tarCfgSemPrazo:'期限なしのシート', tarCfgSemPrazoDica:'必要なときに記入します。タスク→期限なしのシートに表示され、未提出には数えません。',
     relPeriodo:'期間', relP_4s:'4週間', relP_3m:'3か月', relP_6m:'6か月', relP_12m:'12か月', relPorSemana:'週ごと', relSemana:'週', relSemanaDe:'{d}の週', relVerTabela:'表で見る', relGrafAria:'週ごとの遵守率のグラフ', relSemDados:'この期間のデータはありません。', relDeltaIgual:'前の期間と同じ', relVsAnterior:'前の期間比', relNPat:'巡回 {n}件', relNPessoas:'評価 {n}件・{p}人', relMedia:'平均遵守率 {p}%', relDicaRank:'遵守率 {p}%（巡回 {n}件）', relDicaEntrega:'期間内の提出 {a}件／必要 {b}件', relEntregas:'提出状況', relSemPrazos:'この期間の期限はありません', relDeEsperadas:'必要 {b}件中 {a}件', relEntregasSub:'期間内の提出／必要数', relEntregasDica:'緑：すべて提出・黄：70%以上・赤：70%未満。', relRankSetor:'エリア別ランキング', relRankInspetor:'巡回者別ランキング', relTopNg:'×が多い項目トップ10', relHhkRecebidos:'HHK受信', relSemAltos:'Ⅳ・Ⅲなし', relHhkNivel:'リスクレベル別のHHK', relAcoesAbertas:'未完了の対策', relAcoesSub:'完了日のないⅣ・Ⅲ', relAcoesDica:'完了日のないⅣ・Ⅲ', relNAtrasadas:'納期切れ {n}件', relSemAbertas:'未完了の対策はありません。', relLiftSub:'期間内に完了した教育', relPessoas:'評価された人（遵守率の低い順）', relPessoasSub:'個人巡回・ピッキング見極め', relNAval:'評価 {n}件', relVerPessoa:'個人ページ',
-    tarOkTit:'シートを送信しました', tarOkTxt:'受付番号 {n}。タスク→{a}→送信済みに表示されます。', tarPrivado:'送信したシートはタスク→送信済みに保存されます。リーダーと管理部門のみ閲覧できます。', tarEscolhaArea:'エリアを選んでください。それぞれに、やることのシート・送信済み・レポートがあります。', tarTodasAreas:'エリアを選び直す', tarAbaFazer:'やること', tarAbaEnviados:'送信済み', tarAbaRel:'レポート', tarComPrazo:'期限あり', tarResolver:'対応が必要', tarNSemRisco:'リスク未評価のHHK {n}件', tarTudoEmDia:'すべて期限内', tarHhkSemRisco:'リスク未評価のHHKが{n}件あります', tarHhkSemRiscoDica:'報告を読み、ケガの大きさと可能性を選んでください。', tarAvaliar:'評価する', tarMatrizDica:'セルをタップすると、そのエリアとして記入できます。', tarFicha:'シート', tarHoje:'本日期限', tarFaltamD:'残り{n}日', tarEnvVazio:'このエリアの送信はまだありません。', tarCfgArea:'タスクのエリア',
+    tarOkTit:'シートを送信しました', tarOkTxt:'受付番号 {n}。タスク→{a}→送信済みに表示されます。', tarPrivado:'送信したシートはタスク→送信済みに保存されます。リーダーと管理部門のみ閲覧できます。', tarEscolhaArea:'エリアを選んでください。それぞれに、やることのシート・送信済み・レポートがあります。', tarTodasAreas:'エリアを選び直す', tarAbaFazer:'やること', tarAbaEnviados:'送信済み', tarAbaRel:'レポート', tarComPrazo:'期限あり', tarResolver:'対応が必要', tarNSemRisco:'リスク未評価のHHK {n}件', tarTudoEmDia:'すべて完了', tarHhkSemRisco:'リスク未評価のHHKが{n}件あります', tarHhkSemRiscoDica:'報告を読み、ケガの大きさと可能性を選んでください。', tarAvaliar:'評価する', tarMatrizDica:'セルをタップすると、そのエリアとして記入できます。', tarFicha:'シート', tarHoje:'本日期限', tarFaltamD:'残り{n}日', tarEnvVazio:'このエリアの送信はまだありません。', tarCfgArea:'タスクのエリア',
     rkTit:'リスクの見積もり', rkHint:'報告を読んだ後、職場責任者が記入します。ケガの大きさと可能性を選ぶと、合計点からリスクレベルが決まります（原紙と同じ）。', rkFazer:'リスクの見積もりを記入', rkSoLider:'見積もりは{s}のリーダーまたは管理部門が記入します。', rkGrav:'予想されるケガの大きさ', rkProb:'予想されるケガの可能性', rkEscolha:'ケガの大きさと可能性を選んでください。', rkCausa:'原因', rkContra:'対策', rkPrazo:'納期日', rkFim:'完了日（任意）', rkResp:'職場責任者', rkKy:'ＫＹシートに落とし込み活用する', rkPor:'{d} 記入（{p}）', rkEditar:'見積もりを修正', rkSalvar:'見積もりを保存', rkSalvo:'リスクの見積もりを保存しました。シートのPDFに反映されます。', rkFalta:'リスク未評価', e_riscoPontos:'ケガの大きさと可能性を選んでください。', e_riscoAcao:'評価がⅣ・Ⅲの時は原因と対策を記入してください。', e_riscoPrazo:'評価がⅣ・Ⅲの時は納期日を選んでください。', e_riscoResp:'職場責任者を記入してください。', e_riscoSoHhk:'リスクの見積もりはHHKシートのみです。', e_riscoSetor:'リーダーは自エリアのHHKのみ評価できます。',
-    patOutraPessoa:'その他（未登録の人）', patNomePessoa:'氏名', patEducador:'教育者', patPergunta:'聞き取り', patNovaAval:'新規：{f}', patSemPrazoTit:'期限なしのシート', patSemPrazoHint:'評価する人がいるときに記入してください。タスクの期限には含まれません。', patPreencher:'記入する', patSemPrazoCfg:'このシートには期限がありません。評価する人がいるときにリーダーが記入します。タスクの「期限なしのシート」と個人ページに表示されます。', e_patPessoa:'評価対象者を選ぶか、入力してください。', liftErrNada:'教育項目を1つ以上チェックしてください。', liftIncompletoQ:'教育の進捗は{p}%です。このまま完了してPDFを作成しますか？', liftProgresso:'完了 {p}% · {b}件中 {a}件', liftAndamento:'この端末で記録中', liftDesde:'{d}から', liftContinuar:'続ける', liftNovo:'新しい記録を始める', liftComecar:'開始', liftNAndamento:'この端末で{n}件記録中', liftTentativa:'{n}回目', liftMin:'分', liftSeg:'秒', liftTesteDica:'10分以内に5パレットを積みます。各回の時間と結果を記入してください。', liftTrocar:'対象者を変更', liftObs:'備考', liftDescartar:'破棄', liftDescartarQ:'{n}さんの記録を破棄しますか？この端末でチェックした内容はすべて消去されます。', liftFinalizar:'完了してPDFを作成', liftRascunhoDica:'日をまたいでこの端末に保存されます。同じ端末を使い、最終日に完了してください。',
+    patOutraPessoa:'その他（未登録の人）', patNomePessoa:'氏名', patEducador:'教育者', patPergunta:'聞き取り', patNovaAval:'新規：{f}', patContinuarAval:'続ける：{f}', patSemPrazoTit:'期限なしのシート', patSemPrazoHint:'評価する人がいるときに記入してください。タスクの期限には含まれません。', patPreencher:'記入する', e_patPessoa:'評価対象者を選ぶか、入力してください。', liftErrNada:'教育項目を1つ以上チェックしてください。', liftIncompletoQ:'教育の進捗は{p}%です。このまま完了してPDFを作成しますか？', liftProgresso:'完了 {p}% · {b}件中 {a}件', liftAndamento:'この端末で記録中', liftDesde:'{d}から', liftContinuar:'続ける', liftNovo:'新しい記録を始める', liftComecar:'開始', liftNAndamento:'この端末で{n}件記録中', liftTentativa:'{n}回目', liftMin:'分', liftSeg:'秒', liftTesteDica:'10分以内に5パレットを積みます。各回の時間と結果を記入してください。', liftTrocar:'対象者を変更', liftObs:'備考', liftDescartar:'破棄', liftDescartarQ:'{n}さんの記録を破棄しますか？この端末でチェックした内容はすべて消去されます。', liftFinalizar:'完了してPDFを作成', liftRascunhoDica:'日をまたいでこの端末に保存されます。同じ端末を使い、最終日に完了してください。',
     patSetor:'エリア（ゾーン）', patPessoa:'評価する人', patData:'実施日', patInicio:'開始日', patFim:'終了日', patHoraIni:'開始時刻', patHoraFim:'終了時刻', patInspetor:'巡回する人', patLider:'責任者', patObs:'指摘事項・違反者等', patLegenda:'説明（任意）', patFoto:'写真', patSemItens:'このリストにはまだ項目がありません。管理部門に登録を依頼してください。', patLimpar:'クリア', patEnviar:'PDFを作成して送信', patRascunhoDica:'入力内容は送信するまでこの端末に保存されます（ポータルを閉じても残ります）。', patRascunhoSemFotos:'写真が多く端末に保存できないため、写真なしで下書きを保存しました（○×・指摘事項は保存済み）。', patResumo:'遵守率 {t}% · ○ {ok} · × {ng} · 未記入 {p}', patOkTit:'巡回を送信しました', patOkTxt:'受付番号 {n}。PDFはDriveのフォルダに保存され、タスクは提出済みになりました。', patCompartilhar:'共有（WhatsApp・LINEなど）', patLimparQ:'この巡回の入力をすべて消しますか？', patErrPessoa:'評価する人を選んでください。', patErrDatas:'巡回の日付を確認してください。', patErrInspetor:'巡回者を入力してください。', patErrNada:'少なくとも1項目を○か×で評価してください。', patPendQ:'未記入の項目が{n}件あります。このまま送信しますか？', patGerando:'PDFを作成して送信中…', patErroEnviar:'送信できませんでした。もう一度お試しください。', patSemAval:'この人の個人巡回はまだありません。', patVerPdf:'PDFを見る', patEditarItens:'チェック項目を編集', patEdTit:'チェック項目', patEdDica:'各項目は日本語とポルトガル語の両方が必要です（PDFに両方表示）。「翻訳」ボタンで空欄の言語を自動入力できます。', patListaPadrao:'標準リスト（全エリア）', patListaPropria:'専用リスト', patUsaPadrao:'標準リストを使用', patSetorUsaPadrao:'このエリアは標準リストを使用しています。', patCriarPropria:'専用リストを作成（標準のコピー）', patCategoria:'区分', patAddItem:'項目を追加', patAddCat:'区分を追加', patTraduzir:'空欄を翻訳', patRestaurar:'元のリストに戻す', patVoltarPadrao:'標準リストに戻す', patEdSairQ:'保存せずに閉じますか？', patVoltarPadraoQ:'このエリアの専用リストを削除し、標準リストを使いますか？', patRestaurarQ:'このリストを巡回アプリの元のリストに戻しますか？', patApagarCatQ:'この区分とその項目をすべて削除しますか？', patTradDemo:'翻訳は公開中のポータルでのみ使えます。', patErrVazio:'すべての項目と区分に日本語とポルトガル語を入力してください。', patEdSalvo:'項目を保存しました。', tarCfgQtd:'1期あたりの評価人数', pesAbaAval:'評価', e_patSetor:'有効なエリアを選んでください。',
     tarTodosSetores:'従業員がいる全エリア', cfgAdmTit:'管理ツール', cfgAdmHint:'公開・変更の履歴と、ポータルの内容のバックアップです。', cfgHistHint:'ポータルで公開・変更された内容（日時と実施者）。', cfgHistSub:'いつ・誰が・何を変更したか', cfgExportSub:'バックアップを保存', cfgImportSub:'バックアップから復元（全体を置き換え）', ldExpira:'リーダー · 6時間有効',
     ptPrazo:'確認期限', ptPrazoDica:'期限：各自が開いて回答する期限です。過ぎると「遅れ」と表示されます。', ptAte:'{d}までに回答', ptAtrasadoTxt:'期限（{d}）を過ぎています。今すぐ確認して回答してください。', ptSit_atrasado:'遅れ', ptPainelAtraso:'期限内に出勤簿を確認していない人：{n}名', ptPainelAtrasoTxt:'ポータルを開いて回答するよう声をかけてください。', ptMudarPrazo:'期限を変更', ptPrazoSalvo:'期限を変更しました。', ptPrazoTodos:'新しい期限は{m}の出勤簿すべてに適用されます。', ptSemPrazo:'期限なし', e_pontoPrazo:'確認期限を選んでください（今日以降）。',
@@ -1561,16 +1566,16 @@ const T = {
     xlT_texto:'Texto', xlT_longo:'Texto largo', xlT_numero:'Número', xlT_data:'Fecha', xlT_foto:'Foto', xlT_sign:'Firma', xlT_check:'Marcar ☑', xlT_oxo:'○ / ×',
     xlA_nenhum:'Lo rellena la persona', xlA_nome:'Automático: nombre', xlA_codigo:'Automático: nº de empleado', xlA_setor:'Automático: sector', xlA_hoje:'Fecha de hoy (editable)',
     navTarefas:'Tareas', tarSemanal:'Cada semana · hasta el {d}', tarQuinzenal:'Cada 2 semanas · hasta el {d}', tarDias:'Cada {n} días', tarMensal:'Cada mes · hasta el día {d}',
-    tarOk:'Entregada', tarAtrasada:'Atrasada', tarPendente:'Pendiente',
-    tarDetOk:'Entregada el {d} · próxima hasta {p}', tarDetAtr:'No entregada hasta {d} · próxima hasta {p}', tarDetHoje:'Vence hoy ({d})', tarDetPen:'Vence {d} · faltan {n} día(s)',
+    tarOk:'Completada', tarPendente:'Pendiente',
+    tarDetOk:'Completada el {d} · próximo plazo {p}', tarDetAtr:'Pendiente desde el {d} · próximo plazo {p}', tarDetHoje:'Vence hoy ({d})', tarDetPen:'Vence {d} · faltan {n} día(s)',
     tarVazio:'No hay tareas con plazo configurado.', tarHintAdm:'Situación de cada sector en este período. Cualquier líder del sector o la administración puede entregar.',
     tarHintLider:'Tareas de tu sector en este período. Entrega antes del plazo.', tarConfigurar:'Configurar plazo', tarDeNovo:'Entregar de nuevo', tarFazer:'Entregar ahora',
-    tarSemSetor:'Ningún sector tuyo en esta tarea.', tarNAtr:'{n} atrasada(s)', tarNPen:'{n} pendiente(s)', tarNOk:'{n} entregada(s)',
+    tarSemSetor:'Ningún sector tuyo en esta tarea.', tarNPen:'{n} pendiente(s)', tarNOk:'{n} entregada(s)',
     tarSetorEntrega:'Sector de esta entrega', tarErrSetor:'Elige el sector de esta entrega.',
-    tarCfgTit:'Tarea de líder (plazo)', tarCfgSoLider:'Solo líderes y la administración rellenan esta hoja', tarCfgPrazo:'Cada sector debe entregar con frecuencia (tiene plazo)',
+    tarCfgTit:'Tarea de líder', tarCfgSoLider:'Solo líderes y la administración rellenan esta hoja',
     tarCfgFreq:'Frecuencia', tarF_semanal:'Semanal', tarF_quinzenal:'Cada 2 semanas', tarF_mensal:'Mensual', tarF_dias:'Cada X días',
     tarCfgDiaSemana:'Entregar hasta (día de la semana)', tarCfgDiaMes:'Entregar hasta el día', tarCfgDias:'Cada cuántos días', tarCfgInicio:'Empieza a contar el',
-    tarCfgSetores:'Sectores que deben entregar', tarCfgDica:'El atraso solo cuenta desde la fecha de inicio. En meses más cortos, el plazo cae el último día.',
+    tarCfgSetores:'Sectores que deben entregar', tarCfgDica:'Los plazos cuentan desde la fecha de inicio. En meses más cortos, el plazo cae el último día. Lo que no se haga a tiempo sigue "Pendiente" hasta que se haga.',
     tarErrSetores:'Elige al menos un sector para la tarea.',
     e_soLiderTarefa:'Esta hoja es una tarea de líder o de la administración.',
     coEndL:'Direcciones', coEndTipo:'Matriz o sede', coEndTxt:'Dirección', coEndAdd:'Añadir dirección', coEndMapa:'Ver en el mapa',
@@ -1591,10 +1596,11 @@ const T = {
     tpQuemVe:'Quién ve este tema', tpQuemVeHint:'Toca los sectores que deben ver este tema. Los empleados solo ven los temas y documentos de su propio sector; los líderes y la administración ven todos.', tpSalvo:'Sectores del tema guardados.', docSetor:'Sector del documento', docTodosDoTopico:'Todos los sectores del tema',
     navYukyu:'Mis yuukyuu', navYukyuEd:'Registro de yuukyuu', ykHintFunc:'Las solicitudes de yuukyuu que enviaste por el portal. Solo tú ves esta lista.', ykHintEd:'Solicitudes de yuukyuu enviadas por el portal. Marca la situación: Denegado (la empresa lo rechazó) y Cancelado (el empleado desistió) no entran en el total. Solo los líderes y la administración ven todas.', ykAno:'Año', ykBusca:'Buscar nombre o código', ykTotalAno:'Solicitados en {a}', ykAprovados:'Aprobados', ykDias:'días', ykPorPessoa:'Total por persona en {a}', ykAprovN:'{n} aprobados', ykManha:'Mañana (午前休)', ykDiaInteiro:'Día completo (終日)', ykHosp:'Hospital o consulta', ykEnviado:'Enviado el {d} · {n} día(s) de antelación', ykSit_pendente:'Pendiente', ykSit_aprovado:'Aprobado', ykSit_negado:'Denegado', ykSit_cancelado:'Cancelado', ykVazio:'No hay solicitudes de yuukyuu este año.', ykSalvo:'Estado guardado.',
     ptNome:'Revisión de horario', navPonto:'Revisión de horario', ptSit_pendente:'Esperando respuesta', ptSit_ok:'Revisado', ptSit_erro:'Tiene error', ptPainelTit:'Llegó tu revisión de horario de {m}', ptPainelTxt:'Ábrela, revisa tus horarios y responde si está correcto.', ptConferirAgora:'Revisar ahora', ptPainelErros:'{n} persona(s) indicaron un error en la revisión de horario', ptPainelErrosTxt:'Lee cada comentario, corrige y envía la revisión de horario de nuevo.', ptVerLista:'Ver lista', ptEntre:'Entra con tu código y contraseña para ver tu revisión de horario.', ptMeus:'Mi revisión de horario', ptHintFunc:'Cada mes tu revisión de horario (horarios de entrada y salida) llega aquí. Ábrela, revisa día por día y responde. Solo tú, los líderes y la administración ven la tuya.', ptVazioMeu:'Todavía no hay revisión de horario para responder.', ptRecebido:'Recibido el {d}', ptSeuComentario:'Tu comentario:', ptRespondido:'Respondido el {d}', ptPergunta:'¿Los horarios están correctos?', ptAbraPrimeiro:'Abre la revisión de horario y revisa los horarios antes de responder.', ptVerMeu:'Ver mi revisión de horario', ptMudar:'Cambiar la respuesta', ptCorreto:'Está correcto', ptTemErro:'Hay un error', ptQualErro:'¿Qué está mal?', ptQualErroEx:'Ej.: el día 14 salí a las 18:30, no a las 19:30.', ptMandarErro:'Enviar', ptEnviarTit:'Enviar la revisión de horario del mes', ptEnviarHint:'Elige el PDF del 出勤簿 (una página por empleado; puede ser más de un archivo). El portal lee el código de cada página y revisas a quién va cada una antes de enviar.', ptEscolher:'Elegir PDF', ptListaTit:'Situación por empleado', ptMes:'Mes', ptTotal:'Enviados', ptVazioMes:'Ninguna revisión de horario enviada este mes.', ptSemFolha:'{n} empleado(s) registrados sin revisión de horario este mes', ptEnviadoPor:'Enviado el {d} por {p}', ptRespondidoCurto:'respondido el {d}', ptVer:'Ver', ptRemover:'Quitar esta revisión de horario', ptRemoverQ:'¿Quitar la revisión de horario de {m} de {n}? La persona dejará de ver este archivo.', ptRemovido:'Revisión de horario quitada.', ptObrigado:'¡Gracias! Respuesta enviada: está correcto.', ptErroMandado:'Enviado. La administración lo revisará y corregirá.', ptSoPdf:'Elige un archivo PDF.', ptLendo:'Leyendo el PDF…', ptErroLer:'No se pudo leer este PDF. Revisa el archivo e inténtalo de nuevo.', ptChipPular:'Esta página no se enviará', ptChipSemTexto:'La página no tiene texto (parece escaneada): elige la persona', ptChipNaoCadastrado:'El código {c} no está registrado: elige la persona', ptChipSemCodigo:'No encontré el código de empleado en esta página: elige la persona', ptChipTrocado:'Persona elegida a mano (la hoja dice {c})', ptChipManual:'Persona elegida a mano', ptChipNomeDif:'El nombre en la hoja es distinto del registro: revisa con atención', ptChipConfiraNome:'Código encontrado: revisa el nombre', ptChipOk:'Código y nombre coinciden con el registro', ptChipJuntas:'Más de una página para esta persona: van juntas en el mismo PDF', ptChipSubstitui:'Esta persona ya tiene revisión de horario de {m}: la anterior se reemplazará', ptAmpliar:'Ampliar', ptPagina:'Página {n} · {a}', ptNaFolha:'Escrito en la hoja:', ptAnexarPara:'Enviar a', ptEscolhaPessoa:'— Elige la persona —', ptNaoAnexar:'No enviar esta página', ptConferiPessoa:'Revisado: esta página es de {n}', ptRevTit:'Revisar a quién va cada página', ptRevN:'{a} de {b} revisadas', ptEnviarN:'Enviar a {n} persona(s)', ptRevDica:'El portal leyó el código de empleado de cada página y eligió la persona del registro. Mira la página (toca para ampliar), revisa el nombre y marca "Revisado". Si está mal, elige la persona correcta o "No enviar esta página".', ptMesDica:'Leído de la hoja. Corrígelo si está mal.', ptCancelarQ:'¿Cancelar? No se enviará nada.', ptFaltaPessoa:'{n} página(s) sin persona: elige la persona o "No enviar esta página".', ptNada:'No hay páginas para enviar.', ptFaltaConferir:'Faltan revisar {n} página(s).', ptSubstituirQ:'{n} persona(s) ya tienen revisión de horario de {m}. ¿Reemplazar por la nueva? Su respuesta anterior se borrará.', ptSeparando:'Separando las páginas…', ptEnviando:'Enviando… ({a} de {b})', ptErroEnviar:'No se pudo enviar. Inténtalo de nuevo.', ptEnviados:'Revisión de horario enviada a {n} persona(s).', ptVoce:'tú', e_pontoMes:'Elige el mes de la revisión de horario.', e_pontoNaoAchei:'Esta revisión de horario ya no existe. Recarga la página.', e_pontoSoDono:'Solo la propia persona puede responder su revisión de horario.', e_pontoComentario:'Escribe qué está mal en los horarios.',
+    tarSemPrazoLinha:'Rellénala cuando haga falta. No cuenta como pendiente.', progTit:'En progreso', progCurto:'En progreso', progSalvo:'guardado a las {h}', progDica:'Lo que rellenaste queda guardado en este dispositivo, aunque cierres el portal o abras otra ficha. Una ficha nueva solo empieza después de enviar el PDF.', progDescartar:'Descartar', progDescartarQ:'¿Descartar lo rellenado y empezar de nuevo?', progOutras:'Otras fichas en progreso', progSemNome:'(sin nombre)', tarNProg:'{n} en progreso', tarContinuar:'Continuar', tarCfgComPrazo:'Con plazo', tarCfgComPrazoDica:'Cada sector entrega con frecuencia (cada semana, cada mes…).', tarCfgSemPrazo:'Ficha sin plazo', tarCfgSemPrazoDica:'Se rellena cuando haga falta. Queda en Tareas → Fichas sin plazo y no cuenta como pendiente.',
     relPeriodo:'Período', relP_4s:'4 semanas', relP_3m:'3 meses', relP_6m:'6 meses', relP_12m:'12 meses', relPorSemana:'por semana', relSemana:'Semana', relSemanaDe:'Semana del {d}', relVerTabela:'Ver en tabla', relGrafAria:'Gráfico del 遵守率 semana a semana', relSemDados:'Sin datos en este período.', relDeltaIgual:'igual al período anterior', relVsAnterior:'vs período anterior', relNPat:'{n} patrulla(s)', relNPessoas:'{n} evaluación(es) · {p} persona(s)', relMedia:'promedio 遵守率 {p}%', relDicaRank:'遵守率 {p}% en {n} patrulla(s)', relDicaEntrega:'{a} entregada(s) de {b} en el período', relEntregas:'Entregas', relSemPrazos:'Ningún plazo en este período', relDeEsperadas:'{a} de {b} esperadas', relEntregasSub:'entregadas / esperadas en el período', relEntregasDica:'Verde: todo entregado · amarillo: 70% o más · rojo: menos del 70%.', relRankSetor:'Ranking por sector', relRankInspetor:'Ranking por 巡回者', relTopNg:'Los 10 ítems con más ×', relHhkRecebidos:'HHK recibidos', relSemAltos:'ningún Ⅳ ni Ⅲ', relHhkNivel:'HHK por nivel de riesgo', relAcoesAbertas:'Contramedidas abiertas', relAcoesSub:'Ⅳ y Ⅲ sin 完了日', relAcoesDica:'Ⅳ y Ⅲ todavía sin 完了日', relNAtrasadas:'{n} con el plazo vencido', relSemAbertas:'Ninguna contramedida abierta.', relLiftSub:'capacitaciones finalizadas en el período', relPessoas:'Personas evaluadas — menor 遵守率 primero', relPessoasSub:'個人巡回 y ピッキング見極め', relNAval:'{n} evaluación(es)', relVerPessoa:'Página',
-    tarOkTit:'Ficha enviada', tarOkTxt:'Protocolo {n}. Aparece en Tareas → {a} → Enviados.', tarPrivado:'Las fichas enviadas quedan en Tareas → Enviados. Solo los líderes y la administración las ven.', tarEscolhaArea:'Elige el área. En cada una están las fichas por hacer, lo que ya se envió y los informes.', tarTodasAreas:'Cambiar de área', tarAbaFazer:'Por hacer', tarAbaEnviados:'Enviados', tarAbaRel:'Informes', tarComPrazo:'Con plazo', tarResolver:'Por resolver', tarNSemRisco:'{n} HHK sin riesgo', tarTudoEmDia:'Todo al día', tarHhkSemRisco:'{n} HHK sin estimación de riesgo', tarHhkSemRiscoDica:'Lee el reporte y marca la gravedad y la probabilidad.', tarAvaliar:'Evaluar', tarMatrizDica:'Toca una celda para rellenar por ese sector.', tarFicha:'Ficha', tarHoje:'Vence hoy', tarFaltamD:'Faltan {n} d', tarEnvVazio:'Todavía no se envió nada en esta área.', tarCfgArea:'Área en Tareas',
+    tarOkTit:'Ficha enviada', tarOkTxt:'Protocolo {n}. Aparece en Tareas → {a} → Enviados.', tarPrivado:'Las fichas enviadas quedan en Tareas → Enviados. Solo los líderes y la administración las ven.', tarEscolhaArea:'Elige el área. En cada una están las fichas por hacer, lo que ya se envió y los informes.', tarTodasAreas:'Cambiar de área', tarAbaFazer:'Por hacer', tarAbaEnviados:'Enviados', tarAbaRel:'Informes', tarComPrazo:'Con plazo', tarResolver:'Por resolver', tarNSemRisco:'{n} HHK sin riesgo', tarTudoEmDia:'Todo completado', tarHhkSemRisco:'{n} HHK sin estimación de riesgo', tarHhkSemRiscoDica:'Lee el reporte y marca la gravedad y la probabilidad.', tarAvaliar:'Evaluar', tarMatrizDica:'Toca una celda para rellenar por ese sector.', tarFicha:'Ficha', tarHoje:'Vence hoy', tarFaltamD:'Faltan {n} d', tarEnvVazio:'Todavía no se envió nada en esta área.', tarCfgArea:'Área en Tareas',
     rkTit:'Estimación de riesgo', rkHint:'La hace el responsable del sector después de leer el reporte: marca la gravedad y la probabilidad. La suma da el nivel de riesgo, como en la hoja.', rkFazer:'Hacer la estimación de riesgo', rkSoLider:'La estimación la hace el líder de {s} o la administración.', rkGrav:'Gravedad esperada de la lesión', rkProb:'Probabilidad esperada de la lesión', rkEscolha:'Elige la gravedad y la probabilidad.', rkCausa:'Causa', rkContra:'Contramedida', rkPrazo:'Plazo', rkFim:'Concluido el (opcional)', rkResp:'Responsable del sector', rkKy:'ＫＹシートに落とし込み活用する — usar este caso en la hoja KY.', rkPor:'hecha por {p} el {d}', rkEditar:'Corregir la estimación', rkSalvar:'Guardar la estimación', rkSalvo:'Estimación de riesgo guardada. El PDF de la hoja ya sale con ella.', rkFalta:'Falta la estimación de riesgo', e_riscoPontos:'Elige la gravedad y la probabilidad.', e_riscoAcao:'Con riesgo Ⅳ o Ⅲ, escribe la causa y la contramedida.', e_riscoPrazo:'Con riesgo Ⅳ o Ⅲ, elige el plazo.', e_riscoResp:'Escribe el nombre del responsable del sector.', e_riscoSoHhk:'La estimación de riesgo es solo para la hoja HHK.', e_riscoSetor:'El líder solo estima los HHK de su propio sector.',
-    patOutraPessoa:'Otra persona (aún sin registro)', patNomePessoa:'Nombre de la persona', patEducador:'Evaluador', patPergunta:'Pregunta oral', patNovaAval:'Nueva: {f}', patSemPrazoTit:'Fichas sin plazo', patSemPrazoHint:'Rellénalas cuando haya alguien para evaluar. No cuentan en los plazos de las tareas.', patPreencher:'Rellenar', patSemPrazoCfg:'Esta ficha no tiene plazo: el líder la rellena cuando haya alguien para evaluar. Aparece en Tareas, en "Fichas sin plazo", y en la página de la persona.', e_patPessoa:'Elige o escribe la persona evaluada.', liftErrNada:'Marca al menos un ítem de la capacitación.', liftIncompletoQ:'La capacitación está {p}% completa. ¿Finalizar y crear el PDF de todos modos?', liftProgresso:'Completado {p}% · {a} de {b}', liftAndamento:'En curso en este dispositivo', liftDesde:'desde {d}', liftContinuar:'Continuar', liftNovo:'Empezar un registro nuevo', liftComecar:'Empezar', liftNAndamento:'{n} en curso en este dispositivo', liftTentativa:'Intento {n}', liftMin:'min', liftSeg:'seg', liftTesteDica:'Apilar 5 pallets en menos de 10 minutos. Anota el tiempo y el resultado de cada intento.', liftTrocar:'Cambiar persona', liftObs:'Observaciones', liftDescartar:'Descartar', liftDescartarQ:'¿Descartar el registro de {n}? Todo lo marcado en este dispositivo se borrará.', liftFinalizar:'Finalizar y crear PDF', liftRascunhoDica:'Queda guardado en este dispositivo de un día a otro. Usa siempre el mismo dispositivo y finalízalo el último día.',
+    patOutraPessoa:'Otra persona (aún sin registro)', patNomePessoa:'Nombre de la persona', patEducador:'Evaluador', patPergunta:'Pregunta oral', patNovaAval:'Nueva: {f}', patContinuarAval:'Continuar: {f}', patSemPrazoTit:'Fichas sin plazo', patSemPrazoHint:'Rellénalas cuando haya alguien para evaluar. No cuentan en los plazos de las tareas.', patPreencher:'Rellenar', e_patPessoa:'Elige o escribe la persona evaluada.', liftErrNada:'Marca al menos un ítem de la capacitación.', liftIncompletoQ:'La capacitación está {p}% completa. ¿Finalizar y crear el PDF de todos modos?', liftProgresso:'Completado {p}% · {a} de {b}', liftAndamento:'En curso en este dispositivo', liftDesde:'desde {d}', liftContinuar:'Continuar', liftNovo:'Empezar un registro nuevo', liftComecar:'Empezar', liftNAndamento:'{n} en curso en este dispositivo', liftTentativa:'Intento {n}', liftMin:'min', liftSeg:'seg', liftTesteDica:'Apilar 5 pallets en menos de 10 minutos. Anota el tiempo y el resultado de cada intento.', liftTrocar:'Cambiar persona', liftObs:'Observaciones', liftDescartar:'Descartar', liftDescartarQ:'¿Descartar el registro de {n}? Todo lo marcado en este dispositivo se borrará.', liftFinalizar:'Finalizar y crear PDF', liftRascunhoDica:'Queda guardado en este dispositivo de un día a otro. Usa siempre el mismo dispositivo y finalízalo el último día.',
     patSetor:'Sector (zona)', patPessoa:'Persona evaluada', patData:'Fecha', patInicio:'Inicio', patFim:'Fin', patHoraIni:'Hora de inicio', patHoraFim:'Hora de término', patInspetor:'quien hace la patrulla', patLider:'encargado', patObs:'Observación (指摘事項・違反者等)', patLegenda:'Leyenda (opcional)', patFoto:'Foto', patSemItens:'Esta lista aún no tiene ítems. Pide a la administración que los registre.', patLimpar:'Limpiar', patEnviar:'Generar PDF y enviar', patRascunhoDica:'Lo que marcas queda guardado en este dispositivo hasta enviar, aunque cierres el portal.', patRascunhoSemFotos:'Hay demasiadas fotos para guardar en el dispositivo: el borrador se guardó sin fotos (○/× y observaciones están guardados).', patResumo:'遵守率 {t}% · ○ {ok} · × {ng} · faltan {p}', patOkTit:'Patrulla enviada', patOkTxt:'Protocolo {n}. El PDF fue a la carpeta de Drive y la tarea cuenta como entregada.', patCompartilhar:'Compartir (WhatsApp, LINE…)', patLimparQ:'¿Borrar todo lo marcado en esta patrulla?', patErrPessoa:'Elige la persona evaluada.', patErrDatas:'Revisa las fechas de la patrulla.', patErrInspetor:'Escribe quién hizo la patrulla (巡回者).', patErrNada:'Evalúa al menos un ítem con ○ o ×.', patPendQ:'{n} ítem(s) sin evaluar. ¿Enviar de todos modos?', patGerando:'Generando el PDF y enviando…', patErroEnviar:'No se pudo enviar. Inténtalo de nuevo.', patSemAval:'Todavía no hay evaluaciones individuales de esta persona.', patVerPdf:'Ver PDF', patEditarItens:'Editar los ítems de la lista', patEdTit:'Ítems de la lista', patEdDica:'Cada ítem debe estar en japonés y en portugués (el PDF muestra los dos). El botón Traducir llena el idioma vacío.', patListaPadrao:'Lista estándar (todos los sectores)', patListaPropria:'lista propia', patUsaPadrao:'usa la lista estándar', patSetorUsaPadrao:'Este sector usa la lista estándar.', patCriarPropria:'Crear lista propia (copia de la estándar)', patCategoria:'Categoría', patAddItem:'Agregar ítem', patAddCat:'Agregar categoría', patTraduzir:'Traducir los campos vacíos', patRestaurar:'Restaurar la lista original', patVoltarPadrao:'Volver a usar la lista estándar', patEdSairQ:'¿Salir sin guardar?', patVoltarPadraoQ:'¿Borrar la lista propia de este sector y usar la lista estándar?', patRestaurarQ:'¿Reemplazar esta lista por la original de la app de patrulla?', patApagarCatQ:'¿Borrar esta categoría y todos sus ítems?', patTradDemo:'La traducción solo funciona en el portal publicado.', patErrVazio:'Completa el japonés y el portugués de cada ítem y categoría.', patEdSalvo:'Ítems guardados.', tarCfgQtd:'Personas evaluadas por período', pesAbaAval:'Evaluaciones', e_patSetor:'Elige un sector válido.',
     tarTodosSetores:'Todos los sectores con empleados', cfgAdmTit:'Herramientas de administración', cfgAdmHint:'Historial de todo lo publicado o cambiado, y copia de seguridad del contenido del portal.', cfgHistHint:'Todo lo publicado o cambiado en el portal, con fecha y quién lo hizo.', cfgHistSub:'Quién cambió qué y cuándo', cfgExportSub:'Guardar una copia de seguridad', cfgImportSub:'Restaurar una copia (reemplaza todo)', ldExpira:'Líder · acceso por 6 horas',
     grupoComunicacao:'Comunicación', grupoPedidos:'Solicitudes y tareas', grupoPessoas:'Personas', grupoEmpresaConta:'Empresa y cuenta', navEmployees:'Empleados', navMinhaPagina:'Mi página', empAbaLista:'Lista', empAbaPonto:'Revisión de horario', empAbaYukyu:'Yuukyuu', pesAbaPonto:'Revisión de horario', pesAbaYukyu:'Yuukyuu', empVerPagina:'Ver página', pesVazioPonto:'Ninguna revisión de horario enviada a esta persona.', pesVazioYk:'Ninguna solicitud de yuukyuu de esta persona.',
@@ -1826,16 +1832,16 @@ const T = {
     xlT_texto:'Teks', xlT_longo:'Teks panjang', xlT_numero:'Angka', xlT_data:'Tanggal', xlT_foto:'Foto', xlT_sign:'Tanda tangan', xlT_check:'Centang ☑', xlT_oxo:'○ / ×',
     xlA_nenhum:'Diisi orangnya', xlA_nome:'Otomatis: nama', xlA_codigo:'Otomatis: no. karyawan', xlA_setor:'Otomatis: sektor', xlA_hoje:'Tanggal hari ini (bisa diubah)',
     navTarefas:'Tugas', tarSemanal:'Setiap minggu · sampai {d}', tarQuinzenal:'Setiap 2 minggu · sampai {d}', tarDias:'Setiap {n} hari', tarMensal:'Setiap bulan · sampai tanggal {d}',
-    tarOk:'Sudah diserahkan', tarAtrasada:'Terlambat', tarPendente:'Belum',
-    tarDetOk:'Diserahkan {d} · berikutnya sampai {p}', tarDetAtr:'Tidak diserahkan sampai {d} · berikutnya sampai {p}', tarDetHoje:'Batas hari ini ({d})', tarDetPen:'Batas {d} · sisa {n} hari',
+    tarOk:'Selesai', tarPendente:'Tertunda',
+    tarDetOk:'Selesai {d} · tenggat berikutnya {p}', tarDetAtr:'Tertunda sejak {d} · tenggat berikutnya {p}', tarDetHoje:'Batas hari ini ({d})', tarDetPen:'Batas {d} · sisa {n} hari',
     tarVazio:'Belum ada tugas dengan batas waktu.', tarHintAdm:'Status setiap sektor pada periode ini. Pemimpin sektor atau administrasi dapat menyerahkan.',
     tarHintLider:'Tugas sektor Anda pada periode ini. Serahkan sebelum batas waktu.', tarConfigurar:'Atur batas waktu', tarDeNovo:'Serahkan lagi', tarFazer:'Serahkan sekarang',
-    tarSemSetor:'Tidak ada sektor Anda di tugas ini.', tarNAtr:'{n} terlambat', tarNPen:'{n} belum', tarNOk:'{n} sudah',
+    tarSemSetor:'Tidak ada sektor Anda di tugas ini.', tarNPen:'{n} belum', tarNOk:'{n} sudah',
     tarSetorEntrega:'Sektor penyerahan ini', tarErrSetor:'Pilih sektor penyerahan ini.',
-    tarCfgTit:'Tugas pemimpin (batas waktu)', tarCfgSoLider:'Hanya pemimpin dan administrasi yang mengisi lembar ini', tarCfgPrazo:'Setiap sektor harus menyerahkan secara berkala (ada batas waktu)',
+    tarCfgTit:'Tugas pemimpin', tarCfgSoLider:'Hanya pemimpin dan administrasi yang mengisi lembar ini',
     tarCfgFreq:'Frekuensi', tarF_semanal:'Mingguan', tarF_quinzenal:'Setiap 2 minggu', tarF_mensal:'Bulanan', tarF_dias:'Setiap X hari',
     tarCfgDiaSemana:'Serahkan sampai (hari)', tarCfgDiaMes:'Serahkan sampai tanggal', tarCfgDias:'Setiap berapa hari', tarCfgInicio:'Mulai dihitung pada',
-    tarCfgSetores:'Sektor yang harus menyerahkan', tarCfgDica:'Keterlambatan hanya dihitung sejak tanggal mulai. Di bulan yang lebih pendek, batas jatuh di hari terakhir.',
+    tarCfgSetores:'Sektor yang harus menyerahkan', tarCfgDica:'Tenggat dihitung sejak tanggal mulai. Di bulan yang lebih pendek, tenggat jatuh di hari terakhir. Yang belum dikerjakan tetap "Tertunda" sampai selesai.',
     tarErrSetores:'Pilih minimal satu sektor untuk tugas ini.',
     e_soLiderTarefa:'Lembar ini adalah tugas pemimpin atau administrasi.',
     coEndL:'Alamat', coEndTipo:'Kantor pusat atau cabang', coEndTxt:'Alamat', coEndAdd:'Tambah alamat', coEndMapa:'Lihat di peta',
@@ -1856,10 +1862,11 @@ const T = {
     tpQuemVe:'Siapa yang melihat topik ini', tpQuemVeHint:'Ketuk sektor yang boleh melihat topik ini. Karyawan hanya melihat topik dan dokumen sektornya sendiri; pemimpin dan administrasi melihat semuanya.', tpSalvo:'Sektor topik disimpan.', docSetor:'Sektor dokumen', docTodosDoTopico:'Semua sektor topik',
     navYukyu:'Yuukyuu saya', navYukyuEd:'Catatan yuukyuu', ykHintFunc:'Pengajuan yuukyuu yang Anda kirim lewat portal. Hanya Anda yang melihat daftar ini.', ykHintEd:'Pengajuan yuukyuu yang dikirim lewat portal. Tandai statusnya: Ditolak (perusahaan menolak) dan Dibatalkan (karyawan membatalkan) tidak dihitung. Hanya pemimpin dan administrasi yang melihat semuanya.', ykAno:'Tahun', ykBusca:'Cari nama atau kode', ykTotalAno:'Diajukan di {a}', ykAprovados:'Disetujui', ykDias:'hari', ykPorPessoa:'Total per orang di {a}', ykAprovN:'{n} disetujui', ykManha:'Pagi (午前休)', ykDiaInteiro:'Sehari penuh (終日)', ykHosp:'Rawat inap atau dokter', ykEnviado:'Dikirim {d} · {n} hari sebelumnya', ykSit_pendente:'Menunggu', ykSit_aprovado:'Disetujui', ykSit_negado:'Ditolak', ykSit_cancelado:'Dibatalkan', ykVazio:'Tidak ada pengajuan yuukyuu tahun ini.', ykSalvo:'Status disimpan.',
     ptNome:'Cek jam kerja', navPonto:'Cek jam kerja', ptSit_pendente:'Menunggu jawaban', ptSit_ok:'Sudah dicek', ptSit_erro:'Ada kesalahan', ptPainelTit:'Cek jam kerja Anda untuk {m} sudah tiba', ptPainelTxt:'Buka, cek jam kerja Anda dan jawab apakah sudah benar.', ptConferirAgora:'Cek sekarang', ptPainelErros:'{n} orang melaporkan kesalahan di cek jam kerja', ptPainelErrosTxt:'Baca setiap komentar, perbaiki dan kirim cek jam kerja lagi.', ptVerLista:'Lihat daftar', ptEntre:'Masuk dengan kode dan kata sandi Anda untuk melihat cek jam kerja.', ptMeus:'Cek jam kerja saya', ptHintFunc:'Setiap bulan cek jam kerja Anda (jam masuk dan pulang) tiba di sini. Buka, cek hari demi hari dan jawab. Hanya Anda, pemimpin dan administrasi yang dapat melihatnya.', ptVazioMeu:'Belum ada cek jam kerja untuk dijawab.', ptRecebido:'Diterima {d}', ptSeuComentario:'Komentar Anda:', ptRespondido:'Dijawab {d}', ptPergunta:'Apakah jamnya sudah benar?', ptAbraPrimeiro:'Buka cek jam kerja dan lihat jamnya sebelum menjawab.', ptVerMeu:'Lihat cek jam kerja saya', ptMudar:'Ubah jawaban', ptCorreto:'Sudah benar', ptTemErro:'Ada kesalahan', ptQualErro:'Apa yang salah?', ptQualErroEx:'Contoh: tanggal 14 saya pulang jam 18:30, bukan 19:30.', ptMandarErro:'Kirim', ptEnviarTit:'Kirim cek jam kerja bulan ini', ptEnviarHint:'Pilih PDF 出勤簿 (satu halaman per karyawan; boleh lebih dari satu file). Portal membaca kode di setiap halaman dan Anda mengecek tujuan setiap halaman sebelum mengirim.', ptEscolher:'Pilih PDF', ptListaTit:'Status per karyawan', ptMes:'Bulan', ptTotal:'Terkirim', ptVazioMes:'Tidak ada cek jam kerja yang dikirim bulan ini.', ptSemFolha:'{n} karyawan terdaftar tanpa cek jam kerja bulan ini', ptEnviadoPor:'Dikirim {d} oleh {p}', ptRespondidoCurto:'dijawab {d}', ptVer:'Lihat', ptRemover:'Hapus cek jam kerja ini', ptRemoverQ:'Hapus cek jam kerja {m} milik {n}? Orang tersebut tidak akan melihat file ini lagi.', ptRemovido:'Cek jam kerja dihapus.', ptObrigado:'Terima kasih! Jawaban terkirim: sudah benar.', ptErroMandado:'Terkirim. Administrasi akan mengecek dan memperbaiki.', ptSoPdf:'Pilih file PDF.', ptLendo:'Membaca PDF…', ptErroLer:'PDF ini tidak dapat dibaca. Cek file dan coba lagi.', ptChipPular:'Halaman ini tidak akan dikirim', ptChipSemTexto:'Halaman tidak berisi teks (seperti hasil pindai): pilih orangnya', ptChipNaoCadastrado:'Kode {c} tidak terdaftar: pilih orangnya', ptChipSemCodigo:'Kode karyawan tidak ditemukan di halaman ini: pilih orangnya', ptChipTrocado:'Orang dipilih manual (di lembar tertulis {c})', ptChipManual:'Orang dipilih manual', ptChipNomeDif:'Nama di lembar berbeda dengan data: cek dengan teliti', ptChipConfiraNome:'Kode ditemukan: cek namanya', ptChipOk:'Kode dan nama cocok dengan data', ptChipJuntas:'Lebih dari satu halaman untuk orang ini: digabung dalam satu PDF', ptChipSubstitui:'Orang ini sudah punya cek jam kerja {m}: yang lama akan diganti', ptAmpliar:'Perbesar', ptPagina:'Halaman {n} · {a}', ptNaFolha:'Tertulis di lembar:', ptAnexarPara:'Kirim ke', ptEscolhaPessoa:'— Pilih orangnya —', ptNaoAnexar:'Jangan kirim halaman ini', ptConferiPessoa:'Sudah dicek: halaman ini milik {n}', ptRevTit:'Cek tujuan setiap halaman', ptRevN:'{a} dari {b} sudah dicek', ptEnviarN:'Kirim ke {n} orang', ptRevDica:'Portal membaca kode karyawan di setiap halaman dan memilih orang dari data. Lihat halamannya (ketuk untuk memperbesar), cek namanya dan centang "Sudah dicek". Jika salah, pilih orang yang benar atau "Jangan kirim halaman ini".', ptMesDica:'Dibaca dari lembar. Perbaiki jika salah.', ptCancelarQ:'Batalkan? Tidak ada yang dikirim.', ptFaltaPessoa:'{n} halaman tanpa orang: pilih orangnya atau "Jangan kirim halaman ini".', ptNada:'Tidak ada halaman untuk dikirim.', ptFaltaConferir:'Masih ada {n} halaman yang belum dicek.', ptSubstituirQ:'{n} orang sudah punya cek jam kerja {m}. Ganti dengan yang baru? Jawaban sebelumnya akan dihapus.', ptSeparando:'Memisahkan halaman…', ptEnviando:'Mengirim… ({a} dari {b})', ptErroEnviar:'Tidak dapat mengirim. Coba lagi.', ptEnviados:'Cek jam kerja dikirim ke {n} orang.', ptVoce:'Anda', e_pontoMes:'Pilih bulan cek jam kerja.', e_pontoNaoAchei:'Cek jam kerja ini sudah tidak ada. Muat ulang halaman.', e_pontoSoDono:'Hanya orang yang bersangkutan yang dapat menjawab cek jam kerja miliknya.', e_pontoComentario:'Tulis apa yang salah pada jamnya.',
+    tarSemPrazoLinha:'Isi saat diperlukan. Tidak dihitung sebagai tertunda.', progTit:'Sedang dikerjakan', progCurto:'Sedang dikerjakan', progSalvo:'disimpan pukul {h}', progDica:'Isian Anda tersimpan di perangkat ini, meskipun portal ditutup atau lembar lain dibuka. Lembar baru baru dimulai setelah PDF dikirim.', progDescartar:'Buang', progDescartarQ:'Buang isian dan mulai dari awal?', progOutras:'Lembar lain yang sedang dikerjakan', progSemNome:'(tanpa nama)', tarNProg:'{n} sedang dikerjakan', tarContinuar:'Lanjutkan', tarCfgComPrazo:'Dengan tenggat', tarCfgComPrazoDica:'Setiap sektor menyerahkan secara berkala (tiap minggu, tiap bulan…).', tarCfgSemPrazo:'Lembar tanpa tenggat', tarCfgSemPrazoDica:'Diisi saat diperlukan. Ada di Tugas → Lembar tanpa tenggat dan tidak dihitung sebagai tertunda.',
     relPeriodo:'Periode', relP_4s:'4 minggu', relP_3m:'3 bulan', relP_6m:'6 bulan', relP_12m:'12 bulan', relPorSemana:'per minggu', relSemana:'Minggu', relSemanaDe:'Minggu {d}', relVerTabela:'Lihat sebagai tabel', relGrafAria:'Grafik 遵守率 per minggu', relSemDados:'Tidak ada data pada periode ini.', relDeltaIgual:'sama dengan periode sebelumnya', relVsAnterior:'vs periode sebelumnya', relNPat:'{n} patroli', relNPessoas:'{n} penilaian · {p} orang', relMedia:'rata-rata 遵守率 {p}%', relDicaRank:'遵守率 {p}% dari {n} patroli', relDicaEntrega:'{a} terkirim dari {b} pada periode ini', relEntregas:'Pengiriman', relSemPrazos:'Tidak ada tenggat pada periode ini', relDeEsperadas:'{a} dari {b} yang diharapkan', relEntregasSub:'terkirim / diharapkan pada periode ini', relEntregasDica:'Hijau: semua terkirim · kuning: 70% atau lebih · merah: kurang dari 70%.', relRankSetor:'Peringkat per sektor', relRankInspetor:'Peringkat per 巡回者', relTopNg:'10 item dengan × terbanyak', relHhkRecebidos:'HHK diterima', relSemAltos:'tidak ada Ⅳ atau Ⅲ', relHhkNivel:'HHK per tingkat risiko', relAcoesAbertas:'Tindakan pencegahan terbuka', relAcoesSub:'Ⅳ dan Ⅲ tanpa 完了日', relAcoesDica:'Ⅳ dan Ⅲ yang belum ada 完了日', relNAtrasadas:'{n} melewati tenggat', relSemAbertas:'Tidak ada tindakan pencegahan terbuka.', relLiftSub:'pelatihan yang selesai pada periode ini', relPessoas:'Orang yang dinilai — 遵守率 terendah dulu', relPessoasSub:'個人巡回 dan ピッキング見極め', relNAval:'{n} penilaian', relVerPessoa:'Halaman',
-    tarOkTit:'Lembar terkirim', tarOkTxt:'Nomor {n}. Muncul di Tugas → {a} → Terkirim.', tarPrivado:'Lembar yang dikirim disimpan di Tugas → Terkirim. Hanya pemimpin dan administrasi yang dapat melihatnya.', tarEscolhaArea:'Pilih area. Di setiap area ada lembar yang harus dikerjakan, yang sudah dikirim, dan laporan.', tarTodasAreas:'Ganti area', tarAbaFazer:'Dikerjakan', tarAbaEnviados:'Terkirim', tarAbaRel:'Laporan', tarComPrazo:'Dengan tenggat', tarResolver:'Perlu ditangani', tarNSemRisco:'{n} HHK tanpa risiko', tarTudoEmDia:'Semua tepat waktu', tarHhkSemRisco:'{n} HHK tanpa perkiraan risiko', tarHhkSemRiscoDica:'Baca laporannya dan pilih tingkat keparahan dan kemungkinan.', tarAvaliar:'Nilai', tarMatrizDica:'Ketuk sel untuk mengisi atas nama sektor itu.', tarFicha:'Lembar', tarHoje:'Tenggat hari ini', tarFaltamD:'Sisa {n} hari', tarEnvVazio:'Belum ada yang dikirim di area ini.', tarCfgArea:'Area di Tugas',
+    tarOkTit:'Lembar terkirim', tarOkTxt:'Nomor {n}. Muncul di Tugas → {a} → Terkirim.', tarPrivado:'Lembar yang dikirim disimpan di Tugas → Terkirim. Hanya pemimpin dan administrasi yang dapat melihatnya.', tarEscolhaArea:'Pilih area. Di setiap area ada lembar yang harus dikerjakan, yang sudah dikirim, dan laporan.', tarTodasAreas:'Ganti area', tarAbaFazer:'Dikerjakan', tarAbaEnviados:'Terkirim', tarAbaRel:'Laporan', tarComPrazo:'Dengan tenggat', tarResolver:'Perlu ditangani', tarNSemRisco:'{n} HHK tanpa risiko', tarTudoEmDia:'Semua selesai', tarHhkSemRisco:'{n} HHK tanpa perkiraan risiko', tarHhkSemRiscoDica:'Baca laporannya dan pilih tingkat keparahan dan kemungkinan.', tarAvaliar:'Nilai', tarMatrizDica:'Ketuk sel untuk mengisi atas nama sektor itu.', tarFicha:'Lembar', tarHoje:'Tenggat hari ini', tarFaltamD:'Sisa {n} hari', tarEnvVazio:'Belum ada yang dikirim di area ini.', tarCfgArea:'Area di Tugas',
     rkTit:'Perkiraan risiko', rkHint:'Diisi oleh penanggung jawab sektor setelah membaca laporan: pilih tingkat keparahan dan kemungkinan. Jumlahnya menentukan tingkat risiko, seperti di lembar.', rkFazer:'Buat perkiraan risiko', rkSoLider:'Perkiraan dibuat oleh pemimpin {s} atau administrasi.', rkGrav:'Perkiraan tingkat keparahan cedera', rkProb:'Perkiraan kemungkinan cedera', rkEscolha:'Pilih tingkat keparahan dan kemungkinan.', rkCausa:'Penyebab', rkContra:'Tindakan pencegahan', rkPrazo:'Tenggat', rkFim:'Selesai pada (opsional)', rkResp:'Penanggung jawab sektor', rkKy:'ＫＹシートに落とし込み活用する — gunakan kasus ini di lembar KY.', rkPor:'dibuat oleh {p} pada {d}', rkEditar:'Perbaiki perkiraan', rkSalvar:'Simpan perkiraan', rkSalvo:'Perkiraan risiko disimpan. PDF lembar sudah memuatnya.', rkFalta:'Perkiraan risiko belum ada', e_riscoPontos:'Pilih tingkat keparahan dan kemungkinan.', e_riscoAcao:'Untuk risiko Ⅳ atau Ⅲ, tulis penyebab dan tindakan pencegahan.', e_riscoPrazo:'Untuk risiko Ⅳ atau Ⅲ, pilih tenggatnya.', e_riscoResp:'Tulis nama penanggung jawab sektor.', e_riscoSoHhk:'Perkiraan risiko hanya untuk lembar HHK.', e_riscoSetor:'Pemimpin hanya dapat menilai HHK sektornya sendiri.',
-    patOutraPessoa:'Orang lain (belum terdaftar)', patNomePessoa:'Nama orang', patEducador:'Penilai', patPergunta:'Pertanyaan lisan', patNovaAval:'Baru: {f}', patSemPrazoTit:'Lembar tanpa tenggat', patSemPrazoHint:'Isi saat ada orang yang akan dinilai. Tidak dihitung dalam tenggat tugas.', patPreencher:'Isi', patSemPrazoCfg:'Lembar ini tidak punya tenggat: pemimpin mengisinya saat ada orang yang akan dinilai. Muncul di Tugas, pada "Lembar tanpa tenggat", dan di halaman orang tersebut.', e_patPessoa:'Pilih atau tulis orang yang dinilai.', liftErrNada:'Centang minimal satu item pelatihan.', liftIncompletoQ:'Pelatihan baru {p}% selesai. Tetap selesaikan dan buat PDF?', liftProgresso:'Selesai {p}% · {a} dari {b}', liftAndamento:'Sedang berjalan di perangkat ini', liftDesde:'sejak {d}', liftContinuar:'Lanjutkan', liftNovo:'Mulai catatan baru', liftComecar:'Mulai', liftNAndamento:'{n} sedang berjalan di perangkat ini', liftTentativa:'Percobaan ke-{n}', liftMin:'mnt', liftSeg:'dtk', liftTesteDica:'Menumpuk 5 palet dalam waktu kurang dari 10 menit. Catat waktu dan hasil setiap percobaan.', liftTrocar:'Ganti orang', liftObs:'Catatan', liftDescartar:'Buang', liftDescartarQ:'Buang catatan {n}? Semua yang dicentang di perangkat ini akan dihapus.', liftFinalizar:'Selesaikan dan buat PDF', liftRascunhoDica:'Tersimpan di perangkat ini dari hari ke hari. Selalu gunakan perangkat yang sama dan selesaikan di hari terakhir.',
+    patOutraPessoa:'Orang lain (belum terdaftar)', patNomePessoa:'Nama orang', patEducador:'Penilai', patPergunta:'Pertanyaan lisan', patNovaAval:'Baru: {f}', patContinuarAval:'Lanjutkan: {f}', patSemPrazoTit:'Lembar tanpa tenggat', patSemPrazoHint:'Isi saat ada orang yang akan dinilai. Tidak dihitung dalam tenggat tugas.', patPreencher:'Isi', e_patPessoa:'Pilih atau tulis orang yang dinilai.', liftErrNada:'Centang minimal satu item pelatihan.', liftIncompletoQ:'Pelatihan baru {p}% selesai. Tetap selesaikan dan buat PDF?', liftProgresso:'Selesai {p}% · {a} dari {b}', liftAndamento:'Sedang berjalan di perangkat ini', liftDesde:'sejak {d}', liftContinuar:'Lanjutkan', liftNovo:'Mulai catatan baru', liftComecar:'Mulai', liftNAndamento:'{n} sedang berjalan di perangkat ini', liftTentativa:'Percobaan ke-{n}', liftMin:'mnt', liftSeg:'dtk', liftTesteDica:'Menumpuk 5 palet dalam waktu kurang dari 10 menit. Catat waktu dan hasil setiap percobaan.', liftTrocar:'Ganti orang', liftObs:'Catatan', liftDescartar:'Buang', liftDescartarQ:'Buang catatan {n}? Semua yang dicentang di perangkat ini akan dihapus.', liftFinalizar:'Selesaikan dan buat PDF', liftRascunhoDica:'Tersimpan di perangkat ini dari hari ke hari. Selalu gunakan perangkat yang sama dan selesaikan di hari terakhir.',
     patSetor:'Sektor (zona)', patPessoa:'Orang yang dinilai', patData:'Tanggal', patInicio:'Mulai', patFim:'Selesai', patHoraIni:'Jam mulai', patHoraFim:'Jam selesai', patInspetor:'yang melakukan patroli', patLider:'penanggung jawab', patObs:'Catatan (指摘事項・違反者等)', patLegenda:'Keterangan (opsional)', patFoto:'Foto', patSemItens:'Daftar ini belum punya item. Minta administrasi untuk mendaftarkannya.', patLimpar:'Hapus', patEnviar:'Buat PDF dan kirim', patRascunhoDica:'Yang Anda tandai disimpan di perangkat ini sampai dikirim, meski portal ditutup.', patRascunhoSemFotos:'Foto terlalu banyak untuk disimpan di perangkat: draf disimpan tanpa foto (○/× dan catatan tersimpan).', patResumo:'遵守率 {t}% · ○ {ok} · × {ng} · sisa {p}', patOkTit:'Patroli terkirim', patOkTxt:'Protokol {n}. PDF disimpan di folder Drive dan tugas dihitung selesai.', patCompartilhar:'Bagikan (WhatsApp, LINE…)', patLimparQ:'Hapus semua yang ditandai di patroli ini?', patErrPessoa:'Pilih orang yang dinilai.', patErrDatas:'Periksa tanggal patroli.', patErrInspetor:'Tulis siapa yang melakukan patroli (巡回者).', patErrNada:'Nilai minimal satu item dengan ○ atau ×.', patPendQ:'{n} item belum dinilai. Tetap kirim?', patGerando:'Membuat PDF dan mengirim…', patErroEnviar:'Tidak dapat mengirim. Coba lagi.', patSemAval:'Belum ada penilaian individu untuk orang ini.', patVerPdf:'Lihat PDF', patEditarItens:'Ubah item daftar periksa', patEdTit:'Item daftar periksa', patEdDica:'Setiap item harus dalam bahasa Jepang dan Portugis (PDF menampilkan keduanya). Tombol Terjemahkan mengisi bahasa yang kosong.', patListaPadrao:'Daftar standar (semua sektor)', patListaPropria:'daftar sendiri', patUsaPadrao:'memakai daftar standar', patSetorUsaPadrao:'Sektor ini memakai daftar standar.', patCriarPropria:'Buat daftar sendiri (salinan standar)', patCategoria:'Kategori', patAddItem:'Tambah item', patAddCat:'Tambah kategori', patTraduzir:'Terjemahkan kolom kosong', patRestaurar:'Kembalikan daftar asli', patVoltarPadrao:'Kembali ke daftar standar', patEdSairQ:'Keluar tanpa menyimpan?', patVoltarPadraoQ:'Hapus daftar sendiri sektor ini dan pakai daftar standar?', patRestaurarQ:'Ganti daftar ini dengan daftar asli aplikasi patroli?', patApagarCatQ:'Hapus kategori ini dan semua itemnya?', patTradDemo:'Terjemahan hanya berfungsi di portal yang dipublikasikan.', patErrVazio:'Isi bahasa Jepang dan Portugis untuk setiap item dan kategori.', patEdSalvo:'Item disimpan.', tarCfgQtd:'Orang yang dinilai per periode', pesAbaAval:'Penilaian', e_patSetor:'Pilih sektor yang valid.',
     tarTodosSetores:'Semua sektor yang ada karyawannya', cfgAdmTit:'Alat administrasi', cfgAdmHint:'Riwayat semua yang dipublikasikan atau diubah, dan cadangan isi portal.', cfgHistHint:'Semua yang dipublikasikan atau diubah di portal, dengan tanggal dan pelakunya.', cfgHistSub:'Siapa mengubah apa dan kapan', cfgExportSub:'Simpan salinan cadangan', cfgImportSub:'Pulihkan salinan (mengganti semuanya)', ldExpira:'Pemimpin · akses 6 jam',
     grupoComunicacao:'Komunikasi', grupoPedidos:'Pengajuan dan tugas', grupoPessoas:'Karyawan', grupoEmpresaConta:'Perusahaan dan akun', navEmployees:'Karyawan', navMinhaPagina:'Halaman saya', empAbaLista:'Daftar', empAbaPonto:'Cek jam kerja', empAbaYukyu:'Yuukyuu', pesAbaPonto:'Cek jam kerja', pesAbaYukyu:'Yuukyuu', empVerPagina:'Lihat halaman', pesVazioPonto:'Belum ada cek jam kerja yang dikirim ke orang ini.', pesVazioYk:'Tidak ada pengajuan yuukyuu dari orang ini.',
@@ -4423,7 +4430,10 @@ const chavePa = (fid, resto) => 'joywork-patrulha-' + (USUARIO || 'adm') + '-' +
 // a リフト見極め leva vários dias e pode haver mais de uma pessoa em treinamento: um rascunho por pessoa
 // リフト見極めは複数日・複数人の可能性があるため、1人ごとに下書き
 const pessoaChave = P => P.pessoa && P.pessoa !== '-' ? P.pessoa : 'x:' + String(P.pessoaLivre || '').trim().toLowerCase();
-const chaveDoPa = P => chavePa(P.fichaId, P.tipo === 'lift' ? P.setor + '|' + pessoaChave(P) : P.setor);
+// fichas de uma pessoa (個人巡回・見極め): um rascunho por pessoa, para avaliar várias ao mesmo tempo
+// 個人を評価するシートは1人ごとに下書き（同時に複数人を評価できる）
+const porPessoa = P => P.tipo === 'lift' || P.tipo === 'ind' || P.tipo === 'mik';
+const chaveDoPa = P => chavePa(P.fichaId, porPessoa(P) ? P.setor + '|' + pessoaChave(P) : P.setor);
 function novoLift() {
   const l = { obs: '' };
   PAT_LIFT.dias.forEach(d => {
@@ -4442,7 +4452,14 @@ function novaPatrulha(f, setor) {
            comecou: f.patrulha !== 'lift', done: null };
 }
 function carregaRascunhoPa(chave) {
-  try { const r = JSON.parse(localStorage.getItem(chave) || 'null'); return r && r.cats ? { ...r, done: null } : null; } catch (e) { return null; }
+  try { const r = JSON.parse(localStorage.getItem(chave) || 'null'); return r && r.cats ? { ...r, done: null, _chave: chave } : null; } catch (e) { return null; }
+}
+/** Já tem algo marcado? (só então fica "Em progresso") / 何か記入済みか */
+function temConteudoPa(P) {
+  if (!P) return false;
+  if (P.tipo === 'lift') return !!P.comecou;
+  return Object.values(P.aval || {}).some(Boolean) || Object.values(P.obs || {}).some(v => String(v || '').trim())
+    || Object.values(P.fotos || {}).some(l => l && l.length);
 }
 // cópia sem fotos, para quando o aparelho não tem espaço / 容量不足時の写真なしのコピー
 function semFotosPa(P) {
@@ -4453,8 +4470,11 @@ function semFotosPa(P) {
 }
 let paSalvarTimer = 0, paAvisouFotos = false;
 function gravaPa(P) {
-  if (!P || P.done || !P.comecou) return;
+  if (!P || P.done || !P.comecou || !temConteudoPa(P)) return;
   const k = chaveDoPa(P);
+  // a ficha mudou de nome (pessoa escolhida ou escrita): o rascunho vai junto / 対象者が決まったら下書きも移動
+  if (P._chave && P._chave !== k) { try { localStorage.removeItem(P._chave); } catch (e) {} }
+  P._chave = k; P.salvoEm = Date.now();
   try { localStorage.setItem(k, JSON.stringify({ ...P, done: null })); }
   catch (e) {
     // fotos demais para o aparelho: guarda sem as fotos (○/× e observações nunca se perdem)
@@ -4468,11 +4488,34 @@ function salvaRascunhoPa() {
   clearTimeout(paSalvarTimer);
   paSalvarTimer = setTimeout(() => gravaPa(alvo), 400);
 }
-const apagaRascunhoPa = () => { try { if (PA) localStorage.removeItem(chaveDoPa(PA)); } catch (e) {} };
+const apagaRascunhoPa = () => {
+  try { if (PA) { localStorage.removeItem(chaveDoPa(PA)); if (PA._chave) localStorage.removeItem(PA._chave); } } catch (e) {}
+};
+/** Rascunhos (em progresso) de uma ficha neste aparelho, o mais recente primeiro. / 記入中の下書き（新しい順） */
+function rascunhosDaFicha(fid) {
+  const pre = chavePa(fid, ''), l = [];
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k || k.indexOf(pre) !== 0) continue;
+      const r = carregaRascunhoPa(k);
+      if (r && temConteudoPa(r)) l.push({ k, r });
+    }
+  } catch (e) {}
+  return l.sort((a, b) => (b.r.salvoEm || 0) - (a.r.salvoEm || 0));
+}
 function setoresDaPatrulha(f) {
   if (!ehAdmin()) { const eu = USUARIO && empByCode(USUARIO); return eu ? [eu.sector] : []; }
   const ops = setoresDaTarefa(f);
   return ops.length ? ops : DATA.sectors.map(s => s.id);
+}
+/** A patrulha em progresso deste setor (a mais recente), ou uma nova. / このエリアの記入中（最新）または新規 */
+function patrulhaDoSetor(f, setor) {
+  if (porPessoa({ tipo: f.patrulha })) {
+    const r = rascunhosDaFicha(f.id).find(x => x.r.setor === setor);
+    return r ? r.r : novaPatrulha(f, setor);
+  }
+  return carregaRascunhoPa(chavePa(f.id, setor)) || novaPatrulha(f, setor);
 }
 function paDaFicha(f) {
   const ops = setoresDaPatrulha(f);
@@ -4484,19 +4527,21 @@ function paDaFicha(f) {
   }
   if (!alvo && ehAdmin() && SETOR_DA_TAREFA && ops.includes(SETOR_DA_TAREFA)) { alvo = SETOR_DA_TAREFA; SETOR_DA_TAREFA = ''; }
   if (PA && PA.fichaId === f.id && (!alvo || alvo === PA.setor) && !pes) return PA;
-  if (PA && PA.fichaId === f.id && !PA.done) gravaPa(PA);
+  // a que estava aberta fica guardada (de qualquer ficha) / 開いていた巡回は保存
+  if (PA && !PA.done) { clearTimeout(paSalvarTimer); gravaPa(PA); }
   const setor = alvo || (ops.includes(activeSector) ? activeSector : ops[0] || '');
   if (f.patrulha === 'lift') {             // começa escolhendo a pessoa / まず対象者を選ぶ
     PA = novaPatrulha(f, setor);
     if (pes) { PA.pessoa = pes; PA = carregaRascunhoPa(chaveDoPa(PA)) || PA; }   // já em andamento: continua / 記録中なら続きから
     return PA;
   }
-  PA = carregaRascunhoPa(chavePa(f.id, setor)) || novaPatrulha(f, setor);
-  if (pes && PA.pessoa !== pes) {
-    // o rascunho é de outra pessoa e já tem ○/×: começa uma nova / 別の人の記入中の下書きなら新規
-    if (PA.pessoa && Object.values(PA.aval).some(Boolean)) PA = novaPatrulha(f, setor);
-    PA.pessoa = pes;
+  if (pes && porPessoa({ tipo: f.patrulha })) {
+    // vindo da página da pessoa: a ficha dela (em progresso ou nova) / 個人ページから：その人のシート
+    const novo = novaPatrulha(f, setor); novo.pessoa = pes;
+    PA = carregaRascunhoPa(chaveDoPa(novo)) || novo;
+    return PA;
   }
+  PA = patrulhaDoSetor(f, setor);
   return PA;
 }
 const chavesPa = P => P.cats.flatMap((c, ci) => c.itens.map((_, ii) => ci + '.' + ii));
@@ -4525,6 +4570,13 @@ function telaPatrulha(f) {
   if (P.done) return telaPatrulhaFeita(f, P);
   if (P.tipo === 'lift') return telaLift(f, P);          // vários dias / 複数日の記録
   const tipo = P.tipo, ops = setoresDaPatrulha(f), c = contaPa(P);
+  // em progresso: aviso no alto e as outras pessoas desta ficha / 記入中の表示と、同じシートの他の人
+  const prog = temConteudoPa(P) ? avisoProgresso(P.salvoEm, 'id="paDescartar"') : '';
+  const outras = porPessoa(P) ? rascunhosDaFicha(f.id).filter(x => x.k !== P._chave && x.k !== chaveDoPa(P)) : [];
+  const listaOutras = outras.length ? `<div class="mb-4 rounded-xl border border-line bg-page px-4 py-3">
+      <p class="mb-2 flex items-center gap-1.5 text-[13px] font-bold text-slate-600"><i data-lucide="layers" class="h-4 w-4"></i>${t().progOutras}</p>
+      <div class="flex flex-wrap gap-2">${outras.map(({ k, r }) => { const cc = contaPa(r); return `<button type="button" data-pacont="${esc(k)}" class="inline-flex min-h-[40px] items-center gap-2 rounded-lg border border-line bg-white px-3 text-[13px] font-semibold text-ink hover:bg-brandsoft">
+        <i data-lucide="pencil-line" class="h-4 w-4 text-brand"></i>${esc(nomePessoaPa(r) || t().progSemNome)} <span class="font-normal text-slate-400">${esc(sectorLabel(r.setor))} · ${cc.ok + cc.ng}/${cc.total}</span></button>`; }).join('')}</div></div>` : '';
   const lbl = (r, obrig) => `<span class="mb-1.5 block text-[14px] font-bold text-ink">${r}${obrig ? ' <span class="text-red-600">*</span>' : ''}</span>`;
   const pessoasSetor = DATA.employees.filter(e => e.sector === P.setor).sort((a, b) => a.name.localeCompare(b.name));
   const lideres = DATA.employees.filter(e => e.leader);
@@ -4560,6 +4612,7 @@ function telaPatrulha(f) {
     </section>`).join('');
   return `
     <div class="rounded-2xl border border-line bg-white p-4 sm:p-5">
+      ${prog}${listaOutras}
       <p class="mb-4 max-w-[62ch] text-[14px] leading-relaxed text-slate-500">${esc(txt(f.desc) || txt(descPatrulha(tipo)))}</p>
       <div class="grid gap-4 sm:grid-cols-2">
         <label class="block">${lbl(t().patSetor, true)}${ehAdmin()
@@ -4609,18 +4662,7 @@ const liftDia = k => PAT_LIFT.dias.find(d => d.k === k);
 const fotosLi = (P, k) => { const [dk, ti] = k.split('.'); const x = P.lift[dk]; return ti === undefined ? x.fotos : x.tent[Number(ti)].fotos; };
 const lbPa = (r, obrig) => `<span class="mb-1.5 block text-[14px] font-bold text-ink">${r}${obrig ? ' <span class="text-red-600">*</span>' : ''}</span>`;
 /** Rascunhos de リフト見極め guardados neste aparelho. / この端末にある記録中のリフト見極め。 */
-function liftsEmAndamento() {
-  const pre = chavePa('pat_lift', ''), l = [];
-  try {
-    for (let i = 0; i < localStorage.length; i++) {
-      const k = localStorage.key(i);
-      if (!k || k.indexOf(pre) !== 0) continue;
-      const r = carregaRascunhoPa(k);
-      if (r && r.lift) l.push({ k, r });
-    }
-  } catch (e) {}
-  return l.sort((a, b) => String(a.r.ini).localeCompare(String(b.r.ini)));
-}
+const liftsEmAndamento = () => rascunhosDaFicha('pat_lift').filter(x => x.r.lift).sort((a, b) => String(a.r.ini).localeCompare(String(b.r.ini)));
 function fotosLiHtml(P, k) {
   const fotos = fotosLi(P, k);
   return `<div class="mt-2 flex flex-wrap items-start gap-2">
@@ -4699,6 +4741,7 @@ function telaLift(f, P) {
   }).join('');
   return `
     <div class="rounded-2xl border border-line bg-white p-4 sm:p-5">
+      ${avisoProgresso(P.salvoEm, 'id="paDescartar"')}
       <div class="mb-4 flex flex-wrap items-center gap-3 rounded-xl bg-brandsoft/60 px-4 py-3">
         <i data-lucide="forklift" class="h-6 w-6 text-brand"></i>
         <span class="min-w-0 flex-1"><span class="block text-[16px] font-extrabold text-ink">${esc(nomePessoaPa(P))}</span>
@@ -4764,7 +4807,12 @@ function bindLift(f, erro, redesenha) {
     gravaPa(PA); renderSection(); window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   if (!P.comecou) return;
-  const atualiza = () => { const r = document.getElementById('paResumo'); if (r) r.textContent = textoLift(contaLift(P)); salvaRascunhoPa(); };
+  const descTopo = document.getElementById('paDescartar');
+  if (descTopo) descTopo.addEventListener('click', () => {
+    if (!confirm(fmt(t().liftDescartarQ, { n: nomePessoaPa(P) }))) return;
+    apagaRascunhoPa(); PA = novaPatrulha(f, P.setor); renderSection(); window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  const atualiza =() => { const r = document.getElementById('paResumo'); if (r) r.textContent = textoLift(contaLift(P)); salvaRascunhoPa(); };
   const trocar = document.getElementById('liTrocar');
   if (trocar) trocar.addEventListener('click', () => { gravaPa(P); PA = novaPatrulha(f, P.setor); renderSection(); window.scrollTo({ top: 0, behavior: 'smooth' }); });
   document.querySelectorAll('[data-lichk]').forEach(el => el.addEventListener('change', () => {
@@ -4854,12 +4902,33 @@ function bindPatrulha(f) {
   if (P.tipo === 'lift') { bindLift(f, erro, redesenha); return; }   // リフト見極め
   const sel = document.querySelector('[data-pasetor]');
   if (sel) sel.addEventListener('change', () => {
-    gravaPa(P);
-    PA = carregaRascunhoPa(chavePa(f.id, sel.value)) || novaPatrulha(f, sel.value);
+    clearTimeout(paSalvarTimer); gravaPa(P);
+    PA = patrulhaDoSetor(f, sel.value);
     renderSection();
+  });
+  // outra ficha em progresso desta patrulha (outra pessoa) / 記入中の別のシート（別の人）
+  document.querySelectorAll('[data-pacont]').forEach(b => b.addEventListener('click', () => {
+    clearTimeout(paSalvarTimer); gravaPa(P);
+    PA = carregaRascunhoPa(b.dataset.pacont) || P;
+    renderSection(); window.scrollTo({ top: 0, behavior: 'smooth' });
+  }));
+  const descarta = document.getElementById('paDescartar');
+  if (descarta) descarta.addEventListener('click', () => {
+    if (!confirm(t().progDescartarQ)) return;
+    apagaRascunhoPa(); PA = novaPatrulha(f, P.setor); renderSection(); window.scrollTo({ top: 0, behavior: 'smooth' });
   });
   document.querySelectorAll('[data-pacampo]').forEach(el => el.addEventListener(el.tagName === 'SELECT' ? 'change' : 'input', () => {
     const antes = P[el.dataset.pacampo];
+    // trocar a pessoa de uma ficha já preenchida: a anterior fica guardada e abre a da nova pessoa
+    // 記入済みのシートで対象者を変えた場合：前の人のシートは保存し、新しい人のシートを開く
+    if (el.dataset.pacampo === 'pessoa' && porPessoa(P) && nomePessoaPa(P) && temConteudoPa(P)) {
+      clearTimeout(paSalvarTimer); gravaPa(P);
+      const novo = novaPatrulha(f, P.setor);
+      ['ini', 'fim', 'hIni', 'inspetor', 'lider'].forEach(k => { novo[k] = P[k]; });
+      novo.pessoa = el.value;
+      PA = el.value && el.value !== '-' ? (carregaRascunhoPa(chaveDoPa(novo)) || novo) : novo;
+      return redesenha();
+    }
     P[el.dataset.pacampo] = el.value;
     if (el.dataset.pacampo === 'ini' && (P.tipo === 'ind' || P.tipo === 'mik')) P.fim = el.value;
     salvaRascunhoPa();
@@ -5262,7 +5331,7 @@ function avaliacoesDaPessoa(cod) {
     .filter(f => f && e && setoresDaPatrulha(f).includes(e.sector));
   const botoes = novas.length ? `<div class="mb-4 flex flex-wrap gap-2">${novas.map(f => `
     <button type="button" data-patnova="${esc(f.id)}" data-patcod="${esc(e.code)}" class="inline-flex min-h-[44px] items-center gap-2 rounded-lg border border-line bg-white px-4 text-[14px] font-semibold text-ink hover:bg-slate-50">
-      <i data-lucide="${PAT_TIPOS[f.patrulha].icon}" class="h-4 w-4 text-brand"></i>${esc(fmt(t().patNovaAval, { f: txt(f.name) }))}</button>`).join('')}</div>` : '';
+      <i data-lucide="${PAT_TIPOS[f.patrulha].icon}" class="h-4 w-4 text-brand"></i>${esc(fmt(rascunhosDaFicha(f.id).some(x => x.r.pessoa === e.code) ? t().patContinuarAval : t().patNovaAval, { f: txt(f.name) }))}</button>`).join('')}</div>` : '';
   if (PAT_LISTA === null) { carregaPatrulhas(); return botoes + vazio('loader-circle', t().fcLoading); }
   const lista = PAT_LISTA.filter(r => PAT_DA_PESSOA.includes(r.tipo) && String(r.pessoa).toLowerCase() === cod);
   if (!lista.length) return botoes + vazio('clipboard-x', t().patSemAval);
@@ -5534,23 +5603,20 @@ function configTarefa(d) {
   const tar = d.tarefa || { ativo: false, freq: 'semanal', dia: 5, n: 7, inicio: '', setores: 'all' };
   const semana = [1, 2, 3, 4, 5, 6, 7].map(n => `<option value="${n}"${Number(tar.dia) === n ? ' selected' : ''}>${esc(nomeSemana(n))}</option>`).join('');
   const todos = tar.setores === 'all' || !Array.isArray(tar.setores);
-  // 見極め: sem prazo, preenche quando houver alguém para avaliar / 見極めは期限なし
-  if (PAT_TIPOS[d.patrulha] && PAT_TIPOS[d.patrulha].semPrazo) return `
-    <div class="mt-5 rounded-xl border border-line bg-white p-4" id="mTarefa" data-semprazo>
-      <p class="flex items-center gap-2 text-[14px] font-bold text-ink"><i data-lucide="list-checks" class="h-4 w-4 text-brand"></i>${t().tarCfgTit}</p>
-      <label class="mt-3 flex min-h-[40px] items-center gap-2.5 text-[14px] text-slate-700">
-        <input type="checkbox" id="mSoLider" class="h-5 w-5 accent-[#2A4A9E]"${d.soLider ? ' checked' : ''}>${t().tarCfgSoLider}</label>
-      ${campoArea(d)}
-      <p class="mt-2 text-[13px] leading-relaxed text-slate-500">${t().patSemPrazoCfg}</p>
-    </div>`;
+  // com prazo (frequência) ou ficha sem prazo (preenche quando precisar) / 期限あり（頻度）または期限なし
+  const modo = (id, on, tit, dica) => `<label class="flex min-h-[56px] cursor-pointer items-start gap-2.5 rounded-xl border-2 px-3 py-2.5 ${on ? 'border-brand bg-brandsoft/50' : 'border-line bg-white'}">
+      <input type="radio" name="mTarModo" id="${id}" class="mt-1 h-5 w-5 shrink-0 accent-[#2A4A9E]"${on ? ' checked' : ''}>
+      <span><span class="block text-[14px] font-bold text-ink">${tit}</span><span class="block text-[13px] leading-snug text-slate-500">${dica}</span></span></label>`;
   return `
     <div class="mt-5 rounded-xl border border-line bg-white p-4" id="mTarefa">
       <p class="flex items-center gap-2 text-[14px] font-bold text-ink"><i data-lucide="list-checks" class="h-4 w-4 text-brand"></i>${t().tarCfgTit}</p>
       <label class="mt-3 flex min-h-[40px] items-center gap-2.5 text-[14px] text-slate-700">
         <input type="checkbox" id="mSoLider" class="h-5 w-5 accent-[#2A4A9E]"${d.soLider ? ' checked' : ''}>${t().tarCfgSoLider}</label>
       ${campoArea(d)}
-      <label class="flex min-h-[40px] items-center gap-2.5 text-[14px] text-slate-700">
-        <input type="checkbox" id="mTarAtivo" class="h-5 w-5 accent-[#2A4A9E]"${tar.ativo ? ' checked' : ''}>${t().tarCfgPrazo}</label>
+      <div class="mt-3 grid gap-2 sm:grid-cols-2">
+        ${modo('mTarAtivo', !!tar.ativo, t().tarCfgComPrazo, t().tarCfgComPrazoDica)}
+        ${modo('mTarLivre', !tar.ativo, t().tarCfgSemPrazo, t().tarCfgSemPrazoDica)}
+      </div>
       <div class="mt-2 grid gap-3 sm:grid-cols-3${tar.ativo ? '' : ' hidden'}" id="mTarCampos">
         <label class="block"><span class="mb-1.5 block text-[13px] font-semibold text-ink">${t().tarCfgFreq}</span>
           <select id="mTarFreq" class="field">${['semanal', 'quinzenal', 'mensal', 'dias'].map(k => `<option value="${k}"${tar.freq === k ? ' selected' : ''}>${t()['tarF_' + k]}</option>`).join('')}</select></label>
@@ -5581,11 +5647,6 @@ function leiaConfigTarefa(d) {
   if (!box) return;
   const ar = document.getElementById('mTarArea');      // Segurança ou Qualidade / 安全・品質
   if (ar) d.area = ar.value;
-  if (box.hasAttribute('data-semprazo')) {
-    d.soLider = document.getElementById('mSoLider').checked;
-    d.tarefa = { ...(d.tarefa || tarefaPadrao(d.id)), ativo: false };
-    return;
-  }
   const freq = document.getElementById('mTarFreq').value;
   const todos = document.getElementById('mTarTodos').checked;
   d.soLider = document.getElementById('mSoLider').checked;
@@ -5773,13 +5834,17 @@ function bindFmComposer() {
   if (tAtivo) {
     const ajusta = () => {
       document.getElementById('mTarCampos').classList.toggle('hidden', !tAtivo.checked);
+      ['mTarAtivo', 'mTarLivre'].forEach(id => {        // destaca a opção escolhida / 選択中を強調
+        const el = document.getElementById(id), l = el.closest('label'), on = el.checked;
+        l.classList.toggle('border-brand', on); l.classList.toggle('bg-brandsoft/50', on); l.classList.toggle('border-line', !on); l.classList.toggle('bg-white', !on);
+      });
       const fq = document.getElementById('mTarFreq').value;
       document.querySelectorAll('[data-tarcampo]').forEach(el => el.classList.toggle('hidden',
         !((el.dataset.tarcampo === 'semana' && (fq === 'semanal' || fq === 'quinzenal')) || (el.dataset.tarcampo === 'mes' && fq === 'mensal') || (el.dataset.tarcampo === 'dias' && fq === 'dias'))));
       const todos = document.getElementById('mTarTodos').checked;
       document.querySelectorAll('[data-tarsetor]').forEach(x => { x.disabled = todos; if (todos) x.checked = true; x.parentElement.classList.toggle('opacity-50', todos); });
     };
-    ['mTarAtivo', 'mTarFreq', 'mTarTodos'].forEach(id => document.getElementById(id).addEventListener('change', ajusta));
+    ['mTarAtivo', 'mTarLivre', 'mTarFreq', 'mTarTodos'].forEach(id => document.getElementById(id).addEventListener('change', ajusta));
   }
 
   // idioma que está sendo digitado / 入力中の言語
@@ -5941,6 +6006,95 @@ async function traduzirMl(lista, de, botao) {
 let envio = null;   // preenchimento em andamento / 記入中のデータ
 const novoEnvio = f => ({ formId: f.id, code: USUARIO || '', anon: false, destino: '', values: {}, photos: {}, done: null, pdfUrl: '', fileName: '', sending: false });
 
+/* ---------- Fichas de Tarefas em progresso / 記入中のタスクのシート ----------
+   Como no app antigo: o que foi preenchido numa ficha de Tarefas (KYT, QYT, HHK, 5S…) fica
+   guardado neste aparelho — mesmo fechando o portal ou abrindo outra ficha — e só começa uma
+   nova depois de enviar o PDF. Cada ficha tem o seu, então dá para fazer várias ao mesmo tempo.
+   旧アプリと同じく、タスクのシートの記入内容は端末に保存されます（閉じても・別のシートを
+   開いても消えません）。PDFを送信すると新しく始まります。シートごとに保存するので同時進行も可。 */
+const ENVIOS = {};                       // a ficha em progresso de cada ficha / シートごとの記入中データ
+const ehFichaTarefa = f => !!f && ehFicha(f) && !ehPatrulha(f) && !!areaDaFicha(f);
+const chaveEnvio = fid => 'joywork-ficha-' + (USUARIO || 'adm') + '-' + fid;
+function carregaEnvioSalvo(f) {
+  try {
+    const r = JSON.parse(localStorage.getItem(chaveEnvio(f.id)) || 'null');
+    return r && r.formId === f.id ? { ...novoEnvio(f), ...r, code: USUARIO || r.code || '', done: null, sending: false } : null;
+  } catch (e) { return null; }
+}
+let envSalvarTimer = 0, envAvisouFotos = false;
+function gravaEnvio(env) {
+  if (!env || !env.mexeu || env.done) return;
+  const k = chaveEnvio(env.formId);
+  env.salvoEm = Date.now();
+  const dados = { ...env, done: null, sending: false, pdfUrl: '' };
+  try { localStorage.setItem(k, JSON.stringify(dados)); }
+  catch (e) {
+    // fotos demais para o aparelho: guarda sem as fotos / 写真が多すぎる場合は写真なしで保存
+    try { localStorage.setItem(k, JSON.stringify({ ...dados, photos: {} })); } catch (e2) {}
+    if (!envAvisouFotos) { envAvisouFotos = true; toast(t().patRascunhoSemFotos, 5000); }
+  }
+}
+function salvaEnvio() { const alvo = envio; clearTimeout(envSalvarTimer); envSalvarTimer = setTimeout(() => gravaEnvio(alvo), 400); }
+function apagaEnvio(fid) { delete ENVIOS[fid]; try { localStorage.removeItem(chaveEnvio(fid)); } catch (e) {} }
+/** A ficha salva (nesta aba ou no aparelho), ou null. / 保存中のシート */
+function envioSalvo(f) {
+  const e = ENVIOS[f.id];
+  if (e) return e.mexeu && !e.done ? e : null;
+  return carregaEnvioSalvo(f);
+}
+/** A ficha a mostrar: a que está em progresso ou uma nova. / 表示するシート（記入中または新規） */
+function envioDaFicha(f) {
+  if (!ehFichaTarefa(f)) return novoEnvio(f);
+  let e = ENVIOS[f.id];
+  if (e && e.done && envio !== e) e = null;          // já enviada: começa outra / 送信済みなら新規
+  if (!e) e = carregaEnvioSalvo(f) || novoEnvio(f);
+  ENVIOS[f.id] = e;
+  return e;
+}
+// guarda o que foi digitado ou marcado / 入力・選択を保存
+['input', 'change'].forEach(tipo => document.addEventListener(tipo, ev => {
+  const env = envio;
+  if (!env || env.done || section !== 'form:' + env.formId || !ev.target.closest || !ev.target.closest('main') || ev.target.closest('#composer')) return;
+  if (!ehFichaTarefa(formPorId(env.formId)) || ev.target.type === 'file') return;   // fotos: depois de reduzidas / 写真は縮小後
+  setTimeout(() => { if (envio !== env || section !== 'form:' + env.formId) return; leiaEnvio(); env.mexeu = true; salvaEnvio(); }, 0);
+}));
+document.addEventListener('click', ev => {
+  const env = envio;
+  if (!env || env.done || section !== 'form:' + env.formId || !ev.target.closest || !ev.target.closest('[data-s5]')) return;
+  if (!ehFichaTarefa(formPorId(env.formId))) return;
+  setTimeout(() => { env.mexeu = true; salvaEnvio(); }, 0);
+});
+// fechar o portal, trocar de aplicativo ou bloquear o celular: grava na hora / 閉じる・アプリ切替時に即保存
+function salvaTudoAgora() {
+  try {
+    if (envio && !envio.done && section === 'form:' + envio.formId && ehFichaTarefa(formPorId(envio.formId)) && envio.mexeu) leiaEnvio();
+    Object.values(ENVIOS).forEach(gravaEnvio);
+    if (typeof PA !== 'undefined' && PA) gravaPa(PA);
+  } catch (e) {}
+}
+window.addEventListener('pagehide', salvaTudoAgora);
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'hidden') salvaTudoAgora(); });
+/** Aviso "Em progresso" no alto da ficha. / シート上部の「記入中」表示 */
+function avisoProgresso(salvoEm, attrDescartar) {
+  const h = salvoEm ? new Date(salvoEm) : null;
+  const hora = h ? String(h.getHours()).padStart(2, '0') + ':' + String(h.getMinutes()).padStart(2, '0') : '';
+  return `<div class="mb-4 flex flex-wrap items-center gap-3 rounded-xl border border-brand/30 bg-brandsoft/60 px-4 py-3" role="status">
+    <i data-lucide="pencil-line" class="h-5 w-5 shrink-0 text-brand"></i>
+    <p class="min-w-[200px] flex-1 text-[14px] leading-relaxed text-ink"><b>${t().progTit}</b>${hora ? ` <span class="text-slate-500">· ${fmt(t().progSalvo, { h: hora })}</span>` : ''}
+      <span class="block text-[13px] text-slate-600">${t().progDica}</span></p>
+    <button type="button" ${attrDescartar} class="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg border border-line bg-white px-3 text-[13px] font-semibold text-slate-600 hover:bg-red-50 hover:text-red-600"><i data-lucide="trash-2" class="h-4 w-4"></i>${t().progDescartar}</button>
+  </div>`;
+}
+document.addEventListener('click', ev => {
+  const b = ev.target.closest && ev.target.closest('[data-envdescarta]');
+  if (!b) return;
+  const f = formPorId(b.dataset.envdescarta);
+  if (!f || !confirm(t().progDescartarQ)) return;
+  apagaEnvio(f.id);
+  envio = envioDaFicha(f);
+  renderSection(); window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
 const hoje0 = () => { const d = new Date(); d.setHours(0, 0, 0, 0); return d; };
 const lerData = s => {
   const p = String(s || '').split('-').map(Number);
@@ -6044,7 +6198,9 @@ function cartaoIdentidade(idInput, idQuem, codigo) {
 }
 
 function fmFillView(f) {
-  if (!envio || envio.formId !== f.id) envio = novoEnvio(f);
+  if (!envio || envio.formId !== f.id) envio = envioDaFicha(f);   // a que está em progresso ou uma nova / 記入中または新規
+  // administração: entrega pelo setor escolhido na tabela / 管理部門：表で選んだエリアとして提出
+  if (ehAdmin() && SETOR_DA_TAREFA && ehFichaTarefa(f)) { envio.setorTarefa = SETOR_DA_TAREFA; SETOR_DA_TAREFA = ''; }
   if (f.modelo) autosDoModelo(f, empByCode(envio.code));
   const e = envio;
   const ficha = ehFicha(f);
@@ -6055,7 +6211,7 @@ function fmFillView(f) {
   const area = ficha && isAdmin() ? areaDaFicha(f) : '';
   const voltar = `
     <button type="button" ${area ? `data-tararea="${area}"` : `data-go="${ficha ? (f.soLider ? 'tarefas' : 'feedback') : 'forms'}"`} class="mb-4 inline-flex min-h-[40px] items-center gap-1.5 rounded-lg px-1 text-[14px] font-semibold text-brand hover:underline">
-      <i data-lucide="arrow-left" class="h-4 w-4"></i>${area ? esc(txt(AREAS[area].nome)) : ficha ? (f.soLider ? t().navTarefas : t().navFeedback) : t().fmBack}</button>${editar}`;
+      <i data-lucide="arrow-left" class="h-4 w-4"></i>${area ? esc(txt(AREAS[area].nome)) : ficha ? (f.soLider ? t().navTarefas : t().navFeedback) : t().fmBack}</button>${editar}` + (ehFichaTarefa(f) && envio.mexeu && !envio.done ? avisoProgresso(envio.salvoEm, 'data-envdescarta="' + esc(f.id) + '"') : '');
 
   // patrulhas (安全巡回・品質巡回・個人巡回): tela própria / 巡回は専用画面
   if (ehPatrulha(f)) return voltar + telaPatrulha(f);
@@ -7744,7 +7900,7 @@ function bindFmFill(f) {
     setTimeout(() => { renderSection(); window.scrollTo({ top: 0, behavior: 'smooth' }); }, 250);   // deixa ver o ✔ / ✔を一瞬表示
   });
   const agn = document.getElementById('fmAgain');
-  if (agn) agn.addEventListener('click', () => { envio = novoEnvio(f); renderSection(); });
+  if (agn) agn.addEventListener('click', () => { envio = novoEnvio(f); if (ehFichaTarefa(f)) ENVIOS[f.id] = envio; renderSection(); });
   const ed = document.getElementById('fmEditHere');
   document.querySelectorAll('[data-dest]').forEach(b => b.addEventListener('click', () => {
     leiaEnvio();
@@ -7823,6 +7979,7 @@ function bindFmFill(f) {
         cv.height = Math.round(img.height * escala);
         cv.getContext('2d').drawImage(img, 0, 0, cv.width, cv.height);
         envio.photos[inp.dataset.photo] = cv.toDataURL('image/jpeg', 0.8);
+        if (ehFichaTarefa(f)) { envio.mexeu = true; salvaEnvio(); }   // em progresso / 記入中として保存
         renderSection();
       };
       img.onerror = () => erro(t().fbPhotoBig);
@@ -7833,6 +7990,7 @@ function bindFmFill(f) {
   document.querySelectorAll('[data-photorm]').forEach(b => b.addEventListener('click', () => {
     leiaEnvio();
     delete envio.photos[b.dataset.photorm];
+    if (ehFichaTarefa(f)) { envio.mexeu = true; salvaEnvio(); }
     renderSection();
   }));
 
@@ -7881,8 +8039,10 @@ function bindFmFill(f) {
           codigo: pessoa.code, destino: env.destino, pdf: pdf.base64, arquivo: pdf.nome, yukyu: resumo
         }, tokenAtual());
         env.done = { protocolo: r.protocolo, para };
+        try { localStorage.removeItem(chaveEnvio(env.formId)); } catch (er) {}   // enviada: a próxima é nova / 送信済み：次は新規
       } else {
         env.done = { demo: true };
+        try { localStorage.removeItem(chaveEnvio(env.formId)); } catch (er) {}   // enviada: a próxima é nova / 送信済み：次は新規
         if (resumo) YK_DEMO.unshift({ ...resumo, protocolo: 'DEMO-' + Date.now().toString(36).toUpperCase(),
           em: new Date().toISOString().slice(0, 10), codigo: pessoa.code, nome: nomeDuplo(pessoa),
           setor: sectorLabel(pessoa.sector), setorId: pessoa.sector, dias: resumo.tipo === 'manha' ? 0.5 : diasEntre(lerData(resumo.ini), lerData(resumo.fim)) + 1,
@@ -7971,6 +8131,7 @@ async function enviarFichaAgora(f) {
       respostas, fotos
     }, tokenAtual());
     env.done = { protocolo: r.protocolo };
+    try { localStorage.removeItem(chaveEnvio(env.formId)); } catch (er) {}   // enviada: a próxima é nova / 送信済み：次は新規
     if (f.soLider) DATA.feedback = (DATA.feedback || []).concat([{ id: r.id, kind: f.id, sector: env.setorTarefa || (pessoa && pessoa.sector) || '',
       em: new Date().toISOString(), status: 'new', author: pessoa ? pessoa.code : '', answers: [] }]);   // a tarefa já conta como entregue / すぐに提出済みに
   } else {
@@ -7982,6 +8143,7 @@ async function enviarFichaAgora(f) {
       kind: f.id, kindName: txt(f.name), answers: respostas
     });
     env.done = { demo: true };
+    try { localStorage.removeItem(chaveEnvio(env.formId)); } catch (er) {}   // enviada: a próxima é nova / 送信済み：次は新規
   }
   fbCarregado = false;                   // a lista da administração recarrega / 一覧を再読み込み
 }
@@ -9823,7 +9985,7 @@ function textoFreq(tar) {
 }
 function chipSituacao(sit) {
   if (sit.st === 'ok') return `<span class="tar-chip ok"><i data-lucide="circle-check-big" class="h-4 w-4"></i>${t().tarOk}</span>`;
-  if (sit.st === 'atrasada') return `<span class="tar-chip atr"><i data-lucide="alarm-clock-off" class="h-4 w-4"></i>${t().tarAtrasada}</span>`;
+  // passou do prazo e ainda não foi feita: continua "Pendente" (sem cobrança forte) / 期限後も「未提出」のまま
   return `<span class="tar-chip pen"><i data-lucide="clock" class="h-4 w-4"></i>${t().tarPendente}</span>`;
 }
 function detalheSituacao(sit) {
@@ -9879,14 +10041,15 @@ function irParaArea(a, aba) {
 /** Contagens de uma área (painel, escolha da área e abas). / エリアの件数。 */
 function resumoArea(a) {
   const m = minhasTarefas().filter(x => areaDaFicha(x.f) === a);
-  const atr = m.filter(x => x.sit.st === 'atrasada').length, pen = m.filter(x => x.sit.st === 'pendente').length;
-  return { atr, pen, ok: m.length - atr - pen, total: m.length, semRisco: a === 'seg' ? hhkSemRisco().length : 0 };
+  const pen = m.filter(x => x.sit.st !== 'ok').length;
+  return { pen, ok: m.length - pen, total: m.length, semRisco: a === 'seg' ? hhkSemRisco().length : 0,
+           prog: fichasDaArea(a).reduce((s, f) => s + emProgresso(f), 0) };
 }
 const chipsResumo = r => [
-  r.atr ? `<span class="tar-chip atr">${fmt(t().tarNAtr, { n: r.atr })}</span>` : '',
   r.pen ? `<span class="tar-chip pen">${fmt(t().tarNPen, { n: r.pen })}</span>` : '',
   r.semRisco ? `<span class="tar-chip pen"><i data-lucide="gauge" class="h-4 w-4"></i>${fmt(t().tarNSemRisco, { n: r.semRisco })}</span>` : '',
-  !r.atr && !r.pen && !r.semRisco && r.total ? `<span class="tar-chip ok"><i data-lucide="circle-check-big" class="h-4 w-4"></i>${t().tarTudoEmDia}</span>` : ''
+  r.prog ? `<span class="tar-chip prog"><i data-lucide="pencil-line" class="h-4 w-4"></i>${fmt(t().tarNProg, { n: r.prog })}</span>` : '',
+  !r.pen && !r.semRisco && r.total ? `<span class="tar-chip ok"><i data-lucide="circle-check-big" class="h-4 w-4"></i>${t().tarTudoEmDia}</span>` : ''
 ].join('');
 const icoArea = (a, tam) => `<span class="grid ${tam === 'g' ? 'h-14 w-14' : 'h-11 w-11'} shrink-0 place-items-center rounded-xl" style="background:${AREAS[a].fundo};color:${AREAS[a].cor}"><i data-lucide="${AREAS[a].icon}" class="${tam === 'g' ? 'h-7 w-7' : 'h-5 w-5'}"></i></span>`;
 const nomeArea = a => `${esc(txt(AREAS[a].nome))}${lang !== 'ja' ? ` <span class="font-bold text-slate-400" lang="ja">${AREAS[a].ja}</span>` : ''}`;
@@ -9912,7 +10075,7 @@ function escolhaArea() {
 }
 function telaArea(a) {
   const r = resumoArea(a);
-  const abas = abaBotoes('data-taraba', tarAba, [['fazer', 'list-checks', t().tarAbaFazer, r.atr + r.pen],
+  const abas = abaBotoes('data-taraba', tarAba, [['fazer', 'list-checks', t().tarAbaFazer, r.pen],
     ['enviados', 'inbox', t().tarAbaEnviados, r.semRisco], ['relatorios', 'chart-column', t().tarAbaRel]]);
   const miolo = tarAba === 'enviados' ? enviadosArea(a) : tarAba === 'relatorios' ? relatoriosArea(a) : fazerArea(a, r);
   return `
@@ -9930,10 +10093,22 @@ function telaArea(a) {
 const tituloBloco = (ic, txt_) => `<p class="mb-2 mt-6 flex items-center gap-2 text-[13px] font-extrabold uppercase tracking-wide text-slate-500 first:mt-0"><i data-lucide="${ic}" class="h-4 w-4"></i>${txt_}</p>`;
 const btnTar = (attrs, ok, rot) => `<button type="button" ${attrs} class="inline-flex min-h-[40px] shrink-0 items-center gap-1.5 rounded-lg px-3 text-[13px] font-semibold ${ok
   ? 'border border-line text-slate-600 hover:bg-slate-50' : 'bg-ink text-white hover:bg-ink2'}"><i data-lucide="square-pen" class="h-4 w-4"></i>${rot}</button>`;
+/** Quantas fichas desta ficha estão em progresso neste aparelho (num setor, se dado). / 記入中の数 */
+function emProgresso(f, setor) {
+  if (ehPatrulha(f)) return rascunhosDaFicha(f.id).filter(x => !setor || x.r.setor === setor).length;
+  if (!ehFichaTarefa(f)) return 0;
+  const e = envioSalvo(f);
+  if (!e) return 0;
+  if (!setor) return 1;
+  const eu = USUARIO ? empByCode(USUARIO) : null;
+  return (e.setorTarefa || (eu && eu.sector) || '') === setor ? 1 : 0;
+}
+const chipProgresso = n => n ? `<span class="tar-chip prog"><i data-lucide="pencil-line" class="h-4 w-4"></i>${n > 1 ? fmt(t().tarNProg, { n }) : t().progCurto}</span>` : '';
 function fazerArea(a, r) {
   const fs = fichasDaArea(a);
   const comPrazo = fs.filter(f => f.tarefa && f.tarefa.ativo);
-  const semPrazo = fs.filter(f => !(f.tarefa && f.tarefa.ativo) && ehPatrulha(f) && setoresDaPatrulha(f).length);
+  // sem prazo: qualquer ficha da área configurada assim (e os 見極め) / 期限なしのシート
+  const semPrazo = fs.filter(f => !(f.tarefa && f.tarefa.ativo) && (!ehPatrulha(f) || setoresDaPatrulha(f).length));
   let h = '';
   if (comPrazo.length) h += tituloBloco('calendar-clock', t().tarComPrazo) + (ehAdmin() ? matrizTarefas(comPrazo) : listaTarefasLider(comPrazo));
   if (r.semRisco) h += tituloBloco('gauge', t().tarResolver) + `
@@ -9944,15 +10119,18 @@ function fazerArea(a, r) {
       <button type="button" data-taravaliar class="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg bg-ink px-3 text-[13px] font-semibold text-white hover:bg-ink2"><i data-lucide="clipboard-pen" class="h-4 w-4"></i>${t().tarAvaliar}</button>
     </div>`;
   if (semPrazo.length) {
-    const andamento = semPrazo.some(f => f.patrulha === 'lift') ? liftsEmAndamento().length : 0;
-    h += tituloBloco('clipboard-pen', t().patSemPrazoTit) + `<ul class="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">${semPrazo.map(f => `
+    h += tituloBloco('clipboard-pen', t().patSemPrazoTit) + `<ul class="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">${semPrazo.map(f => {
+      const prog = emProgresso(f);
+      return `
       <li class="flex flex-wrap items-center gap-3 px-4 py-3 sm:px-5">
         <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-page text-slate-600"><i data-lucide="${esc(f.icon || 'file-text')}" class="h-5 w-5"></i></span>
-        <span class="min-w-0 flex-1"><span class="block text-[15px] font-bold text-ink">${esc(txt(f.name))}</span>
-          <span class="block text-[13px] ${f.patrulha === 'lift' && andamento ? 'font-semibold text-amberdark' : 'text-slate-500'}">${f.patrulha === 'lift' && andamento ? fmt(t().liftNAndamento, { n: andamento }) : t().patSemPrazoHint}</span></span>
+        <span class="min-w-[160px] flex-1"><span class="block text-[15px] font-bold text-ink">${esc(txt(f.name))}</span>
+          <span class="block text-[13px] text-slate-500">${porPessoa({ tipo: f.patrulha }) ? t().patSemPrazoHint : t().tarSemPrazoLinha}</span></span>
+        ${chipProgresso(prog)}
         ${ehAdmin() ? `<button type="button" data-tarcfg="${esc(f.id)}" class="inline-flex min-h-[40px] items-center gap-1.5 rounded-lg border border-line px-3 text-[13px] font-semibold text-brand hover:bg-brandsoft"><i data-lucide="pencil" class="h-4 w-4"></i>${t().nEdit}</button>` : ''}
-        ${btnTar(`data-patnova="${esc(f.id)}"`, false, t().patPreencher)}
-      </li>`).join('')}</ul>`;
+        ${btnTar(`data-patnova="${esc(f.id)}"`, false, prog ? t().tarContinuar : t().patPreencher)}
+      </li>`;
+    }).join('')}</ul>`;
   }
   return h || vazio('list-checks', t().tarVazio);
 }
@@ -9961,15 +10139,15 @@ function listaTarefasLider(fs) {
   const linhas = fs.map(f => {
     const s = setoresDaPessoa(f)[0];
     if (!s) return '';
-    const sit = { ...situacaoTarefa(f, s), _tar: f.tarefa };
+    const sit = { ...situacaoTarefa(f, s), _tar: f.tarefa }, prog = emProgresso(f, s);
     return `
       <li class="flex flex-wrap items-center gap-x-3 gap-y-2 px-4 py-3 sm:px-5">
         <span class="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-page text-slate-600"><i data-lucide="${esc(f.icon || 'file-text')}" class="h-5 w-5"></i></span>
         <span class="min-w-[160px] flex-1"><span class="block text-[15px] font-bold text-ink">${esc(txt(f.name))}</span>
           <span class="block text-[13px] text-slate-500">${esc(textoFreq(f.tarefa))} · ${esc(detalheSituacao(sit))}</span></span>
-        ${chipSituacao(sit)}
+        ${chipSituacao(sit)}${chipProgresso(prog)}
         ${sit.qtd > 1 ? `<span class="rounded-md bg-slate-100 px-2 py-0.5 text-[13px] font-bold text-slate-600">${Math.min(sit.feitos, sit.qtd)}/${sit.qtd}</span>` : ''}
-        ${btnTar(`data-tarfaz="${esc(f.id)}|${esc(s)}"`, sit.st === 'ok', sit.st === 'ok' ? t().tarDeNovo : t().tarFazer)}
+        ${btnTar(`data-tarfaz="${esc(f.id)}|${esc(s)}"`, sit.st === 'ok' && !prog, prog ? t().tarContinuar : sit.st === 'ok' ? t().tarDeNovo : t().tarFazer)}
       </li>`;
   }).join('');
   return linhas ? `<ul class="divide-y divide-line overflow-hidden rounded-2xl border border-line bg-white">${linhas}</ul>`
@@ -9980,13 +10158,15 @@ function matrizTarefas(fs) {
   const setores = DATA.sectors.filter(s => fs.some(f => setoresDaTarefa(f).includes(s.id)));
   const cel = (f, s) => {
     if (!setoresDaTarefa(f).includes(s.id)) return `<td class="border-l border-line px-2 py-2 text-center text-slate-300">—</td>`;
-    const sit = { ...situacaoTarefa(f, s.id), _tar: f.tarefa };
-    const cls = sit.st === 'ok' ? 'bg-leafsoft text-leafdark' : sit.st === 'atrasada' ? 'bg-red-50 text-red-700' : 'bg-ambersoft text-amberdark';
-    const rot = sit.st === 'ok' ? t().tarOk : sit.st === 'atrasada' ? t().tarAtrasada : sit.falta === 0 ? t().tarHoje : fmt(t().tarFaltamD, { n: sit.falta });
-    const ic = sit.st === 'ok' ? 'circle-check-big' : sit.st === 'atrasada' ? 'alarm-clock-off' : 'clock';
+    const sit = { ...situacaoTarefa(f, s.id), _tar: f.tarefa }, prog = emProgresso(f, s.id);
+    // passou do prazo: "Pendente", como as outras (sem vermelho) / 期限後も「未提出」（赤なし）
+    const cls = sit.st === 'ok' ? 'bg-leafsoft text-leafdark' : 'bg-ambersoft text-amberdark';
+    const rot = sit.st === 'ok' ? t().tarOk : sit.st === 'atrasada' ? t().tarPendente : sit.falta === 0 ? t().tarHoje : fmt(t().tarFaltamD, { n: sit.falta });
+    const ic = sit.st === 'ok' ? 'circle-check-big' : 'clock';
     return `<td class="border-l border-line p-1.5"><button type="button" data-tarfaz="${esc(f.id)}|${esc(s.id)}" title="${esc(detalheSituacao(sit))}"
       class="flex min-h-[48px] w-full flex-col items-center justify-center rounded-lg px-1 text-[12px] font-bold leading-tight hover:ring-2 hover:ring-brand/40 ${cls}">
-      <span class="flex items-center gap-1"><i data-lucide="${ic}" class="h-3.5 w-3.5"></i>${esc(rot)}</span>${sit.qtd > 1 ? `<span class="font-semibold opacity-80">${Math.min(sit.feitos, sit.qtd)}/${sit.qtd}</span>` : ''}</button></td>`;
+      <span class="flex items-center gap-1"><i data-lucide="${ic}" class="h-3.5 w-3.5"></i>${esc(rot)}</span>${sit.qtd > 1 ? `<span class="font-semibold opacity-80">${Math.min(sit.feitos, sit.qtd)}/${sit.qtd}</span>` : ''}
+      ${prog ? `<span class="mt-0.5 inline-flex items-center gap-0.5 font-semibold text-brand"><i data-lucide="pencil-line" class="h-3 w-3"></i>${t().progCurto}</span>` : ''}</button></td>`;
   };
   return `<p class="mb-2 text-[13px] text-slate-500">${t().tarMatrizDica}</p>
     <div class="overflow-x-auto rounded-2xl border border-line bg-white">
@@ -10002,7 +10182,6 @@ function matrizTarefas(fs) {
       </table>
     </div>`;
 }
-
 /* ---------- Enviados / 送信済み ---------- */
 function enviadosArea(a) {
   const ids = (DATA.fichas || []).filter(f => areaDaFicha(f) === a).map(f => f.id);
@@ -10290,8 +10469,8 @@ function blocoTarefas() {
   if (!isAdmin()) return '';
   const cartao = a => {
     const r = resumoArea(a);
-    if (!r.total && !r.semRisco) return '';
-    const alerta = r.atr || r.semRisco;
+    if (!r.total && !r.semRisco && !r.prog) return '';
+    const alerta = false;                // sem destaque vermelho (nada de "atrasado") / 赤い強調なし
     return `<button type="button" data-tararea="${a}" class="flex min-h-[64px] flex-1 items-center gap-3 rounded-xl border bg-white px-4 py-3 text-left hover:shadow-sm ${alerta ? 'border-red-200' : 'border-line'}" style="min-width:240px">
       ${icoArea(a)}
       <span class="min-w-0 flex-1"><span class="block text-[15px] font-extrabold text-ink">${nomeArea(a)}</span>
